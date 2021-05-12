@@ -3,12 +3,12 @@ body {
     background-color: #d6daed;
 }
 
-#container {
-    width: 960px;
-    margin: 0 auto;
-    background-color: #f1eed7;
+#content {
+    background-color: #eaf3ff;
+    padding: 1em 0.5em;
 }
 
+/* HEADER */
 .header {
     padding: 0.5em;	
     height: 50px;
@@ -19,41 +19,21 @@ body {
 	justify-content: space-between;
 }
 
-#main {
-    margin-left: 15em;
+.login_signup{
+	font-size:20px;
+	margin-right: 2em;
 }
 
-#navbar {
-    background-color: #5CCCCC;
-    width: 14em;
-    float: left;
-    padding: 1em 0.5em;
-    margin-left: -15em;
+.logo{
+	color:white;
+	margin-left: 2em;
 }
 
-#content {
-    background-color: #eaf3ff;
-    padding: 1em 0.5em;
-}
-
-footer {
-    background: #aaa;
-    width: 100%;
-    height: 3em;
-    color: #fff;
-    box-shadow: 0 -2px 5px #888;
-    
-    font-size: 1em;
-    line-height: 3em;
-    
-    display: flex;
-    flex-direction: row;  
-    font-size: .8em;
-    justify-content: space-around;
+.logo h2{
+	font-size:40px;
 }
 
 /*  NAVBAR */
-
 .topnav {
   overflow: hidden;
   background-color: #333;
@@ -105,19 +85,39 @@ footer {
   }
 }
 
+/*   FOOTER   */
 
-.login_signup{
-	font-size:20px;
-	margin-right: 2em;
+.footer {
+    background: #000;
+    width: 100%;
+    color: #fff;
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;  
+    justify-content: center;
 }
-
-.logo{
-	color:white;
-	margin-left: 2em;
+.footer_wrap_left{
+    margin-top: 0.5em;
+    margin-bottom:0.5em;
+    border-right: 1px solid white;
+    padding-right:3em;
+    width: 33%;
+    align-self:center;
 }
-
-.logo h2{
-	font-size:40px;
+.footer_wrap{
+    margin-top: 0.5em;
+    margin-bottom:0.5em;
+    padding-right: 3em;
+    width: 34%;
+    align-self:center;
+}
+.footer_wrap_right{
+    margin-top: 0.5em;
+    margin-bottom:0.5em;
+    border-left: 1px solid white;
+    padding-left:3em;
+    width: 33%;
+    align-self:center;
 }
 
 /*   CONTENUTO HOMEPAGE   */
@@ -184,19 +184,23 @@ footer {
   margin: 0 auto;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 }
 
 /* questi servono per rendere la griglia responsive*/
-@media (min-width: 730px) {
+@media screen and (min-width: 350px) {
+  .grid_container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (min-width: 730px) {
   .grid_container { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (min-width: 950px) {
+@media screen and (min-width: 950px) {
   .grid_container { grid-template-columns: repeat(4, 1fr); }
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
   .grid_container { grid-template-columns: repeat(5, 1fr); }
 }
 
@@ -207,42 +211,6 @@ footer {
 
 .home_evidenza h1, .home_scopri h1{
 	font-size:30px;
-}
-
-
-/*   FOOTER   */
-
-.footer {
-    background: #000;
-    width: 100%;
-    color: #fff;
-    font-size: 1em;
-    display: flex;
-    flex-direction: row;  
-    justify-content: center;
-}
-.footer_wrap_left{
-    margin-top: 0.5em;
-    margin-bottom:0.5em;
-    border-right: 1px solid white;
-    padding-right:3em;
-    width: 33%;
-    align-self:center;
-}
-.footer_wrap{
-    margin-top: 0.5em;
-    margin-bottom:0.5em;
-    padding-right: 3em;
-    width: 34%;
-    align-self:center;
-}
-.footer_wrap_right{
-    margin-top: 0.5em;
-    margin-bottom:0.5em;
-    border-left: 1px solid white;
-    padding-left:3em;
-    width: 33%;
-    align-self:center;
 }
 
 
