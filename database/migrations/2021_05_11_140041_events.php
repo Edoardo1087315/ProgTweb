@@ -14,7 +14,7 @@ class Events extends Migration
     public function up()
     {
         Schema::create('event', function (Blueprint $table) {
-            $table->bigIncrements('EventId')->unsigned()->index();
+            $table->bigIncrements('eventid')->unsigned()->index();
             $table->string('descrizione');
             $table->string('programma');
             $table->string('societa');
