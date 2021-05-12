@@ -106,22 +106,6 @@ footer {
 }
 
 
-
-@media screen and (max-width: 600px) {
-  .topnav a{
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-}
-
-.navbar a:hover{
-  background-color: red;
-}
-
 .login_signup{
 	font-size:20px;
 	margin-right: 2em;
