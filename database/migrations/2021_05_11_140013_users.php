@@ -14,12 +14,12 @@ class Users extends Migration
     public function up()
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->string('nome');
-            $table->string('cognome');
+            $table->string('nome',20);
+            $table->string('cognome',20);
             $table->string('email');
             $table->string('username',20)->index();
             $table->string('password',20);
-            $table->string('data_nascita');
+            $table->date('data_nascita');
             $table->unsignedBigInteger('telefono');
             $table->string('sitoweb')->nullable();
             $table->integer('role',1);

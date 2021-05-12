@@ -15,7 +15,7 @@ class Tickets extends Migration
     {
          Schema::create('ticket', function (Blueprint $table) {
             $table->bigIncrements('TransId')->unsigned()->index();
-            $table->string('data_acquisto');
+            $table->date('data_acquisto');
             $table->float('prezzo');
             $table->integer('quantita');
             $table->string('username');

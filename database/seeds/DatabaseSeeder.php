@@ -24,5 +24,9 @@ class DatabaseSeeder extends Seeder
                 'programma' => 'il programma el....', 'societa' => 'aceem', 'luogo' => 'numana', 'data' =>'2021-04-03', 'nome' => 'nomeEvento', 'bigl_disp' => 60, 'bigl_acquis' => 20, 'Xcord' => 7.12320, 'Ycord' => 5.42340,  'prezzo' => 7.70,]
             
         ]);
+        
+        DB::table('ticket')->insert([
+            ['TransId' => 1, 'data_acquisto' => '2020-05-12', 'prezzo' => 5.5, 'quantita' => 2, 'username' => 'andri', 'eventid' => 1]
+        ]);
     }
    }

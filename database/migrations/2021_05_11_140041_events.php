@@ -19,7 +19,7 @@ class Events extends Migration
             $table->string('programma');
             $table->string('societa');
             $table->string('luogo');
-            $table->string('data');
+            $table->date('data');
             $table->string('nome');
             $table->integer('bigl_disp');
             $table->integer('bigl_acquis');
