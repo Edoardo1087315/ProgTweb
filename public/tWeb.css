@@ -211,6 +211,7 @@ body {
 
 .home_evidenza h1, .home_scopri h1{
 	font-size:30px;
+        display: inline-block;
 }
 
 
