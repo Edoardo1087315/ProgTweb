@@ -13,9 +13,15 @@ class Tickets extends Migration
      */
     public function up()
     {
-        //
-    }
+         Schema::create('ticket', function (Blueprint $table) {
+            $table->string('data_acquisto');
+            $table->float('prezzo');
+            $table->integer('quantita');
+            $table->bigIncrements('TransactionID');
+            $table->foreign('TransactionID')->references('EventId')->on('event');
+        });
 
+    }
     /**
      * Reverse the migrations.
      *
@@ -23,6 +29,6 @@ class Tickets extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('ticket');
     }
 }

@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
    
 
         DB::table('event')->insert([
-            ['Id' => 1, 'descrizione' => 'ciaociaoquestoeventosara...',
+            ['EventId' => 1, 'descrizione' => 'ciaociaoquestoeventosara...',
                 'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
-            ['Id' => 2, 'descrizione' => 'ciaociaoquestoeventosaral...',
+            ['EventId' => 2, 'descrizione' => 'ciaociaoquestoeventosaral...',
                 'programma' => 'il programma el....', 'societa' => 'aceem', 'luogo' => 'numana', 'data' =>'2021-04-03', 'nome' => 'nomeEvento', 'bigl_disp' => 60, 'bigl_acquis' => 20, 'Xcord' => 7.12320, 'Ycord' => 5.42340,  'prezzo' => 7.70,]
             
         ]);

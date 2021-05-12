@@ -21,8 +21,9 @@ class Users extends Migration
             $table->string('password',20);
             $table->string('data_nascita');
             $table->unsignedBigInteger('telefono');
-            $table->string('sitoweb');
-            $table->integer('role',10);                   
+            $table->string('sitoweb')->nullable();
+            $table->integer('role',1);
+            $table->string('societa')->nullable();
         });
     }
 
