@@ -11,7 +11,7 @@ body {
 /* HEADER */
 .header {
     padding: 0.5em;	
-    height: 50px;
+    height: 70px;
 	display:flex;
     align-items:center;
 	background-image: url("sfondoheader.jpg");
@@ -225,6 +225,7 @@ fieldset {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  margin-block-end: 1em;
 }
 
 .form-inline label {

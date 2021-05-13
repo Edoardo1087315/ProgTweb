@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('suca');
-});
+Route::get('/','PublicController@showHome')
+        ->name('frontpage');
+
+Route::get('/catalog','PublicController@showCatalog')
+        ->name('catalog');
+
+Route::get('/ModAdesione','PublicController@showModAdes')
+        ->name('Mod_Adesione');
