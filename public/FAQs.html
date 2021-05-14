@@ -6,16 +6,15 @@
         <link rel="stylesheet" type="text/css" href="tweb.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <script>
-                window.onload = function() {
-                document.getElementById("icon").setAttribute("onClick",function(){
+               function myFunction() {
                   var x = document.getElementById("myTopnav");
                   if (x.className === "topnav") {
                     x.className += " responsive";
                   } else {
                     x.className = "topnav";
                   }
-                });
-                if(window.name === FAQs){
+                }
+                window.onload = function(){
                 //metodo che prende tutti gli elementi con classe di stile accordione e li mette nell'array faq di oggetti
                 var faq = document.getElementsByClassName("accordion");
                     for (var i = 0; i < faq.length; i++) {
@@ -34,8 +33,7 @@
                               }
                           });
                       }
-                  }
-                };
+                  };
                  </script>
     </head>
     <body>
@@ -52,6 +50,7 @@
 		<div class="topnav" id="myTopnav">
 			<a href="tweb.html" class="active">Home</a>
 			<a href="catalogo.html">Catalogo</a>
+			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>
 			</a>
