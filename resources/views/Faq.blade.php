@@ -3,8 +3,6 @@
 @section('content')
 <script>
 window.onload = function() {
-
-                if(window.name === FAQs){
                 //metodo che prende tutti gli elementi con classe di stile accordione e li mette nell'array faq di oggetti
                 var faq = document.getElementsByClassName("accordion");
                     for (var i = 0; i < faq.length; i++) {
@@ -23,7 +21,6 @@ window.onload = function() {
                               }
                           });
                       }
-                  }
               };
 
 </script>

@@ -1,17 +1,7 @@
-<script>
-                function myFunction() {
-                  var x = document.getElementById("myTopnav");
-                  if (x.className === "topnav") {
-                    x.className += " responsive";
-                  } else {
-                    x.className = "topnav";
-                  }
-                }
-                </script>
-    
-<a href="{{ route('frontpage') }}" class="active" id="home">Home</a>
-<a href="{{ route('catalog') }}" onclick="class" id="catalogo">Catalogo</a>
+
+<a href="{{ route('frontpage') }}"  id="home" class="{{ (Route::currentRouteName() == 'frontpage') ? 'active' : '' }}">Home</a>
+<a href="{{ route('catalog') }}" id="catalogo" class="{{ (Route::currentRouteName() == 'catalog') ? 'active' : '' }}">Catalogo</a>
 			
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			<a href="javascript:void(0);" id = "icon" class="icon" onclick ="myFunction()">
 				<i class="fa fa-bars"></i>
 			</a>
