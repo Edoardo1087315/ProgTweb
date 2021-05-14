@@ -21,8 +21,29 @@ class DatabaseSeeder extends Seeder
             ['EventId' => 1, 'descrizione' => 'ciaociaoquestoeventosara...',
                 'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
             ['EventId' => 2, 'descrizione' => 'ciaociaoquestoeventosaral...',
-                'programma' => 'il programma el....', 'societa' => 'aceem', 'luogo' => 'numana', 'data' =>'2021-04-03', 'nome' => 'nomeEvento', 'bigl_disp' => 60, 'bigl_acquis' => 20, 'Xcord' => 7.12320, 'Ycord' => 5.42340,  'prezzo' => 7.70,]
-            
+                'programma' => 'il programma el....', 'societa' => 'aceem', 'luogo' => 'numana', 'data' =>'2021-04-03', 'nome' => 'nomeEvento', 'bigl_disp' => 60, 'bigl_acquis' => 20, 'Xcord' => 7.12320, 'Ycord' => 5.42340,  'prezzo' => 7.70,],
+            ['EventId' => 3, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 4, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 5, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 6, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 7, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 8, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 9, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 10, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 11, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 12, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
+                        ['EventId' => 13, 'descrizione' => 'ciaociaoquestoeventosara...',
+                'programma' => 'il programma e....', 'societa' => 'acem', 'luogo' => 'sirolo', 'data' =>'2020-04-03', 'nome' => 'nomeevento', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340,  'prezzo' => 5.5,],
         ]);
         
         DB::table('ticket')->insert([

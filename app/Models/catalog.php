@@ -9,4 +9,8 @@ class Catalog {
     public function getEvents() {
         return $events = Event::all();
     }
+    
+    public function getEventById($eventId){
+        return Event::where('eventid',$eventId)->first();
+}
 }

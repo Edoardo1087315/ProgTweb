@@ -22,3 +22,6 @@ Route::get('/ModAdesione','PublicController@showModAdes')
 
 Route::get('/Faq','PublicController@showFaq')
         ->name('Faq');
+
+Route::get('/PagEvento/{idevent}','PublicController@showEvent')
+        ->name('Pagina_Evento');
