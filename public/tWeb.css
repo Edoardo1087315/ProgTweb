@@ -180,7 +180,7 @@ body {
 }
 
 .grid_container{
-  margin: 0 auto;
+  margin:0 auto;
   display: grid;
   grid-gap: 1rem;
   grid-template-columns: repeat(1, 1fr);
@@ -204,8 +204,15 @@ body {
 }
 
 
-.home_evidenza, .home_scopri{
+.home_evidenza{
 	margin-bottom: 5em;
+        margin-left: 3%;
+        margin-right: 3%;
+}
+.home_scopri{
+       padding-bottom: 5em;  
+       margin-left: 3%;
+        margin-right: 3%;
 }
 
 .home_evidenza h1, .home_scopri h1{
@@ -262,20 +269,21 @@ body {
 }
 
 
+/* CONTENUTO CATALOGO*/
 
 /*Form ricerca */
 
-
-fieldset{
-  background-color: #eeeeee;
-  margin:auto;
+.form_ricerca{
+    padding-top:2em;
+    padding-left:3em;
+    padding-right:3em;
+    margin-bottom:1em;
 }
-
 .form-inline {  
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  margin-block-end: 1em;
+  background-color: #eeeeee;
 }
 
 .form-inline label {
@@ -318,6 +326,10 @@ legend {
   padding: 5px 10px;
 }
 
+#ordina_button{
+    margin-left:2em;
+}
+
 input[type=text], input[type=password],select, textarea {
   width: 100%;
   padding: 12px 20px;
@@ -342,6 +354,17 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+.event_box a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.eventi_catalogo{
+	padding-bottom: 5em;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 3em;
+}
 
 
 /* Ordina_buttons */
@@ -365,23 +388,6 @@ input[type=submit]:hover {
 .fornitura {
  padding-bottom: 30px;
  
-}
-
-/*Login-Registrati */
-.login_wrap{
-    background-color:#fff;
-    width:960px;
-    margin: 0 auto;
-    height:500px;
-	padding : 10px;
-
-}
-
-
-.login_box {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
 }
 
 /* CONTENUTO PAGINA EVENTO  */
@@ -465,6 +471,3 @@ input[type=submit]:hover {
   transition: max-height 0.2s ease-out;
 }
 
-.idEvento{
-display:none;
-}

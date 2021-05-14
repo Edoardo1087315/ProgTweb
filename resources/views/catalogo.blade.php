@@ -12,14 +12,14 @@
 </div>
 <hr>
 		
-			<div class="home_evidenza">
+			<div class="eventi_catalogo">
 				<div class="grid_container">
                                     @isset($events)
                                 @foreach($events as $event)
                                 <div class="event_box"><a href="{{Route('Pagina_Evento',[$event->eventid]) }}">
-						<h2>Nome evento: {{$event->nome}}</h2>
-						<p class="luogo_evento">Luogo dell'evento: {{$event->luogo}}</p>
-						<p class="data_evento"> data evento: {{$event->data}}</p>
+						<h2>{{$event->nome}}</h2>
+						<p class="luogo_evento">{{$event->luogo}}</p>
+						<p class="data_evento">{{$event->data}}</p>
 						<hr>
 						<h5>Categoria evento</h5>
 						<div class="img_container">
