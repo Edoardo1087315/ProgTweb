@@ -13,8 +13,8 @@ class PublicController extends Controller {
     }
 
     public function showHome() {
-
-        return view('frontpage');
+        $Events = $this->_catalogModel->getExpiringEvents();
+        return view('frontpage')->with('events',$Events);
     }
     
     public function showCatalog() {

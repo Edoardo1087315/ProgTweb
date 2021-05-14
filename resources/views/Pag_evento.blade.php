@@ -7,26 +7,28 @@
 				<div class="event_wrapper">
                                     
 					<div class="img_event_container">
-						<img src="fotoevento.jpg">
+						<img src="{{ asset('fotoevento.jpg') }}">
 					</div>
 					<div class="cont_container">
-						<h1>TITOLO EVENTO {{$event->nome}}</h1>
-						<h4> Data evento</h4>
-						<h5> Luogo evento</h5>
+						<h1>{{$event->nome}}</h1>
+						<h4>{{$event->data}}</h4>
+						<h5>{{$event->luogo}}</h5>
 						<div class="accordion_container">	
 							<button class="accordion_event">DESCRIZIONE EVENTO</button>
 							<div class="panel_event">
-							  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							  <p>{{$event->descrizione}}</p>
 							</div>
 						</div>
 						<div class="accordion_container">
 							<button class="accordion_event">INFO LOCATION</button>
 							<div class="panel_event">
-								<div id="googleMap" style="width:100%;height:300px; background-color:white; border-style:solid;"></div>
+                                                            <div id="googleMap" style="width:99%;height:300px; background-color:white; border:none">
+                                                               <iframe src = "https://maps.google.com/maps?q={{$event->Xcord}},{{$event->Ycord}}&hl=es;z=10&amp;output=embed" style="width:100%;height:300px"></iframe>
+                                                            </div>
 							</div>
 						</div>
 						<h2>ORGANIZZATORE</h2>
-						<h3>nome organizzatore</h3>
+						<h3>{{$event->societa}}</h3>
 						<button type="button" class="event_button">Compra biglietti</button>
 					</div>				
 				</div>
