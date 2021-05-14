@@ -1,6 +1,6 @@
 <div class = "footer_wrap_left">
                 <ul style="list-style-type: none">
-                    <li><a>FAQs</a></li>
+                    <li><a href="{{ route('Faq') }}">FAQs</a></li>
                     <li><a href="{{ route('Mod_Adesione') }}">Modalità adesione eventi</a></li>
                     <li><a>Modalità fornitura servizi</a></li>
                 </ul>

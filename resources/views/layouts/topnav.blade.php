@@ -1,4 +1,3 @@
-
 <script>
                 function myFunction() {
                   var x = document.getElementById("myTopnav");
@@ -9,8 +8,9 @@
                   }
                 }
                 </script>
-<a href="{{ route('frontpage') }}" class="active">Home</a>
-			<a href="{{ route('catalog') }}">Catalogo</a>
+    
+<a href="{{ route('frontpage') }}" class="active" id="home">Home</a>
+<a href="{{ route('catalog') }}" onclick="class" id="catalogo">Catalogo</a>
 			
 			<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 				<i class="fa fa-bars"></i>

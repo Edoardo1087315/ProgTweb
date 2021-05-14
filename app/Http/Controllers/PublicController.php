@@ -18,12 +18,16 @@ class PublicController extends Controller {
     }
     
     public function showCatalog() {
-
+        
         return view('catalog');
     }
     
     public function showModAdes() {
 
         return view('Mod_adesione');
+    }
+    public function showFaq() {
+
+        return view('Faq');
     }
 }

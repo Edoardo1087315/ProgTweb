@@ -19,3 +19,6 @@ Route::get('/catalog','PublicController@showCatalog')
 
 Route::get('/ModAdesione','PublicController@showModAdes')
         ->name('Mod_Adesione');
+
+Route::get('/Faq','PublicController@showFaq')
+        ->name('Faq');
