@@ -14,6 +14,6 @@ class Catalog {
         return Event::where('eventid',$eventId)->first();
     }
     public function getExpiringEvents(){
-        return $events = Event::orderBy('data')->take(10)->get();
+        return $events = Event::orderBy('data')->take(5)->get();
     }
 }
