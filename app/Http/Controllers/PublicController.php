@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Catalog;
+use App\Models\catalog;
 
 class PublicController extends Controller {
 
-    //protected $_catalogModel;
+    protected $_catalogModel;
     
-    //public function __construct() {
-    //    $this->_catalogModel = new Catalog;
-    //}
+    public function __construct() {
+        $this->_catalogModel = new catalog;
+    }
 
     public function showHome() {
 
@@ -19,7 +19,8 @@ class PublicController extends Controller {
     
     public function showCatalog() {
         
-        return view('catalog');
+        $Events = $this->_catalogModel->getEvents();
+        return view('catalogo')->with('events',$Events);
     }
     
     public function showModAdes() {
