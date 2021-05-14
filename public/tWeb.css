@@ -407,11 +407,11 @@ input[type=submit]:hover {
 	margin-bottom:3em;
 }
 
-.img_container{
+.img_event_container{
 	width:50%;
 }
 
-.img_container img{
+.img_event_container img{
 
 	display: block;
 	margin-left: auto;
