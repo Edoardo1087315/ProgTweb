@@ -471,3 +471,19 @@ input[type=submit]:hover {
   transition: max-height 0.2s ease-out;
 }
 
+/*Login-Registrati */
+.login_wrap{
+    background-color:#fff;
+    width:960px;
+    margin: 0 auto;
+    height:500px;
+	padding : 10px;
+
+}
+
+
+.login_box {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}

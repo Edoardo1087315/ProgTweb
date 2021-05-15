@@ -22,9 +22,9 @@
 				<img src="{{ asset('images/logo.png') }}" alt="logo" class="img_logo"/>
 			</div>
 			<div class="login_signup">
-			<a>Accedi</a>
+			<a href="{{ route('Accedi') }}">Accedi</a>
 			/
-			<a>Registrati</a>
+			<a href="{{ route('Registrati') }}">Registrati</a>
 			</div>				
 		</div>
 		<div class="topnav" id="myTopnav">

@@ -20,6 +20,12 @@ Route::get('/catalog','PublicController@showCatalog')
 Route::get('/ModAdesione','PublicController@showModAdes')
         ->name('Mod_Adesione');
 
+Route::get('/Accedi','PublicController@showAccedi')
+        ->name('Accedi');
+Route::get('/Registrati','PublicController@showRegistrati')
+        ->name('Accedi');
+
+
 Route::get('/Faq','PublicController@showFaq')
         ->name('Faq');
 
