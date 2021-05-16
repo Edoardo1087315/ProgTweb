@@ -23,7 +23,7 @@ Route::get('/ModAdesione','PublicController@showModAdes')
 Route::get('/Accedi','PublicController@showAccedi')
         ->name('Accedi');
 Route::get('/Registrati','PublicController@showRegistrati')
-        ->name('Accedi');
+        ->name('Registrati');
 
 
 Route::get('/Faq','PublicController@showFaq')
