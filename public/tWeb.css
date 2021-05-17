@@ -6,6 +6,14 @@ body {
 #content {
     background-color: #eaf3ff;
 }
+.wrapper{
+    background-color:#fff;
+    width:960px;
+    margin: 0 auto;
+    min-height:500px;
+    padding : 20px;
+
+}
 
 /* HEADER */
 .header {
@@ -229,12 +237,6 @@ body {
 }
 
 /* CONTENUTO INFORMATIVO FAQS */
-.wrapper_FAQ{
-    background-color:#fff;
-    width:960px;
-    margin: 0 auto;
-    height:500px;
-}
 .faqH1{
     display :inline-block;
     font-size:30px;
@@ -482,27 +484,12 @@ input[type=submit]:hover {
 }
 
 /*Login-Registrati */
-.login_wrap{
-    background-color:#fff;
-    width:960px;
-    margin: 0 auto;
-    height:500px;
-	padding : 10px;
-
-}
 .login_box {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
 }
 /*FORM ACQUISTO BIGLIETTO*/
-
-.wrapper-Biglietto{
-    background-color:#fff;
-    width:960px;
-    height:100%;
-    margin: 0 auto;
-}
 .form-biglietto{
     display:flex; 
     flex-direction: column; 

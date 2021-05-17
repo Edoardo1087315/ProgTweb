@@ -1,7 +1,7 @@
 @extends('layouts/public')
 
 @section('content')
-<div class="login_wrap">
+<div class="wrapper">
         <br>
         <h1> Registrati </h1>
 	<div class="login_box">

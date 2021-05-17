@@ -24,7 +24,7 @@ window.onload = function() {
               };
 
 </script>
-<div class ="wrapper_FAQ">
+<div class ="wrapper">
                   <h1 class="faqH1">FAQs</h1>
                    <br>
                    <!-- Le tag button della classe accordion devono per forz stare immediatamente prima la tag div con classe di                            stile Panel perchè il codice Javascript che implementa la comparsa dei div non riesce a farli comparire                             (deriva dall'uso della proprietà nextElementSibling)-->

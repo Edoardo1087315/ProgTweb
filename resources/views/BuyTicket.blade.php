@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class = "wrapper-Biglietto">
+<div class = "wrapper">
             <form class ="form-biglietto">
                 <fieldset id="DatiEvento">
                     <legend>Dati Evento</legend>
