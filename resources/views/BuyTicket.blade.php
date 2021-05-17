@@ -25,7 +25,7 @@
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                     </div>
                     <label>Biglietti:
-                        <input type="number" name="numbiglietti" id="NumeroBiglietti" min="1" max="8" step="1" value="1" onkeyup="price();" onmouseup="price();">
+                        <input type="number" name="numbiglietti" id="NumeroBiglietti" min="1" max="8" step="1" value="1" onkeydown="return false" onkeyup="price();" onmouseup="price();">
                     </label>
                     <label> Metodo di Pagamento:
                         <select name="metodoPagamento" id ="metodoPagamento" onchange="change()">
