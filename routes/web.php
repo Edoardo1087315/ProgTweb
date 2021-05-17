@@ -20,6 +20,9 @@ Route::get('/catalog','PublicController@showCatalog')
 Route::get('/ModAdesione','PublicController@showModAdes')
         ->name('Mod_Adesione');
 
+Route::get('/ModFornServ','PublicController@showModForn')
+        ->name('Mod_Fornitura_servizi');
+
 Route::get('/Accedi','PublicController@showAccedi')
         ->name('Accedi');
 Route::get('/Registrati','PublicController@showRegistrati')

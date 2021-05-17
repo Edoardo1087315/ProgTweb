@@ -27,6 +27,12 @@ class PublicController extends Controller {
 
         return view('Mod_adesione');
     }
+    
+        public function showModForn() {
+
+        return view('Mod_Fornitura_Servizi');
+    }
+    
     public function showFaq() {
 
         return view('Faq');

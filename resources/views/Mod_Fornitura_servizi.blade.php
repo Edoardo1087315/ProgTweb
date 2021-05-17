@@ -4,7 +4,7 @@
 
 <div class="wrapper">
     <br>
-    <h1>ADESIONE AGLI EVENTI - TICKETPLANET</h1>
+    <h1>MODALITÀ FORNITURA SERVIZI - TICKETPLANET</h1>
     <hr>
     <h3>Mediante la piattaforma tecnologica TICKETPLANET è possibile effettuare:</h3>
     <ul>
