@@ -17,6 +17,10 @@ body {
 	background-size:cover;
 	justify-content: space-between;
 }
+#SignIn,#SignUp{
+    color:black;
+    text-decoration:none;
+}
 
 .login_signup{
 	font-size:20px;
@@ -117,6 +121,10 @@ body {
     padding-left:3em;
     width: 33%;
     align-self:center;
+}
+.footer_anchor{
+    color:#fff;
+    text-decoration: none;
 }
 
 /*   CONTENUTO HOMEPAGE   */
@@ -384,10 +392,12 @@ input[type=submit]:hover {
   background-color: #666;
   color: white;
 }
-
+/*MODALITA ADESIONE EVENTO*/
 .fornitura {
  padding-bottom: 30px;
- 
+}
+.fornitura h2{
+    display:inline-block;
 }
 
 /* CONTENUTO PAGINA EVENTO  */
@@ -480,10 +490,88 @@ input[type=submit]:hover {
 	padding : 10px;
 
 }
-
-
 .login_box {
   border-radius: 5px;
   background-color: #f2f2f2;
   padding: 20px;
+}
+/*FORM ACQUISTO BIGLIETTO*/
+
+.wrapper-Biglietto{
+    background-color:#fff;
+    width:960px;
+    height:100%;
+    margin: 0 auto;
+}
+.form-biglietto{
+    display:flex; 
+    flex-direction: column; 
+    padding:1em;
+}
+#inputNomeEvento, #inputLuogoEvento{
+    width: 30%;
+}
+#numeroBiglietti{
+    width:5%; text-align:center;
+}
+#DatiEvento, #DatiAcquisto, #DatiUtente{
+   margin:0.5em;
+   border-color: green;
+}
+legend{
+    background-color: red;
+}
+.icon-container {
+  font-size: 30px;
+}
+#cardsLabel{
+    font-size:20px;
+}
+#metodoPagamento{
+  width:40%;  
+}
+#submitPagamento{
+  width:40%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#resetPagamento{
+  width:40%;
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.formbuttons{
+    display:flex;
+    justify-content: space-around;
+}
+.datiPagamento{
+    display:none;
+}
+.payment{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+.card{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around; 
+}
+#cvv,#expdate{
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#priceBox{
+    width:20%;
 }

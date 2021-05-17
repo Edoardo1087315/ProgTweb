@@ -19,12 +19,12 @@
      <body>
 		<div class="header">
 			<div class="logo">
-				<img src="{{ asset('images/logo.png') }}" alt="logo" class="img_logo"/>
-			</div>
+                            <a href = "{{ route('frontpage') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="                                       img_logo"/></a>
+                        </div>
 			<div class="login_signup">
-			<a href="{{ route('Accedi') }}">Accedi</a>
+			<a id ="SignIn" href="{{ route('Accedi') }}">Accedi</a>
 			/
-			<a href="{{ route('Registrati') }}">Registrati</a>
+			<a id="SignUp" href="{{ route('Registrati') }}">Registrati</a>
 			</div>				
 		</div>
 		<div class="topnav" id="myTopnav">

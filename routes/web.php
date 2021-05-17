@@ -31,3 +31,6 @@ Route::get('/Faq','PublicController@showFaq')
 
 Route::get('/PagEvento/{idevent}','PublicController@showEvent')
         ->name('Pagina_Evento');
+
+Route::get('/PagEvento/{idevent}/compra','PublicController@showBuyForm')
+        ->name('Compra_Biglietto');
