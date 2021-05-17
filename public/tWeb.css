@@ -1,18 +1,22 @@
 body {
     margin: 0;
     background-color: #d6daed;
+    display:flex;
+    min-height:100vh;
+    flex-direction: column;
 }
 
 #content {
     background-color: #eaf3ff;
+    flex: 1;
+    height:100vh;
 }
 .wrapper{
     background-color:#fff;
     width:960px;
     margin: 0 auto;
-    min-height:500px;
-    padding : 20px;
-
+    padding:20px;
+    height:100%;
 }
 
 /* HEADER */
@@ -543,6 +547,9 @@ legend{
 }
 .datiPagamento{
     display:none;
+}
+.datiPagamentoAttivo{
+    display:block;
 }
 .payment{
   display: flex;

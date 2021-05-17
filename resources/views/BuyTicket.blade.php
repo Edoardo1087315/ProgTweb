@@ -25,12 +25,11 @@
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                     </div>
                     <label>Biglietti:
-                        <input type="number" name="numbiglietti" id="NumeroBiglietti" min="1" max="8" step="1" value="2" onkeyup="price();" onmouseup="price();">
+                        <input type="number" name="numbiglietti" id="NumeroBiglietti" min="1" max="8" step="1" value="1" onkeyup="price();" onmouseup="price();">
                     </label>
                     <label> Metodo di Pagamento:
                         <select name="metodoPagamento" id ="metodoPagamento" onchange="change()">
-                            <option selected></option>
-                            <option id ="Carta_Prepagata" value="Prepagata">Carta Prepagata</option>
+                            <option id ="Carta_Prepagata" value="Prepagata" selected>Carta Prepagata</option>
                             <option id ="PayPal" value="PayPal">PayPal</option>
                             <option id ="Carta_Credito" value="Credit">Carta di Credito </option>
                         </select>
@@ -38,7 +37,8 @@
                     <label>Prezzo:
                         <input type="text" id="priceBox" value ="{{$event->prezzo}}" disabled>
                     </label>
-                    <div class ="datiPagamento" id = "DivPag">
+                        <input type="hidden" id="hiddenPriceBox" value ="{{$event->prezzo}}" disabled>
+                    <div class ="datiPagamentoAttivo" id = "DivPag">
                     <h3>Dati di pagamento</h3>
                         <div class="card">
                             <label>Nome sulla Carta:
@@ -82,11 +82,11 @@
                     }
                 }
                 function price(){
-                    var numBiglietti = parseInt(document.getElementById("NumeroBiglietti").getAttribute("value"));
-                    var prezzo = parseFloat(document.getElementById("priceBox").getAttribute("value"));
+                    var numBiglietti = parseInt(document.getElementById("NumeroBiglietti").value);
+                    var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
                     var prezzoTotale = numBiglietti*prezzo;
                     console.log(prezzoTotale,numBiglietti,prezzo);
-                    document.getElementById("priceBox").setAttribute("value",prezzoTotale);
+                    document.getElementById("priceBox").value = prezzoTotale;
                 }
                     </script>
                 <div class = "formbuttons">
