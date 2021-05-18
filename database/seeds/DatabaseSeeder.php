@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder {
 
         DB::table('event')->insert([
             ['EventId' => 1, 'descrizione' => 'l evento sara tenuto dalla compagnia Acompany_spa e si terra nel pieno di sirolo...',
-                'programma' => 'il programma e....', 'societa' => 'Acompany_SPA', 'luogo' => 'sirolo', 'data' => '2020-04-02', 'nome' => 'Siroloinfesta', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 7.12310, 'Ycord' => 5.12340, 'prezzo' => 5.5, 'image' => 'id1.jpg',],
+                'programma' => 'il programma e....', 'societa' => 'Acompany_SPA', 'luogo' => 'sirolo', 'data' => '2020-04-02', 'nome' => 'Siroloinfesta', 'bigl_disp' => 50, 'bigl_acquis' => 10, 'Xcord' => 43.52326767058058, 'Ycord' => 13.61859637087946, 'prezzo' => 5.5, 'image' => 'id1.jpg',],
             ['EventId' => 2, 'descrizione' => 'l evento sara tenuto dalla compagnia Acompany_spa e si terra nel pieno di numana......',
                 'programma' => 'il programma el....', 'societa' => 'Acompany_SPA', 'luogo' => 'numana', 'data' => '2021-04-03', 'nome' => 'Numanainfesta', 'bigl_disp' => 60, 'bigl_acquis' => 20, 'Xcord' => 7.12320, 'Ycord' => 5.42340, 'prezzo' => 7.70, 'image' => 'id2.jpg',],
             ['EventId' => 3, 'descrizione' => 'l evento sara tenuto dalla compagnia Acompany_spa e si terra nel pieno di marcelli......',

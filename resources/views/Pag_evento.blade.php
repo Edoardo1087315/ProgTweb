@@ -7,7 +7,7 @@
 				<div class="event_wrapper">
                                     
 					<div class="img_event_container">
-						<img src="{{ asset('fotoevento.jpg') }}">
+						@include('helpers/EventsImages', ['img' => $event->image])
 					</div>
 					<div class="cont_container">
 						<h1>{{$event->nome}}</h1>
@@ -23,7 +23,7 @@
 							<button class="accordion_event">INFO LOCATION</button>
 							<div class="panel_event">
                                                             <div id="googleMap" style="width:99%;height:300px; background-color:white; border:none">
-                                                               <iframe src = "https://maps.google.com/maps?q={{$event->Xcord}},{{$event->Ycord}}&hl=es;z=10&amp;output=embed" style="width:100%;height:300px"></iframe>
+                                                               <iframe src = "https://maps.google.com/maps?q={{$event->Xcord}},{{$event->Ycord}}&hl=es;z=100&amp;output=embed" style="width:100%;height:300px"></iframe>
                                                             </div>
 							</div>
 						</div>

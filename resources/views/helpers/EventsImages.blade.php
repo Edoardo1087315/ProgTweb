@@ -1,1 +1,1 @@
-<img src="{{ asset('../storage/app/EventImages/' .$img) }}" class="eventimg" >
+<img src="{{ asset('../storage/app/EventImages/' .$img) }}" >
