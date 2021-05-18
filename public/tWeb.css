@@ -569,3 +569,9 @@ legend{
 #priceBox{
     width:20%;
 }
+
+/* paginator */
+
+#paginate{
+ margin:20px; 
+}

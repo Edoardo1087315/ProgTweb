@@ -1,8 +1,8 @@
-@extends('layouts/public')
+@extends('layouts.public')
 
 @section('content')
 
-@include('layouts/ricerca')
+@include('layouts.ricerca')
 
 <div id="ordina_button">
     <a> Ordina per: </a>
@@ -28,8 +28,12 @@
             </a>
         </div>
         @endforeach
+        </div>
+        <!--Paginazione-->
+        @include('paginator/paginate', ['paginate' => $events])
+
         @endisset
 
-    </div>
+    
 </div>
 @endsection

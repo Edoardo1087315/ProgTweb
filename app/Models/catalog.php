@@ -7,7 +7,7 @@ use App\Models\Resources\Event;
 class Catalog {
 
     public function getEvents() {
-        return $events = Event::all();
+       return Event::paginate(10);
     }
     
     public function getEventById($eventId){
