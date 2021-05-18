@@ -26,6 +26,7 @@ class Events extends Migration
             $table->float('Xcord');
             $table->float('Ycord');
             $table->float('prezzo');
+            $table->string('image')->nullable();
         });
     }
 

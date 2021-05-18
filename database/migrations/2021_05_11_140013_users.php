@@ -22,7 +22,7 @@ class Users extends Migration
             $table->date('data_nascita');
             $table->unsignedBigInteger('telefono');
             $table->string('sitoweb')->nullable();
-            $table->integer('role',1);
+            $table->string('role');
             $table->string('societa')->nullable();
         });
     }

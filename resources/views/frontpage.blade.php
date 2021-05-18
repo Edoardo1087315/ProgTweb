@@ -15,7 +15,7 @@
                 <hr>
                 <h5>Categoria evento</h5>
                 <div class="img_container">
-                    <img src="fotoevento.jpg">
+                    @include('helpers/EventsImages', ['img' => $event->image])
                 </div>
                 </a>
         </div>
