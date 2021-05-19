@@ -177,6 +177,9 @@ body {
 .event_box hr{
     margin:0;
     color:#948e8e;
+    border: none;
+    height: 0.5px;
+    background-color: #948e8e;
 }
 
 .event_box .luogo_evento{
