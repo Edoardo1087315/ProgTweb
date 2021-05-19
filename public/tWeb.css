@@ -515,7 +515,7 @@ input[type=submit]:hover {
 #inputNomeEvento, #inputLuogoEvento{
     width: 30%;
 }
-#numeroBiglietti{
+#NumeroBiglietti{
     width:5%; text-align:center;
 }
 #DatiEvento, #DatiAcquisto, #DatiUtente{
