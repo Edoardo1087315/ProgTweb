@@ -563,27 +563,17 @@ legend{
 .payment{
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:space-around;
 }
 .card{
     display: flex;
     flex-direction: row;
-    justify-content:space-between; 
+    justify-content:space-around; 
 }
-#cvv{
-    width: 40%;
+#cvv,#expdate{
+    width: 80%;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-.labelAcquisto{
-    width:350px;
-    text-align: center;
-    padding:10px;    
-}
-.expdate{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 #priceBox{
     width:20%;
