@@ -20,7 +20,7 @@
 
 </script>
 @extends('layouts/public')
-
+@section('title', 'Accedi')
 @section('content')
 <div class="wrapper">
         <br>

@@ -1,5 +1,5 @@
 @extends('layouts/public')
-
+@section('title', 'Registrati')
 @section('content')
 <div class="wrapper">
         <br>

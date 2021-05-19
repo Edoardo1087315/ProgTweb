@@ -1,5 +1,5 @@
 @extends('layouts/public')
-
+@section('title', 'Compra')
 @section('content')
 
 <div class = "wrapper">
