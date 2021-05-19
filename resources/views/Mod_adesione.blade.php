@@ -1,5 +1,5 @@
 @extends('layouts.public')
-
+@section('title', 'Mod Adesione')
 @section('content')
 
 <div class="wrapper">

@@ -1,5 +1,5 @@
 @extends('layouts/public')
-
+@section('title', 'FAQ')
 @section('content')
 <script>
 window.onload = function() {

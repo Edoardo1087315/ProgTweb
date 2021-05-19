@@ -1,5 +1,5 @@
 @extends('layouts.public')
-
+@section('title', 'Catalogo')
 @section('content')
 
 @include('layouts.ricerca')

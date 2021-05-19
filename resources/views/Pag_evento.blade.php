@@ -1,5 +1,5 @@
 @extends('layouts/public')
-
+@section('title', 'Evento')
 @section('content')
 
 

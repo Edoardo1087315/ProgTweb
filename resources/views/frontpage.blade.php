@@ -1,6 +1,6 @@
 @extends('layouts.public')		
 
-
+@section('title', 'Home')
 @section('content')
 <div class="home_evidenza">
     <h1>Non perdere i prossimi eventi!</h1>
