@@ -18,7 +18,7 @@ class Events extends Migration
             $table->string('descrizione');
             $table->string('programma');
             $table->string('societa');
-            $table->string('regione');
+            $table->string('luogo');
             $table->string('categoria');
             $table->date('data');
             $table->string('nome');
