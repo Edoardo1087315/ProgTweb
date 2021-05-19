@@ -29,8 +29,8 @@
         </div>
         @endforeach
         </div>
-        <!--Paginazione-->
-        @include('paginator/paginate', ['paginate' => $events])
+        <!--Paginazione -->
+         @include('paginator/paginate', ['paginate' => $events])
 
         @endisset
 

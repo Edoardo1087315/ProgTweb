@@ -16,4 +16,12 @@ class Catalog {
     public function getExpiringEvents(){
         return $events = Event::orderBy('data')->take(5)->get();
     }
+    
+    public function getEventsBySearch($request){
+        return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
+                ['luogo', 'Like' ,$request['luogo']],
+                ['data', 'Like',$request['data']],
+                ['societa', 'Like', $request['organizzazione']]])->paginate(10);
+    }
+    
 }

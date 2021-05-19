@@ -37,3 +37,6 @@ Route::get('/PagEvento/{idevent}','PublicController@showEvent')
 
 Route::get('/PagEvento/{idevent}/compra','PublicController@showBuyForm')
         ->name('Compra_Biglietto');
+
+Route::post('/catalog','PublicController@search')
+        ->name('Ricerca');

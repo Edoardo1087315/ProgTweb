@@ -1,23 +1,22 @@
-<form class="form_ricerca">
-    <fieldset class="form-inline">
-      <legend>Ricerca:</legend>
-      <label for="descrizione">Descrizione</label>
-      <input type="text" id="descrizione" name="descrizione"><br><br>
-      <label for="societa">Società:</label>
-        <select id="societa" name="societa"><br><br>
-              <option value="a">Aaaaaa</option>
-              <option value="b">Bbbbb</option>
-              <option value="c">Cccccc</option>
-      </select>
-      <label for="dove">Dove:</label>
-        <select id="dove" name="dove"><br><br>
-              <option value="roma">Roma</option>
-              <option value="milano">Milano</option>
-              <option value="firenze">Firenze</option>
-      </select>
-      <label for="quando">Quando:</label>
-      <input type="date" id="quando" name="quando"><br><br>
-      <input type="submit" value="Cerca">
+{{ Form::open(array( 'id' => 'ricerca', 'files' => true, 'class' => 'form_ricerca' ,'route' => 'Ricerca')) }}
+<fieldset class="form-inline">
+    {{ Form::label('descrizione', 'Descrizione:') }}
+    {{ Form::text('descrizione', '', ['id' => 'descrizione']) }}
+    @if ($errors->first('descrizione'))
+    <ul class="errors">
+    @foreach ($errors->get('descrizione') as $message)
+    <li>{{ $message }}</li>
+    @endforeach
+    </ul>
+    @endif
+    {{ Form::label('organizzazione', 'Organizzazione:') }}
+    {{ Form::select('organizzazione', [null=>''] + array_unique($totalevents->pluck('societa','societa')->toArray()), '', ['id' => 'organizzazione']) }}
+    {{ Form::label('luogo', 'Luogo:') }}
+    {{ Form::select('luogo', [null=>''] + array_unique($totalevents->pluck('luogo','luogo')->toArray()), '', ['id' => 'luogo']) }}
+    {{ Form::label('data', 'Quando:') }}
+    {{ Form::date('data',null, ['id' => 'data']) }}
+    {{ Form::submit('Cerca') }}
 
-    </fieldset>
-</form>
+
+</fieldset>
+{{ Form::close() }}

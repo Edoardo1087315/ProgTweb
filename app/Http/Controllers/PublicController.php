@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\catalog;
+use App\Http\Requests\SearchRequest;
 
-class PublicController extends Controller {
+class PublicController extends Controller  {
 
     protected $_catalogModel;
     
@@ -20,7 +21,7 @@ class PublicController extends Controller {
     public function showCatalog() {
         
         $Events = $this->_catalogModel->getEvents();
-        return view('catalogo')->with('events',$Events);
+        return view('catalogo')->with('events',$Events)->with('totalevents',$Events);
     }
     
     public function showModAdes() {
@@ -52,5 +53,16 @@ class PublicController extends Controller {
     public function showBuyForm($eventid) {
          $Event = $this->_catalogModel->getEventById($eventid);
          return view('BuyTicket')->with('event',$Event);
+    }
+    
+    public function search(SearchRequest $request) {
+        $filters = array('descrizione' => $request->descrizione,'luogo' =>$request->luogo,'data' =>$request->data, 'organizzazione' => $request->organizzazione);
+        $Events = $this->_catalogModel->getEventsBySearch($filters);
+        $TotalEvents = $this->_catalogModel->getEvents();
+        
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);
+        
+
+        
     }
 }
