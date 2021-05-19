@@ -304,6 +304,10 @@ body {
 
 /*Form ricerca */
 
+.errors{
+    color:red;
+}
+
 .form_ricerca{
     padding-top:2em;
     padding-left:3em;
@@ -312,9 +316,8 @@ body {
 }
 .form-inline {  
     display: flex;
-    flex-flow: row wrap;
-    align-items: center;
     background-color: #eeeeee;
+    flex-direction:column;
 }
 
 .form-inline label {
