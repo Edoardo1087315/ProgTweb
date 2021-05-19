@@ -13,7 +13,7 @@
                 <p class="luogo_evento">{{$event->luogo}}</p>
                 <p class="data_evento">{{$event->data}}</p>
                 <hr>
-                <h5>Categoria evento</h5>
+                <h5>{{$event->categoria}}</h5>
                 <div class="img_container">
                     @include('helpers/EventsImages', ['img' => $event->image])
                 </div>
