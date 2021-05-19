@@ -515,7 +515,7 @@ input[type=submit]:hover {
 #inputNomeEvento, #inputLuogoEvento{
     width: 30%;
 }
-#numeroBiglietti{
+#NumeroBiglietti{
     width:5%; text-align:center;
 }
 #DatiEvento, #DatiAcquisto, #DatiUtente{
@@ -568,11 +568,6 @@ legend{
     display: flex;
     flex-direction: row;
     justify-content:space-between;
-}
-.card{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between; 
 }
 #cvv{
     width: 40%;
