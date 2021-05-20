@@ -23,5 +23,8 @@ class Catalog {
                 ['data', 'Like',$request['data']],
                 ['societa', 'Like', $request['organizzazione']]])->paginate(10);
     }
+     public function getPopularEvents(){
+        return $events = Event::orderBy('bigl_acquis','desc')->take(5)->get();
+    }
     
 }

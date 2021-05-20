@@ -17,23 +17,32 @@
                 </script>
     </head>
      <body>
-		<div class="header">
-			<div class="logo">
-                            <a href = "{{ route('frontpage') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="                                       img_logo"/></a>
-                        </div>
-			<div class="login_signup">
-			<a id ="SignIn" href="{{ route('Accedi') }}">Accedi</a>
-			/
-			<a id="SignUp" href="{{ route('Registrati') }}">Registrati</a>
-			</div>				
-		</div>
-		<div class="topnav" id="myTopnav">
-			@include('layouts/topnav')
-		</div>
-                    <section id="content">
-                       @yield('content')
-                    </section>    
-                       <div class="footer">
-            @include('layouts/footer')
+	<div class="header">
+		<div class="logo">
+                    <a href = "{{ route('frontpage') }}"><img src="{{ asset('images/logo.png') }}" alt="logo" class="                                       img_logo"/></a>
+                </div>
+		<div class="login_signup">
+                    @guest
+                    <a id ="SignIn" href="{{ route('Accedi') }}">Accedi</a>
+                    /
+                    <a id="SignUp" href="{{ route('Registrati') }}">Registrati</a>
+                    @endguest
+                    @auth
+                    <a href="" id="SignIn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                    </form>
+                    @endauth
+		</div>				
+	</div>
+        <div class="topnav" id="myTopnav">
+		@include('layouts/topnav')
+        </div>
+        <section id="content">
+                @yield('content')
+        </section>    
+        <div class="footer">
+                @include('layouts/footer')
         </div>
 </html>

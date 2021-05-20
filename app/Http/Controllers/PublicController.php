@@ -14,8 +14,10 @@ class PublicController extends Controller  {
     }
 
     public function showHome() {
-        $Events = $this->_catalogModel->getExpiringEvents();
-        return view('frontpage')->with('events',$Events);
+        $ExpiringEvents = $this->_catalogModel->getExpiringEvents();
+        $PopularEvents = $this->_catalogModel->getPopularEvents();
+        return view('frontpage')->with('expiringEvents',$ExpiringEvents)
+                                ->with('popularEvents', $PopularEvents );
     }
     
     public function showCatalog() {
