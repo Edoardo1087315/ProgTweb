@@ -5,18 +5,16 @@
         <br>
         <h1> Registrati </h1>
 	<div class="login_box">
-                <form action="">
-			<label for="fname">Username</label>
-			<span><i class="fa fa-user"></i></span>
-			<input type="text" id="fname" name="firstname" placeholder="Inserisci Username..">
+                {{Form::open(array()) }}
+		{{Form::label ('username', 'Username') }}
+		<span><i class="fa fa-user"></i></span>
+                {{Form::text('username', '',['placeholder' => 'Username...' ])}}
 
-			<label for="country">Password</label>
-			<span><i class="fa fa-lock"></i></span>
-			<input type="password" id="pass" name="password"
-					   minlength="8" required placeholder="Inserisci Password..">
-			  
-			<input type="submit" value="Registrati">
-		</form>
+		{{Form::label ('password', 'Password') }}
+		<span><i class="fa fa-lock"></i></span>
+                {{Form::password('password', ['placeholder' => 'Password...' ])}}		  
+		{{ Form::submit('Login') }}
+                {{Form::close()}}
 	</div>
 	<h1> Accedi</h1>
 	<div>
