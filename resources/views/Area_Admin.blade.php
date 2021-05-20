@@ -25,7 +25,6 @@
       <div class='clienti'><h2>gestione clienti</h2></div>
   </div>
     
-    <
   
   <div class="float-child">
     <div class="organizzazioni"><h2>gestione organizzazioni</h2></div>
