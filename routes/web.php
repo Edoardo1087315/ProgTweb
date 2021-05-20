@@ -28,7 +28,7 @@ Route::get('/Faq','PublicController@showFaq')
 Route::get('/PagEvento/{idevent}','PublicController@showEvent')
         ->name('Pagina_Evento');
 
-Route::get('/PagEvento/{idevent}/compra','PublicController@showBuyForm')
+Route::get('/PagEvento/{idevent}/compra','UserController@showBuyForm')
         ->name('Compra_Biglietto');
 
 Route::post('/catalog','PublicController@search')
@@ -42,6 +42,7 @@ Route::get('/AreaOrganizzazione','PublicController@showFaq')
 
 Route::get('/AreaAmministratore', 'PublicController@showFaq')
         ->name('Area_Admin');
+
 // Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
         ->name('Accedi');

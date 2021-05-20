@@ -35,7 +35,12 @@
 						</div>
 						<h2>ORGANIZZATORE</h2>
 						<h3>{{$event->societa}}</h3>
+                                                @guest
+                                                <button type="button" class="event_button" style="background-color: red;">Compra biglietti</button>
+                                                @endguest
+                                                @can('isUser')
                                                 <a href="{{route('Compra_Biglietto',[$event->eventid])}}"><button type="button" class="event_button">Compra biglietti</button></a>
+                                                @endcan
 					</div>				
 				</div>
 			</div>

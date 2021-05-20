@@ -52,11 +52,6 @@ class PublicController extends Controller  {
 
         return view('Registrati');
     }
-    public function showBuyForm($eventid) {
-         $Event = $this->_catalogModel->getEventById($eventid);
-         return view('BuyTicket')->with('event',$Event);
-    }
-    
     public function search(SearchRequest $request) {
         $filters = array('descrizione' => $request->descrizione,'luogo' =>$request->luogo,'data' =>$request->data, 'organizzazione' => $request->organizzazione);
         $Events = $this->_catalogModel->getEventsBySearch($filters);
