@@ -13,17 +13,20 @@ class Users extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nome',20);
             $table->string('cognome',20);
             $table->string('email');
-            $table->string('username',20)->index();
-            $table->string('password',20);
+            $table->string('username',20);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
             $table->date('data_nascita');
-            $table->unsignedBigInteger('telefono');
+            $table->string('telefono',10);
             $table->string('sitoweb')->nullable();
-            $table->string('role');
-            $table->string('societa')->nullable();
+            $table->string('role')->default('user');
+             $table->rememberToken();
+            $table->timestamps();   
         });
     }
 

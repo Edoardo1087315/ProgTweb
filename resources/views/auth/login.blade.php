@@ -25,15 +25,28 @@
         <br>
         <h1> Accedi </h1>
 	<div class="login_box">
-                {{Form::open(array()) }}
+                {{Form::open(array('route' => 'Accedi')) }}
 		{{Form::label ('username', 'Username') }}
 		<span><i class="fa fa-user"></i></span>
                 {{Form::text('username', '',['placeholder' => 'Username...' ])}}
-                
+                @if ($errors->first('username'))
+                <ul class="errors">
+                    @foreach ($errors->get('username') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
                 {{Form::label ('password', 'Password') }}
 		<span><i class="fa fa-lock"></i></span>
                 {{Form::password('password', ['id' => 'pass','placeholder' => 'Password...' ])}}	
                 <p id = "text" style = "display:none;">Attenzione CapsLock Attivo</p>
+                @if ($errors->first('password'))
+                <ul class="errors">
+                    @foreach ($errors->get('password') as $message)
+                    <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+                @endif
 		{{ Form::submit('Login') }}
                 {{Form::close()}}
 	</div>

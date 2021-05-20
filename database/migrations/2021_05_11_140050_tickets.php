@@ -18,10 +18,10 @@ class Tickets extends Migration
             $table->date('data_acquisto');
             $table->float('prezzo');
             $table->integer('quantita');
-            $table->string('username');
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('eventid')->unsigned();
             $table->foreign('eventid')->references('eventid')->on('event');
-            $table->foreign('username')->references('username')->on('user');
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
     }

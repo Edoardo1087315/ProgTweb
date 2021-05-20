@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder {
 
@@ -10,15 +11,15 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('user')->insert([
-            ['nome' => 'andrea', 'cognome' => 'andreotti', 'email' => 'ciaociao@gmail.com', 'username' => 'andri', 'password' => 'andri', 'data_nascita' => '1999-04-03', 'telefono' => 3387747111, 'sitoweb' => 'ciaociao.it', 'role' => 'user',],
-            ['nome' => 'Acompany_SPA', 'cognome' => '', 'email' => 'Acompany_SPA@gmail.com', 'username' => 'Acompany_SPA', 'password' => 'Acompany_SPA', 'data_nascita' => '1999-05-03', 'telefono' => 3386747112, 'sitoweb' => 'Acompany_SPA.it', 'role' => 'company',],
-            ['nome' => 'giulio', 'cognome' => 'giulietti', 'email' => 'giuliogiulietti@gmail.com', 'username' => 'giulio', 'password' => 'giulio', 'data_nascita' => '1999-05-03', 'telefono' => 3386747113, 'sitoweb' => 'giulio.it', 'role' => 'user',],
-            ['nome' => 'Bcompany_SPA', 'cognome' => '', 'email' => 'Bcompany_SPA@gmail.com', 'username' => 'Bcompany_SPA', 'password' => 'Bcompany_SPA', 'data_nascita' => '1999-05-03', 'telefono' => 3386747114, 'sitoweb' => 'Bcompany_SPA.it', 'role' => 'company',],
-            ['nome' => 'Ccompany_SPA', 'cognome' => '', 'email' => 'Ccompany_SPA@gmail.com', 'username' => 'Ccompany_SPA', 'password' => 'Ccompany_SPA', 'data_nascita' => '1999-05-03', 'telefono' => 3386747115, 'sitoweb' => 'Ccompany_SPA.it', 'role' => 'company',],
-            ['nome' => 'lucio', 'cognome' => 'lucetti', 'email' => 'luciolucetti@gmail.com', 'username' => 'lucio', 'password' => 'lucio', 'data_nascita' => '1999-05-03', 'telefono' => 3386747116, 'sitoweb' => 'lucio.it', 'role' => 'user',],
-            ['nome' => 'riccardo', 'cognome' => 'ricchetti', 'email' => 'riccardoricchetti@gmail.com', 'username' => 'riccardo', 'password' => 'riccardo', 'data_nascita' => '1999-05-03', 'telefono' => 3386747117, 'sitoweb' => 'ciaociaoo.it', 'role' => 'user',],
-            ['nome' => 'admin', 'cognome' => 'admin', 'email' => 'admin@gmail.com', 'username' => 'admin', 'password' => 'adminadmin', 'data_nascita' => '1998-05-03', 'telefono' => 3386747118, 'sitoweb' => 'adminadmin.it', 'role' => 'admin',],
+        DB::table('users')->insert([
+            ['id' => 1, 'nome' => 'andrea', 'cognome' => 'andreotti', 'email' => 'ciaociao@gmail.com', 'username' => 'andri', 'password' => Hash::make('andri'), 'data_nascita' => '1999-04-03', 'telefono' => '3387747111', 'sitoweb' => 'ciaociao.it', 'role' => 'user',],
+            ['id' => 2, 'nome' => 'Acompany_SPA', 'cognome' => '', 'email' => 'Acompany_SPA@gmail.com', 'username' => 'Acompany_SPA', 'password' => Hash::make('Acompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747112', 'sitoweb' => 'Acompany_SPA.it', 'role' => 'company',],
+            ['id' => 3, 'nome' => 'giulio', 'cognome' => 'giulietti', 'email' => 'giuliogiulietti@gmail.com', 'username' => 'giulio', 'password' => Hash::make('giulio'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747113', 'sitoweb' => 'giulio.it', 'role' => 'user',],
+            ['id' => 4, 'nome' => 'Bcompany_SPA', 'cognome' => '', 'email' => 'Bcompany_SPA@gmail.com', 'username' => 'Bcompany_SPA', 'password' => Hash::make('Bcompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747114', 'sitoweb' => 'Bcompany_SPA.it', 'role' => 'company',],
+            ['id' => 5, 'nome' => 'Ccompany_SPA', 'cognome' => '', 'email' => 'Ccompany_SPA@gmail.com', 'username' => 'Ccompany_SPA', 'password' => Hash::make('Ccompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747115', 'sitoweb' => 'Ccompany_SPA.it', 'role' => 'company',],
+            ['id' => 6, 'nome' => 'lucio', 'cognome' => 'lucetti', 'email' => 'luciolucetti@gmail.com', 'username' => 'lucio', 'password' => Hash::make('lucio'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747116', 'sitoweb' => 'lucio.it', 'role' => 'user',],
+            ['id' => 7, 'nome' => 'riccardo', 'cognome' => 'ricchetti', 'email' => 'riccardoricchetti@gmail.com', 'username' => 'riccardo', 'password' => Hash::make('riccardo'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747117', 'sitoweb' => 'ciaociaoo.it', 'role' => 'user',],
+            ['id' => 8, 'nome' => 'admin', 'cognome' => 'admin', 'email' => 'admin@gmail.com', 'username' => 'admin', 'password' => Hash::make('adminadmin'), 'data_nascita' => '1998-05-03', 'telefono' => '3386747118', 'sitoweb' => 'adminadmin.it', 'role' => 'admin',],
         ]);
 
 
@@ -52,8 +53,7 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('ticket')->insert([
-            ['TransId' => 1, 'data_acquisto' => '2020-05-12', 'prezzo' => 5.5, 'quantita' => 2, 'username' => 'andri', 'eventid' => 1]
+            ['TransId' => 1, 'data_acquisto' => '2020-05-12', 'prezzo' => 5.5, 'quantita' => 2, 'user_id' => 1, 'eventid' => 1]
         ]);
     }
-
 }

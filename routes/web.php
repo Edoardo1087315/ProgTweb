@@ -22,13 +22,6 @@ Route::get('/ModAdesione','PublicController@showModAdes')
 
 Route::get('/ModFornServ','PublicController@showModForn')
         ->name('Mod_Fornitura_servizi');
-
-Route::get('/Accedi','PublicController@showAccedi')
-        ->name('Accedi');
-Route::get('/Registrati','PublicController@showRegistrati')
-        ->name('Registrati');
-
-
 Route::get('/Faq','PublicController@showFaq')
         ->name('Faq');
 
@@ -43,3 +36,22 @@ Route::post('/catalog','PublicController@search')
 
 Route::get('/Area_Admin','PublicController@showAreaAdmin')
         ->name('Area_Admin');
+// Rotte per l'autenticazione
+Route::get('login', 'Auth\LoginController@showLoginForm')
+        ->name('Accedi');
+
+Route::post('login', 'Auth\LoginController@login');
+
+Route::post('logout', 'Auth\LoginController@logout')
+        ->name('logout');
+
+// Rotte per la registrazione
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')
+        ->name('Registrati');
+
+Route::post('register', 'Auth\RegisterController@register');
+/*
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+ */
