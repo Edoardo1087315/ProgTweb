@@ -21,6 +21,7 @@ class Events extends Migration
             $table->string('luogo');
             $table->string('categoria');
             $table->date('data');
+            $table->time('orario');
             $table->string('nome');
             $table->integer('bigl_disp');
             $table->integer('bigl_acquis');

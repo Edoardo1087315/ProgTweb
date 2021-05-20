@@ -11,12 +11,18 @@
 					</div>
 					<div class="cont_container">
 						<h1>{{$event->nome}}</h1>
-						<h4>{{$event->data}}</h4>
+						<h4>{{$event->data}} alle {{$event->orario}}</h4>
 						<h5>{{$event->luogo}}</h5>
 						<div class="accordion_container">	
 							<button class="accordion_event">DESCRIZIONE EVENTO</button>
 							<div class="panel_event">
 							  <p>{{$event->descrizione}}</p>
+							</div>
+						</div>
+                                                <div class="accordion_container">	
+							<button class="accordion_event">PROGAMMA EVENTO</button>
+							<div class="panel_event">
+							  <p>{{$event->programma}}</p>
 							</div>
 						</div>
 						<div class="accordion_container">
