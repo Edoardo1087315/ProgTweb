@@ -23,7 +23,7 @@ class Events extends Migration
             $table->date('data');
             $table->time('orario');
             $table->string('nome');
-            $table->integer('bigl_disp');
+            $table->integer('bigl_tot');
             $table->integer('bigl_acquis');
             $table->float('Xcord');
             $table->float('Ycord');

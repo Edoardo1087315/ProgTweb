@@ -46,7 +46,8 @@
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                     </div>
                     {{Form::label('numbiglietti','Biglietti:',[])}}
-                    {{Form::number('numbiglietti','1',['id' => 'NumeroBiglietti', 'min' => '1', 'max' => '8', 'step'=>'1', 'onkeydown' =>'return false','onmouseup' => 'price();' ])}}
+                    {{Form::number('numbiglietti','1',['id' => 'NumeroBiglietti', 'min' => '1', 
+                                   'max' => $event->bigl_tot-$event->bigl_acquis, 'step'=>'1', 'onkeydown' =>'return false','onmouseup' => 'price();' ])}}
                     {{Form::label('metodoPagamento','Metodo di Pagamento:',[])}}
                     {{Form::select('metodoPagamento', 
                             collect(array('Prepagata' => 'Carta Prepagata','PayPal' => 'PayPal','Credit' => 'Carta di credito')),
