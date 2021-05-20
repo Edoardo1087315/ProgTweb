@@ -17,7 +17,6 @@
         }
     });
 };
-
 </script>
 @extends('layouts/public')
 @section('title', 'Accedi')
@@ -33,7 +32,8 @@
                 
                 {{Form::label ('password', 'Password') }}
 		<span><i class="fa fa-lock"></i></span>
-                {{Form::password('password', ['placeholder' => 'Password...' ])}}		  
+                {{Form::password('password', ['id' => 'pass','placeholder' => 'Password...' ])}}	
+                <p id = "text" style = "display:none;">Attenzione CapsLock Attivo</p>
 		{{ Form::submit('Login') }}
                 {{Form::close()}}
 	</div>

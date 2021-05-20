@@ -12,7 +12,7 @@
 
 		{{Form::label ('password', 'Password') }}
 		<span><i class="fa fa-lock"></i></span>
-                {{Form::password('password', ['placeholder' => 'Password...' ])}}		  
+                {{Form::password('password', ['id' => 'pass', 'placeholder' => 'Password...' ])}}		  
 		{{ Form::submit('Login') }}
                 {{Form::close()}}
 	</div>
