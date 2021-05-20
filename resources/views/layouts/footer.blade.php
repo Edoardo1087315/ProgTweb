@@ -9,7 +9,7 @@
                 <ul style="list-style-type: none">
                     <li>Contatti</li>
                     <li>tel:0718458686</li>
-                    <li><a>email:info@tweb.it</a></li>
+                    <li><a class = "footer_anchor" href="mailto:info@tweb.it">email:info@tweb.it</a></li>
                 </ul>
             </div>
             <div class = "footer_wrap_right">

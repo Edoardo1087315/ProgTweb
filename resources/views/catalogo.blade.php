@@ -3,13 +3,14 @@
 @section('content')
 
 @include('layouts.ricerca')
-
+<!--
 <div id="ordina_button">
     <a> Ordina per: </a>
     <button class="btn active" onclick="">Rilevanza</button>
     <button class="btn" onclick=""> Titolo</button>
     <button class="btn" onclick=""> Data</button>
 </div>
+-->
 <hr>
 
 <div class="eventi_catalogo">

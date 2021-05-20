@@ -9,6 +9,9 @@ class Catalog {
     public function getEvents() {
        return Event::paginate(10);
     }
+    public function getNotPaginateEvents() {
+       return Event::all();
+    }
     
     public function getEventById($eventId){
         return Event::where('eventid',$eventId)->first();

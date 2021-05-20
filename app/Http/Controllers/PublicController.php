@@ -22,8 +22,9 @@ class PublicController extends Controller  {
     
     public function showCatalog() {
         
+        $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
         $Events = $this->_catalogModel->getEvents();
-        return view('catalogo')->with('events',$Events)->with('totalevents',$Events);
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);
     }
     
     public function showModAdes() {
@@ -55,12 +56,9 @@ class PublicController extends Controller  {
     public function search(SearchRequest $request) {
         $filters = array('descrizione' => $request->descrizione,'luogo' =>$request->luogo,'data' =>$request->data, 'organizzazione' => $request->organizzazione);
         $Events = $this->_catalogModel->getEventsBySearch($filters);
-        $TotalEvents = $this->_catalogModel->getEvents();
+        $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
         
-        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);
-        
-
-        
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);        
     }
     
     public function showAreaAdmin(){
