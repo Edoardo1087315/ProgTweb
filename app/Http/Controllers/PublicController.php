@@ -65,4 +65,8 @@ class PublicController extends Controller  {
 
         
     }
+    
+    public function showAreaAdmin(){
+        return view('Area_admin');
+    }
 }

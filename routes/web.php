@@ -40,3 +40,6 @@ Route::get('/PagEvento/{idevent}/compra','PublicController@showBuyForm')
 
 Route::post('/catalog','PublicController@search')
         ->name('Ricerca');
+
+Route::get('/Area_Admin','PublicController@showAreaAdmin')
+        ->name('Area_Admin');
