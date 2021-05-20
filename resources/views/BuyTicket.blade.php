@@ -3,18 +3,15 @@
 @section('content')
 
 <div class = "wrapper">
-            <form class ="form-biglietto">
+            {{Form::open(['class' => 'form-biglietto'])}}
                 <fieldset id="DatiEvento">
                     <legend>Dati Evento</legend>
-                    <label>Evento:
-                        <input type="text" name="nome" value="{{$event->nome}}" id="inputNomeEvento" readonly>
-                    </label>
-                    <label>Data:
-                        <input type="date" name="data" value="{{$event->data}}" readonly >
-                    </label>  
-                    <label>Luogo:
-                        <input type="text" name="luogo" value="{{$event->luogo}}" id="inputLuogoEvento" readonly >
-                    </label>
+                    {{Form::label('nome','Evento:',[])}}
+                    {{Form::text('nome',$event->nome,['id'=>'inputNomeEvento','readonly'=> true])}}
+                    {{Form::label('data','Data:',[])}}
+                    {{Form::date('data',$event->data,['readonly'=> true])}}
+                    {{Form::label('luogo','Luogo:',[])}}
+                    {{Form::text('luogo',$event->luogo,['id'=>'inputLuogoEvento','readonly'=> true])}}
                 </fieldset>
                 <fieldset id="DatiAcquisto">
                     <legend>Dati Acquisto</legend>
@@ -24,44 +21,41 @@
                         <i class="fa fa-cc-paypal" style="color:blue;"></i>
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                     </div>
-                    <label>Biglietti:
-                        <input type="number" name="numbiglietti" id="NumeroBiglietti" min="1" max="8" step="1" value="1" onkeydown="return false" onmouseup="price();">
-                    </label>
-                    <label> Metodo di Pagamento:
-                        <select name="metodoPagamento" id ="metodoPagamento" onchange="change()">
-                            <option id ="Carta_Prepagata" value="Prepagata" selected>Carta Prepagata</option>
-                            <option id ="PayPal" value="PayPal">PayPal</option>
-                            <option id ="Carta_Credito" value="Credit">Carta di Credito </option>
-                        </select>
-                    </label>
-                    <label>Prezzo:
-                        <input type="text" id="priceBox" value ="{{$event->prezzo}}" disabled>
-                    </label>
-                        <input type="hidden" id="hiddenPriceBox" value ="{{$event->prezzo}}" disabled>
+                    {{Form::label('numeroBiglietti','Biglietti:',[])}}
+                    {{Form::number('numeroBiglietti','1',['id'=>'NumeroBiglietti','min'=>'1', 'max' =>$event->biglietti, 'step'=>'1', 'onkeydown' => 'return false', 'onmouseup'=>'price();'])}}
+                    {{Form::label('metodoPagamento','Metodo di Pagamento:',[])}}
+                    {{Form::select('metodoPagamento',
+                            collect(array('Prepagata' => 'Carta Prepagata','PayPal' => 'PayPal','Credit' => 'Carta di Credito')),
+                            'Prepagata',
+                            ['id'=>'metodoPagamento','onchange' => 'change()'],
+                            ['Prepagata' => ['id' => 'Carta_Prepagata'], 'PayPal' => ['id' => 'PayPal'],'Credit' => ['id' => 'Carta_Credito']])}}
+                    {{Form::label('priceBox','Prezzo:',[])}}
+                    {{Form::text('priceBox',$event->prezzo,['id'=>'priceBox','disabled'=> true])}}
+                    {{Form::hidden('hiddenPriceBox',$event->prezzo,['id'=>'hiddenPriceBox','disabled'=> true])}}
                     <div class ="datiPagamentoAttivo" id = "DivPag">
                     <h3>Dati di pagamento</h3>
-                        <div class="card">
-                            <label>Nome sulla Carta:
-                                <input type="text" id="cname" name="cardname" placeholder="Il tuo Nome">
-                            </label>
-                            <label>Numero Carta:
-                                <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                            </label>
+                        <div>
+                            {{Form::label('cardname','Nome sulla Carta:',[])}}
+                            {{Form::text('cardname','',['id'=>'cardname','placeholder'=> 'Il tuo Nome'])}}
+                            {{Form::label('cardnumber','Nome sulla Carta:',[])}}
+                            {{Form::text('cardnumber','',['id'=>'cardname','placeholder'=> '1111-2222-3333-4444'])}}
                         </div>
                         <div class = "payment">
-                            <label>Data di Scadenza:
-                                <input type="month" id="expdate" name="expdate" value="2021-03" min="2021-01">
-                            </label>
-                            <label>CVV:
-                                <input type="text" id="cvv" name="cvv" >
-                            </label>
+                            <div class ="expdate">
+                            {{Form::label('meseScadenza','Data di Scadenza:',['class' => 'labelAcquisto'])}}
+                            {{ Form::selectMonth('meseScadenza', null,[]) }}
+                            {{ Form::selectRange('year', 2021, 2025,[]) }}
+                            </div>
+                            <div>
+                            {{Form::label('cvv','CVV:',['class' => 'labelAcquisto'])}}
+                            {{Form::text('cvv','',['id'=>'cvv'])}}
+                            </div>
                         </div>
                     </div>
                     <div class ="datiPagamento" id ="DivPayPal">
                       <h3>Dati di pagamento</h3>
-                       <label>Email Paypal:
-                                <input type="text" id="EmailPayPal" name="EmailPayPal" placeholder="youremail@domain.com">
-                       </label>
+                      {{Form::label('EmailPayPal','Email Paypal:',[])}}
+                      {{Form::text('EmailPayPal','',['id'=>'EmailPayPal', 'placeholder' => 'youremail@domain.com'])}}
                     </div>
                 </fieldset>
                 <script>
@@ -90,9 +84,9 @@
                 }
                     </script>
                 <div class = "formbuttons">
-                    <input type="submit" id="submitPagamento" value="Acquista">
-                    <input type="reset"  id="resetPagamento" value="Cancella">
+                    {{Form::submit('Acquista',['id' => 'submitPagamento'])}}
+                    {{Form::reset('Cancella',['id' => 'resetPagamento'])}}
                 </div>
-            </form>
+            {{Form::close()}}
         </div>
 @endSection
