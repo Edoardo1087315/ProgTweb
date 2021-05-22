@@ -31,7 +31,11 @@
         @endforeach
         </div>
         <!--Paginazione -->
-         @include('paginator/paginate', ['paginate' => $events])
+        @isset($filters)
+        @include('paginator/paginate', ['paginate' => $events, 'filters' => $filters])
+        @else
+        @include('paginator/paginate', ['paginate' => $events])
+        @endisset
 
         @endisset
 

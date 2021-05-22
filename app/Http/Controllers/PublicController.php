@@ -58,7 +58,7 @@ class PublicController extends Controller  {
         $Events = $this->_catalogModel->getEventsBySearch($filters);
         $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
         
-        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);        
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);        
     }
     
     public function showAreaAdmin(){
