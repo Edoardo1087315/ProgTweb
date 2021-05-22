@@ -4,7 +4,16 @@
 
     <!-- Link alla prima pagina -->
     @if (!$paginate->onFirstPage())
-        <a href="{{ $paginate->url(1) }}">Inizio</a> |
+        <a href="" onclick="event.preventDefault(); document.getElementById('firstPage').submit();">Inizio</a> |
+        <form id="firstPage" action="{{ $paginate->url(1) }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            @isset($filters)
+            <input type='hidden' name="descrizione" value="{{ $filters['descrizione'] }}">
+            <input type='hidden' name="organizzazione" value="{{ $filters['organizzazione'] }}">
+            <input type='hidden' name="luogo" value="{{ $filters['luogo'] }}">
+            <input type='hidden' name="data" value="{{ $filters['data'] }}">
+            @endisset
+        </form>
     @else
         Inizio |
     @endif
@@ -43,7 +52,16 @@
 
     <!-- Link all'ultima pagina -->
     @if ($paginate->hasMorePages())
-        <a href="{{ $paginate->url($paginate->lastPage()) }}">Fine</a>
+        <a href="" onclick="event.preventDefault(); document.getElementById('nextPage').submit();">Fine</a>
+         <form id="lastPage" action="{{  $paginate->url($paginate->lastPage())  }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            @isset($filters)
+            <input type='hidden' name="descrizione" value="{{ $filters['descrizione'] }}">
+            <input type='hidden' name="organizzazione" value="{{ $filters['organizzazione'] }}">
+            <input type='hidden' name="luogo" value="{{ $filters['luogo'] }}">
+            <input type='hidden' name="data" value="{{ $filters['data'] }}">
+            @endisset
+        </form>
     @else
         Fine
     @endif

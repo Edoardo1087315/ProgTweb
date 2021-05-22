@@ -31,14 +31,17 @@
         @endforeach
         </div>
         <!--Paginazione -->
-        @isset($filters)
-        @include('paginator/paginate', ['paginate' => $events, 'filters' => $filters])
-        @else
-        @include('paginator/paginate', ['paginate' => $events])
-        @endisset
-
-        @endisset
-
-    
+            @isset($filters)
+                @include('paginator/paginate', ['paginate' => $events, 'filters' => $filters])
+            @endisset
+            @empty($filters)
+                @include('paginator/paginate', ['paginate' => $events])
+            @endempty
+       @endisset
+       @empty($events)
+            <div style="font-size:20px; text-align: center; font-weight: bold;">
+            Nessun evento corrisponde ai criteri selezionati!
+        </div>
+       @endempty
 </div>
 @endsection
