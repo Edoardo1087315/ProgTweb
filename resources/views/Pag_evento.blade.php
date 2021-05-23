@@ -36,7 +36,7 @@
 						<h2>ORGANIZZATORE</h2>
 						<h3>{{$event->societa}}</h3>
                                                 @guest
-                                                <button type="button" class="event_button" style="background-color: red;">Compra biglietti</button>
+                                                <p>Per acquistare i biglietti per questo evento <a href="{{route('Accedi')}}">accedi</a> con un account Ticket Planet!</p>
                                                 @endguest
                                                 @can('isUser')
                                                 <a href="{{route('Compra_Biglietto',[$event->eventid])}}"><button type="button" class="event_button">Compra biglietti</button></a>
