@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\catalog;
+use App\Models\faq;
 use App\Http\Requests\SearchRequest;
 
 class PublicController extends Controller  {
 
     protected $_catalogModel;
+    protected $_faqsModel;
     
     public function __construct() {
         $this->_catalogModel = new catalog;
+        $this->_faqsModel = new faq;
     }
 
     public function showHome() {
@@ -38,8 +41,8 @@ class PublicController extends Controller  {
     }
     
     public function showFaq() {
-
-        return view('Faq');
+        $Faq = $this->_faqsModel->getFaq();
+        return view('Faq')->with('faq',$Faq); //aggiunta faq.php, Faq.php
     }
     public function showEvent($eventid) {
         $Event = $this->_catalogModel->getEventById($eventid);
