@@ -801,7 +801,7 @@ input[type=submit]:hover {
         display: flex;
         flex-direction: column;
     }
-    #metodoPagamento,#priceBox,{
+    #metodoPagamento,#priceBox{
         width:100%;
     }
     #numeroBiglietti{
