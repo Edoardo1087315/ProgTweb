@@ -18,6 +18,43 @@ body {
     padding:20px;
     height:100%;
 }
+@media screen and (max-width: 1000px){
+    .wrapper{
+    background-color:#fff;
+    width:750px;
+    margin: 0 auto;
+    padding:20px;
+    height:100%;
+    }
+}
+@media screen and (max-width: 800px){
+    .wrapper{
+    background-color:#fff;
+    width:600px;
+    margin: 0 auto;
+    padding:20px;
+    height:100%;
+    }
+}
+@media screen and (max-width: 650px){
+    .wrapper{
+    background-color:#fff;
+    width:500px;
+    margin: 0 auto;
+    padding:20px;
+    height:100%;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .wrapper{
+    background-color:#fff;
+    width:400px;
+    margin: 0 auto;
+    padding:20px;
+    height:100%;
+    }
+}
 
 /* HEADER */
 .header {
@@ -521,17 +558,14 @@ input[type=submit]:hover {
 #numeroBiglietti{
     width:5%; text-align:center;
 }
-#DatiEvento, #DatiAcquisto, #DatiUtente{
+#DatiEvento,#DatiAcquisto{
     margin:0.5em;
     border-color: green;
-}
-legend{
-    background-color: red;
 }
 .icon-container {
     font-size: 30px;
 }
-#cardsLabel{
+.cardsLabel{
     font-size:20px;
 }
 #metodoPagamento{
@@ -574,13 +608,15 @@ legend{
 }
 .card{
     display: flex;
-    flex-direction: row;
-    justify-content:space-between; 
+    flex-direction: column;
 }
 #cvv{
     width: 40%;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+#cardnumber,#cardname{
+    width:100%;
 }
 .labelAcquisto{
     width:350px;
@@ -595,7 +631,186 @@ legend{
 #priceBox{
     width:20%;
 }
-
+@media screen and (max-width: 1000px) {
+    .form-biglietto {
+        display:flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-right:1em;
+    }
+    #inputNomeEvento, #inputLuogoEvento{
+    width: 100%;
+    }
+    #DatiEvento{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    #DatiAcquisto{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    .payment{
+        display: flex;
+        flex-direction: column;
+    }
+    .expdate{
+        display: flex;
+        flex-direction: column;
+         align-items:stretch;
+    }
+    #priceBox{
+        width:11%;
+    }
+    #numeroBiglietti{
+        width:7%; text-align:center;
+    }
+    #metodoPagamento{
+        width:30%;  
+    }
+    .labelAcquisto{
+        text-align: left;
+    
+    }
+    
+}
+@media screen and (max-width: 800px) {
+    .form-biglietto {
+        display:flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-right:1em;
+    }
+    #inputNomeEvento, #inputLuogoEvento{
+    width: 100%;
+    }
+    #DatiEvento{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    #DatiAcquisto{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    .payment{
+        display: flex;
+        flex-direction: column;
+    }
+    .expdate{
+        display: flex;
+        flex-direction: column;
+         align-items:stretch;
+    }
+    #prova{
+        display: flex;
+        flex-direction: column;
+    }
+    #metodoPagamento,#priceBox{
+        width:100%;
+    }
+    #numeroBiglietti{
+        width:30%;
+    }
+    .labelAcquisto{
+        text-align: left;
+      
+    }
+}
+@media screen and (max-width: 650px) {
+    .form-biglietto {
+        display:flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-right:1em;
+    }
+    #inputNomeEvento, #inputLuogoEvento{
+    width: 100%;
+    }
+    #DatiEvento{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    #DatiAcquisto{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    .payment{
+        display: flex;
+        flex-direction: column;
+    }
+    .expdate{
+        display: flex;
+        flex-direction: column;
+         align-items:stretch;
+        
+    }
+    #prova{
+        display: flex;
+        flex-direction: column;
+    }
+    #metodoPagamento,#priceBox{
+        width:100%;
+    }
+    #numeroBiglietti{
+        width:30%;
+    }
+}
+@media screen and (max-width: 550px) {
+    .form-biglietto {
+        display:flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-right:1em;
+    }
+    #inputNomeEvento, #inputLuogoEvento{
+    width: 100%;
+    }
+    #DatiEvento{
+        margin:0.5em;
+        border-color: green;
+        display:flex;
+        flex-direction:column;
+    }
+    #DatiAcquisto{
+        margin:0.5em;
+        border-color: green;        
+        display:flex;
+        flex-direction:column;
+    }
+    .payment{
+        display: flex;
+        flex-direction: column;
+    }
+    .expdate{
+        display: flex;
+        flex-direction: column;
+        align-items:stretch;
+    }
+    #prova{
+        display: flex;
+        flex-direction: column;
+    }
+    #metodoPagamento,#priceBox,{
+        width:100%;
+    }
+    #numeroBiglietti{
+        width:30%;
+    }
+    #DatiAcquisto div{
+       width:324px;
+    }
+}
 /* paginator */
 
 #paginate{
