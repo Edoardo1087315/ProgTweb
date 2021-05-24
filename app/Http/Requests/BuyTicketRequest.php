@@ -25,7 +25,7 @@ class BuyTicketRequest extends FormRequest  {
     public function rules() {
         return [
             'cardname' => 'required | max:40',
-            'cardnumber' => 'required | regex:^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}^',
+            'cardnumber' => 'required | regex:^[0-9]{12}^',
             'cvv' => 'required | regex:^[0-9]{3}^'
         ];
     }
