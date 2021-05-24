@@ -21,7 +21,6 @@ class user {
     public function modifyTicketNumberById($eventId,$numbiglietti){
         $Event = Event::find($eventId);
         $Event->bigl_acquis = $Event->bigl_acquis + $numbiglietti;
-        $Event->bigl_tot =  $Event->bigl_tot - $numbiglietti;
         $Event->save();
     }
     public function insertTicket($eventId,$userId,$nBiglietti,$price){
