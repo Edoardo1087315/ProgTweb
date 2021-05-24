@@ -37,8 +37,11 @@ Route::post('/PagEvento/compra/riepilogo','UserController@buyFormProcess')
 Route::post('/catalog','PublicController@search')
         ->name('Ricerca');
 
-Route::get('/AreaRiservata', 'PublicController@showFaq')
+Route::get('/AreaRiservata', 'UserController@showAreaRiservata')
         ->name('Area_Utente');
+
+Route::get('/AreaRiservata/Storico', 'UserController@showStorico')
+        ->name('Storico');
 
 Route::get('/AreaOrganizzazione','PublicController@showFaq')
         ->name('Area_Organizzazione');

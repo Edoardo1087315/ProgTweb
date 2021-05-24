@@ -18,6 +18,16 @@ class UserController extends Controller{
            $this->_catalogModel = new catalog;
            $this->_userModel =new user;
     }
+    
+    public function showAreaRiservata(){
+        return view('Area_Utente');
+    }
+    
+    public function showStorico(){
+        $tickets = $this->_userModel->getTickets();
+        return view('Storico')->with('tickets',$tickets);
+    }
+    
     public function showBuyForm($eventid) {
          $Event = $this->_catalogModel->getEventById($eventid);
          return view('BuyTicket')->with('event',$Event);

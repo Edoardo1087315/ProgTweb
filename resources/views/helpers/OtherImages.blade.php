@@ -1,0 +1,1 @@
+<img src="{{ asset('../storage/app/OtherImages/' .$img) }}" >

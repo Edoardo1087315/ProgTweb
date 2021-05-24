@@ -57,7 +57,9 @@ class DatabaseSeeder extends Seeder {
         ]);
 
         DB::table('ticket')->insert([
-            ['TransId' => 1, 'data_acquisto' => '2020-05-12', 'prezzo' => 5.5, 'quantita' => 2, 'user_id' => 1, 'eventid' => 1]
+            ['TransId' => 1, 'data_acquisto' => '2020-05-12', 'prezzo' => 5.5, 'quantita' => 2, 'user_id' => 1, 'eventid' => 1],
+            ['TransId' => 2, 'data_acquisto' => '2021-06-13', 'prezzo' => 50, 'quantita' => 6, 'user_id' => 1, 'eventid' => 4],
+            ['TransId' => 3, 'data_acquisto' => '2021-03-29', 'prezzo' => 45, 'quantita' => 1, 'user_id' => 1, 'eventid' => 8]
         ]);
         DB::table('faqs')->insert([
             ['faqId' => 1, 'Domanda' => 'Come visualizzo il catalogo?', 'Risposta' => 'Per visualizzare il catalogo accedi ad esso tramite il pulsante Catalogo sulla navbar',],
