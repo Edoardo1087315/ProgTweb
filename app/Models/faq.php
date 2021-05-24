@@ -7,7 +7,7 @@ use App\Models\Resources\Faqs;
 class Faq {
 
     public function getFaq() {
-       return Faqs::paginate(10);
+       return Faqs::all();
     }
    
     

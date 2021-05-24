@@ -16,7 +16,7 @@
 <div class="eventi_catalogo">
     <div class="grid_container">
         @isset($events)
-        @foreach($events as $event)
+        @forelse($events as $event)
         <div class="event_box"><a href="{{Route('Pagina_Evento',[$event->eventid]) }}">
                 <h2>{{$event->nome}}</h2>
                 <p class="luogo_evento">{{$event->luogo}}</p>
@@ -28,7 +28,9 @@
                 </div>
             </a>
         </div>
-        @endforeach
+        @empty
+            <p class="no_events">La ricerca non ha generato risultati.</p>
+        @endforelse
         </div>
         <!--Paginazione -->
             @isset($filters)
