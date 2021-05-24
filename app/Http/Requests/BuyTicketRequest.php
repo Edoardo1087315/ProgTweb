@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class SearchRequest extends FormRequest {
-
+class BuyTicketRequest extends FormRequest  {
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,10 +24,9 @@ class SearchRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'descrizione' => 'max:50',
-            'societa' => '',
-            'luogo' => '',
-            'data' => '',
+            'cardname' => 'required | max:40',
+            'cardnumber' => 'required | regex:^[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}^',
+            'cvv' => 'required | regex:^[0-9]{3}^'
         ];
     }
 }

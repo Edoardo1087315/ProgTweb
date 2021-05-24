@@ -10,9 +10,10 @@ namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model {
+class Ticket extends Model {
     
     protected $table = 'ticket';
     protected $primaryKey = 'TransId';
-    public $timestamps = false;    
+    public $timestamps = false;   
+    protected $fillable = ['user_id','eventid','quantita','prezzo','data_acquisto'];
 }

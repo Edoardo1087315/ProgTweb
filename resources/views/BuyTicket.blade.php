@@ -2,22 +2,6 @@
 
 @section('content')
        <script>
-                function change(){
-                    var divPag = document.getElementById("DivPag");
-                    var divPayPal = document.getElementById("DivPayPal");
-                    if (document.getElementById("Carta_Prepagata").selected || document.getElementById("Carta_Credito").selected){
-                        divPayPal.style.display = "none";
-                        divPag.style.display = "block";
-                    }
-                    else if(document.getElementById("PayPal").selected){
-                        divPag.style.display = "none";
-                        divPayPal.style.display = "block";
-                    }
-                    else{
-                        divPag.style.display = "none";
-                        divPayPal.style.display = "none";
-                    }
-                }
                 function price(){
                     var numBiglietti = parseInt(document.getElementById("NumeroBiglietti").value);
                     var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
@@ -27,7 +11,7 @@
                 }
                     </script>
 <div class = "wrapper">
-            {{Form::open(['class' => 'form-biglietto'])}}
+            {{Form::open(['route' => 'Compra','class' => 'form-biglietto'])}}
                 <fieldset id="DatiEvento">
                     <legend>Dati Evento</legend>
                     {{Form::label('nome','Evento:',[])}}
@@ -36,6 +20,7 @@
                     {{Form::date('data',$event->data,['readonly' => true])}}
                     {{Form::label('luogo','Luogo:',[])}}
                     {{Form::text('luogo',$event->nome,['id' => 'inputLuogoEvento', 'readonly' => true])}}
+                    {{Form::hidden('eventId',$event->eventid,['id' => 'eventId'])}}
                 </fieldset>
                 <fieldset id="DatiAcquisto">
                     <legend>Dati Acquisto</legend>
@@ -50,19 +35,33 @@
                                    'max' => $event->bigl_tot-$event->bigl_acquis, 'step'=>'1', 'onkeydown' =>'return false','onmouseup' => 'price();' ])}}
                     {{Form::label('metodoPagamento','Metodo di Pagamento:',[])}}
                     {{Form::select('metodoPagamento', 
-                            collect(array('Prepagata' => 'Carta Prepagata','PayPal' => 'PayPal','Credit' => 'Carta di credito')),
+                            collect(array('Prepagata' => 'Carta Prepagata','Credit' => 'Carta di credito')),
                             'Prepagata',
-                            ['id' => 'metodoPagamento', 'onchange' => 'change()'],['Prepagata' => ['id' => 'Carta_Prepagata'],                                    'PayPal' => ['id' => 'PayPal'],'Credit' => ['id' => 'Carta_Credito']])}}
+                            ['id' => 'metodoPagamento', 'onchange' => 'change()'],['Prepagata' => ['id' => 'Carta_Prepagata'],                                 'Credit' => ['id' => 'Carta_Credito']])}}
                     {{Form::label('priceBox','Prezzo:',[])}}
-                    {{Form::text('priceBox',$event->prezzo,['id' => 'priceBox', 'disabled' => true])}}
+                    {{Form::text('priceBox',$event->prezzo,['id' => 'priceBox', 'readonly' => true])}}
                     {{Form::hidden('hiddenPriceBox',$event->prezzo,['id' => 'hiddenPriceBox', 'disabled' => true])}}
                     <div class ="datiPagamentoAttivo" id = "DivPag">
                     <h3>Dati di pagamento</h3>
                         <div>
                             {{Form::label('cardname','Nome sulla Carta:',[])}}
                             {{Form::text('cardname','',['id' => 'cardname', 'placeholder' => 'Il tuo Nome'])}}
+                             @if ($errors->first('cardname'))
+                             <ul class="errors">
+                             @foreach ($errors->get('cardname') as $message)
+                             <li>{{ $message }}</li>
+                              @endforeach
+                            </ul>
+                             @endif
                             {{Form::label('cardnumber','Numero Carta:',[])}}
                             {{Form::text('cardnumber','',['id' => 'cardnumber', 'placeholder' => '1111-2222-3333-4444'])}}
+                             @if ($errors->first('cardnumber'))
+                             <ul class="errors">
+                             @foreach ($errors->get('cardnumber') as $message)
+                             <li>{{ $message }}</li>
+                              @endforeach
+                            </ul>
+                             @endif
                         </div>
                         <div class = "payment">
                             <div class = "expdate">
@@ -73,13 +72,15 @@
                             <div class ="cvv">
                                 {{Form::label('cvv','CVV:',["class" => "labelAcquisto"])}}
                                 {{Form::text('cvv','',['id' => 'cvv'])}}
+                                @if ($errors->first('cvv'))
+                                <ul class="errors">
+                                @foreach ($errors->get('cvv') as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                                </ul>
+                                @endif
                             </div>
                         </div>
-                    </div>
-                    <div class ="datiPagamento" id ="DivPayPal">
-                      <h3>Dati di pagamento</h3>
-                      {{Form::label('EmailPayPal','Email Paypal:',[])}}
-                      {{Form::text('EmailPayPal','',['id' => 'EmailPayPal', ' placeholder' => 'youremail@domain.com'])}}
                     </div>
                 </fieldset>
                 <div class = "formbuttons">
