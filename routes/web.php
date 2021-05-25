@@ -46,8 +46,16 @@ Route::get('/AreaRiservata/Storico', 'UserController@showStorico')
 Route::get('/AreaOrganizzazione','PublicController@showFaq')
         ->name('Area_Organizzazione');
 
+//rotte admin controller
+
 Route::get('/AreaAmministratore', 'AdminController@showAreaAdmin')
         ->name('Area_Admin');
+
+Route::get('/deleteUser/{userid}','AdminController@deleteUser')
+        ->name('deleteUser');
+
+Route::post('/modifica','AdminController@modificaCompany')
+        ->name('modifica');
 
 // Rotte per l'autenticazione
 Route::get('login', 'Auth\LoginController@showLoginForm')
