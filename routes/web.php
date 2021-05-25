@@ -46,7 +46,7 @@ Route::get('/AreaRiservata/Storico', 'UserController@showStorico')
 Route::get('/AreaOrganizzazione','PublicController@showFaq')
         ->name('Area_Organizzazione');
 
-Route::get('/AreaAmministratore', 'PublicController@showFaq')
+Route::get('/AreaAmministratore', 'AdminController@showAreaAdmin')
         ->name('Area_Admin');
 
 // Rotte per l'autenticazione

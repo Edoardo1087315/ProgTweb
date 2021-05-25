@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\catalog;
 use App\Models\faq;
+use App\User;
 use App\Http\Requests\SearchRequest;
 
 class PublicController extends Controller  {
 
     protected $_catalogModel;
     protected $_faqsModel;
-    
+    protected $_userModel;
+
+
     public function __construct() {
         $this->_catalogModel = new catalog;
         $this->_faqsModel = new faq;
+        $this->_userModel = new user;
     }
 
     public function showHome() {
@@ -64,7 +68,4 @@ class PublicController extends Controller  {
         return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);        
     }
     
-    public function showAreaAdmin(){
-        return view('Area_admin');
-    }
 }
