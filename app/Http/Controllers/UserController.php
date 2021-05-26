@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\BuyTicketRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\catalog;
 use App\Models\user;
 
@@ -20,7 +21,16 @@ class UserController extends Controller{
     }
     
     public function showAreaRiservata(){
-        return view('Area_Utente');
+        $User = $this->_userModel->getUser();
+        return view('Area_Utente')->with('user',$User);
+    }
+    public function updateUser(UpdateUserRequest $request){
+        $User = $this->_userModel->getUser();
+        $modifiedCredentials = array('nome' => $request->nome,'cognome' => $request->cognome,
+                                     'data_nascita' => $request->data_nascita, 'telefono' => $request->telefono,
+                                     'email' => $request->email);
+        $newUser = $this->_userModel->modifyCredentials($User,$modifiedCredentials);
+        return view('Area_Utente')->with('user',$newUser);
     }
     
     public function showStorico(){

@@ -1,0 +1,42 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace App\Http\Requests;
+
+/**
+ * Description of UpdateUserRequest
+ *
+ * @author lorti
+ */
+class UpdateUserRequest extends FormRequest  {
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize() {
+        // Nella form non mettiamo restrizioni d'uso su base utente
+        // Gestiamo l'autorizzazione ad un altro livello
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules() {
+        return [
+            'nome' => 'required'| 'string' | 'max:20',
+            'cognome' => 'required'|'string'|'max:20',
+            'data_nascita' => 'required'|'date',
+            'telefono' => 'required'|'string'|'max:10', 'min:10','regex:^[0-9]{10}^',
+            'email' => 'required'|'string'|'email'|'max:255'|'unique:users'
+        ];
+    }
+}

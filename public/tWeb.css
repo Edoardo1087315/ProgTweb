@@ -9,7 +9,6 @@ body {
 #content {
     background-color: #eaf3ff;
     flex: 1;
-    height:100vh;
 }
 .wrapper{
     background-color:#fff;
@@ -826,7 +825,38 @@ input[type=submit]:hover {
         width:100%;
     }
 }
-
+/* AREA UTENTE*/
+#annulla{
+    width:40%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#confirm{
+    width:40%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.formUtenteBottoni{
+    display:flex;
+    justify-content: space-around;
+}
+.formUtente{
+    display:flex;
+    flex-direction:column;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
 /* CONTENUTO STORICO*/
 
 .storico_grid{

@@ -33,6 +33,15 @@ class user {
     public function getUser(){
         return Auth::user();
     }
+    public function modifyCredentials($user,$credentials){
+        $user->nome = $credentials['nome'];
+        $user->cognnome = $credentials['cognnome'];
+        $user->data_nascita = $credentials['data_nascita'];
+        $user->telefono = $credentials['telefono'];
+        $user->email = $credentials['email'];
+        $user->save();
+        return $user;
+    }
     public function getTickets(){
         $user = Auth::user();
         $tickets = Ticket::where('user_id',$user->id)->join('Event','Event.eventid','=','Ticket.eventid')->orderBy('data_acquisto','desc')->
@@ -40,4 +49,5 @@ class user {
                         
         return $tickets;
     }
+    
 }
