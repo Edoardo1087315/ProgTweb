@@ -35,7 +35,7 @@ class user {
     }
     public function modifyCredentials($user,$credentials){
         $user->nome = $credentials['nome'];
-        $user->cognnome = $credentials['cognnome'];
+        $user->cognome = $credentials['cognome'];
         $user->data_nascita = $credentials['data_nascita'];
         $user->telefono = $credentials['telefono'];
         $user->email = $credentials['email'];

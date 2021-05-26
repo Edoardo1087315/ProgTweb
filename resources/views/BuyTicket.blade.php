@@ -3,7 +3,7 @@
 @section('content')
        <script>
                 function price(){
-                    var numBiglietti = parseInt(document.getElementById("NumeroBiglietti").value);
+                    var numBiglietti = parseInt(document.getElementById("numeroBiglietti").value);
                     var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
                     var prezzoTotale = numBiglietti*prezzo;
                     console.log(prezzoTotale,numBiglietti,prezzo);

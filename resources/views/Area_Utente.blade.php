@@ -80,7 +80,7 @@ $(function(){
                 </ul>
                 @endif
 		{{Form::label ('username', 'Username') }}
-                {{Form::text('username', $user->username,['id' => 'username','readonly' => 'true' ])}}
+                {{Form::text('username', $user->username,['id' => 'username','readonly' => 'true'])}}
                 <div class="formUtenteBottoni">
 		{{Form::submit('Conferma',['id' => 'confirm', 'hidden' => 'true']) }}
                 <button type="button" id = "annulla" class ="event_button" hidden>Annulla</button>

@@ -39,6 +39,7 @@ Route::post('/catalog','PublicController@search')
 
 Route::get('/AreaRiservata', 'UserController@showAreaRiservata')
         ->name('Area_Utente');
+
 Route::post('/AreaRiservata','UserController@updateUser')
         ->name('Modifica_Utente');
 

@@ -7,7 +7,8 @@
  */
 
 namespace App\Http\Requests;
-
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 /**
  * Description of UpdateUserRequest
  *
@@ -32,11 +33,12 @@ class UpdateUserRequest extends FormRequest  {
      */
     public function rules() {
         return [
-            'nome' => 'required'| 'string' | 'max:20',
-            'cognome' => 'required'|'string'|'max:20',
-            'data_nascita' => 'required'|'date',
-            'telefono' => 'required'|'string'|'max:10', 'min:10','regex:^[0-9]{10}^',
-            'email' => 'required'|'string'|'email'|'max:255'|'unique:users'
+            'nome' => 'required|string|max:20',
+            'cognome' => 'required|string|max:20',
+            'data_nascita' => 'required|date',
+            'telefono' => 'required|string|max:10|min:10|regex:^[0-9]{10}^',
+            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|min:8|max:20|unique:users'
         ];
     }
 }
