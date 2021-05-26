@@ -83,7 +83,7 @@ class CompanyController extends Controller {
     }
 
     public function deleteEvent($id) {
-        DB::table('event')->where('eventid', '=', $id)->delete();
+        $this->_catalogModel->getEventById($id)->delete();
         return redirect('AreaOrganizzazione');
     }
 
