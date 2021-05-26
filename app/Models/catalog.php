@@ -20,6 +20,11 @@ class Catalog {
         return $events = Event::orderBy('data')->take(5)->get();
     }
     
+    public function getCompanyEvents() {
+        $societa = Auth::user()->nome;
+        return $events = Event::where('societa',$societa)->get();
+    }
+
     public function getEventsBySearch($request){
         return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
                 ['luogo', 'Like' ,$request['luogo']],

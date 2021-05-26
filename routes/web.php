@@ -45,8 +45,27 @@ Route::post('/AreaRiservata','UserController@updateUser')
 Route::get('/AreaRiservata/Storico', 'UserController@showStorico')
         ->name('Storico');
 
-Route::get('/AreaOrganizzazione','PublicController@showFaq')
+//Rotte area organizzazion **********************************************
+Route::get('/AreaOrganizzazione', 'CompanyController@showAreaOrg')
         ->name('Area_Organizzazione');
+
+
+
+Route::post('/AreaOrganizzazione/modifica', 'CompanyController@updateEvent')
+        ->name('updateEvent');
+
+Route::post('/AreaOrganizzazione/add', 'CompanyController@storeEvent')
+        ->name('store_event');
+
+
+
+
+Route::get('/AreaOrganizzazione/deleteEvent/{id}', 'CompanyController@deleteEvent')
+        ->name('deleteEvent');
+
+Route::get('/AreaOrganizzazione/getEventToUpdate/{id}', 'CompanyController@getEventToUpdate')
+        ->name('getEventToUpdate');
+        
 
 //rotte admin controller
 
