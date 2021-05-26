@@ -41,10 +41,7 @@
 
     
     @if(@isset($selected_event))
-
-    <div class="accordion_container_areaOrg">
-        <button class="accordion_areaOrg">Modifica Evento: {{$selected_event->eventid}}</button>
-        <div class="panel_areaOrg">
+        <div class="panel_modificaEvento">
             {{ Form::open(array('route'=>'updateEvent','id' => 'addevent', 'files' => true,'class' => 'form-biglietto')) }}
             {{ Form::hidden('eventid', $selected_event->eventid , [ 'id' => 'eventid']) }}
              
@@ -96,7 +93,7 @@
             </ul>
             @endif
             {{ Form::label('bigl_acquis', 'Biglietti acquistati') }}
-            {{ Form::text('bigl_acquis', $selected_event->bigl_acquis, [ 'id' => 'bigl_acquis']) }}
+            {{ Form::text('bigl_acquis', $selected_event->bigl_acquis, [ 'id' => 'bigl_acquis','readonly' => 'true']) }}
             {{ Form::label('categoria', 'Categoria') }}
             {{ Form::text('categoria', $selected_event->categoria, [ 'id' => 'categoria']) }}
             @if ($errors->first('categoria'))
@@ -145,19 +142,19 @@
             {{ Form::label('data', 'Data') }}
             {{ Form::date('data',$selected_event->data, ['id' => 'data']) }}
             {{ Form::label('orario', 'Orario') }}
-            {{ Form::time('orario',$selected_event->orario, ['id' => 'data']) }}
+            {{ Form::time('orario',\Carbon\Carbon::createFromFormat('H:i:s',$selected_event->orario)->format('h:i'), ['id' => 'data']) }}
             {{ Form::label('image', 'Immagine') }}
             {{ Form::file('image', [ 'id' => 'image']) }}
             {{ Form::hidden('image_path', $selected_event->image , [ 'id' => 'image']) }}
 
-            <div class="container-form-btn">
-                {{ Form::submit('Modifica Evento', ['class' => 'form-btn1', 'id' => 'sub-btn']) }}
+            <div class="formUtenteBottoni">
+                {{ Form::submit('Modifica Evento', ['id' => 'confirm']) }}
+                <button onclick="location.href='{{ route('Area_Organizzazione') }}'" type="button" id = "annulla" class ="event_button">Annulla</button>
             </div>
 
             {{ Form::close() }}
 
         </div>
-    </div>
     @else
     
     <div class="accordion_container_areaOrg">
@@ -262,7 +259,7 @@
         {{ Form::label('data', 'Data') }}
         {{ Form::date('data',\Carbon\Carbon::now(), ['id' => 'data']) }}
         {{ Form::label('orario', 'Orario') }}
-        {{ Form::time('orario',\Carbon\Carbon::now() , ['id' => 'data']) }}
+        {{ Form::time('orario',\Carbon\Carbon::now()->format('h:i') , ['id' => 'data']) }}
         {{ Form::label('image', 'Immagine') }}
         {{ Form::file('image', [ 'id' => 'image']) }}
 

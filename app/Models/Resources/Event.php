@@ -16,5 +16,4 @@ class Event extends Model {
     protected $primaryKey = 'eventid';
     public $timestamps = false;
     protected $guarded = ['eventid']; //eventid non modificabile
-    
 }
