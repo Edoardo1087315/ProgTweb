@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Event;
-
+use Illuminate\Support\Facades\Auth;
 class Catalog {
 
     public function getEvents() {
