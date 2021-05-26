@@ -37,9 +37,12 @@ class UserController extends Controller{
          $User = $this->_userModel->getUser();
          $this->_userModel->modifyTicketNumberById($request->eventId,$request->numbiglietti);
          $Ticket = $this->_userModel->insertTicket($request->eventId,$User->id,$request->numbiglietti,$request->priceBox);
+         $Card = array('nome' => $request->cardname,'numero' => $request->cardnumber,
+                       'data' => "$request->year/$request->month",'cvv' => $request->cvv);
          return view('Riepilogo')->with('event',$Event)
                                  ->with('user', $User)
-                                 ->with('ticket',$Ticket);
+                                 ->with('ticket',$Ticket)
+                                 ->with('card',$Card);
     }
     
 }
