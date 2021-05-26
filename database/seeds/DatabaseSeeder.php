@@ -53,7 +53,7 @@ class DatabaseSeeder extends Seeder {
             ['EventId' => 14, 'descrizione' => 'l evento sara tenuto dalla compagnia Acompany_spa e si terra nel pieno di recanati......',
                 'programma' => 'il programma e....', 'societa' => 'Acompany_SP', 'luogo' => 'Marche', 'data' => '2020-04-01', 'orario' => '12:00:00', 'nome' => 'Recanatiinfesta', 'bigl_tot' => 50, 'bigl_acquis' => 10, 'Xcord' => 43.401981976197696, 'Ycord' => 13.550544369408698, 'prezzo' => 5.5, 'image' => 'id5.jpg', 'categoria' => 'opera',],
             ['EventId' => 15, 'descrizione' => 'l evento sara tenuto dalla compagnia Acompany_spa e si terra nel pieno di recanati......',
-                'programma' => 'il programma e....', 'societa' => 'Acompany_SP', 'luogo' => 'Marche', 'data' => '2020-04-01', 'orario' => '12:00:00', 'nome' => 'Montefanoinfesta', 'bigl_tot' => 50, 'bigl_acquis' => 10, 'Xcord' => 43.401981976197696, 'Ycord' => 13.550544369408698, 'prezzo' => 5.5, 'image' => 'id5.jpg', 'categoria' => 'opera',]
+                'programma' => 'il programma e....', 'societa' => 'Acompany_SP', 'luogo' => 'Marche', 'data' => '2020-04-01', 'orario' => '12:00:00', 'nome' => 'Montefanoinfesta', 'bigl_tot' => 50, 'bigl_acquis' => 50, 'Xcord' => 43.401981976197696, 'Ycord' => 13.550544369408698, 'prezzo' => 5.5, 'image' => 'id5.jpg', 'categoria' => 'opera',]
         ]);
 
         DB::table('ticket')->insert([

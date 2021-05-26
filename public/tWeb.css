@@ -587,6 +587,7 @@ input[type=submit]:hover {
     display: flex;
     flex-direction: row;
     justify-content:space-between;
+    align-items: flex-start;
 }
 .card{
     display: flex;
