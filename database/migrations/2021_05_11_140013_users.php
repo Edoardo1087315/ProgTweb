@@ -17,8 +17,8 @@ class Users extends Migration
             $table->bigIncrements('id');
             $table->string('nome',20);
             $table->string('cognome',20);
-            $table->string('email');
-            $table->string('username',20);
+            $table->string('email')->unique();
+            $table->string('username',20)->unique();;
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->date('data_nascita');

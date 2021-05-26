@@ -10,13 +10,14 @@ namespace App\Models;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Resources\Event;
 use App\Models\Resources\Ticket;
+use App\User;
 
 /**
  * Description of user
  *
  * @author lorti
  */
-class user {
+class application_user {
     
     public function modifyTicketNumberById($eventId,$numbiglietti){
         $Event = Event::find($eventId);
@@ -33,12 +34,12 @@ class user {
     public function getUser(){
         return Auth::user();
     }
-    public function modifyCredentials($user,$credentials){
+    public function modifyCredentials($userid,$credentials){
+        $user = User::find($userid);
         $user->nome = $credentials['nome'];
         $user->cognome = $credentials['cognome'];
         $user->data_nascita = $credentials['data_nascita'];
         $user->telefono = $credentials['telefono'];
-        $user->email = $credentials['email'];
         $user->save();
         return $user;
     }

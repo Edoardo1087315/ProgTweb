@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BuyTicketRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\catalog;
-use App\Models\user;
+use App\Models\application_user;
 
 class UserController extends Controller{
     
@@ -17,7 +17,7 @@ class UserController extends Controller{
     public function __construct() {
         $this->middleware('can:isUser');
            $this->_catalogModel = new catalog;
-           $this->_userModel =new user;
+           $this->_userModel =new application_user;
     }
     
     public function showAreaRiservata(){
@@ -29,7 +29,7 @@ class UserController extends Controller{
         $modifiedCredentials = array('nome' => $request->nome,'cognome' => $request->cognome,
                                      'data_nascita' => $request->data_nascita, 'telefono' => $request->telefono,
                                      'email' => $request->email);
-        $newUser = $this->_userModel->modifyCredentials($User,$modifiedCredentials);
+        $newUser = $this->_userModel->modifyCredentials($User->id,$modifiedCredentials);
         return view('Area_Utente')->with('user',$newUser);
     }
     

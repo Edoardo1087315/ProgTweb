@@ -26,13 +26,11 @@ $(function(){
     });
 });
 </script>
-
 @section('title', 'Area Personale')
 @section('content')
 
 <div class="wrapper">
     <h2>Dati Personali</h2>
-    @isset($user)
     {{Form::open(array('route'  => 'Modifica_Utente', 'id' => 'DatiUtente','class' => 'formUtente')) }}
                 {{Form::label ('nome', 'Nome') }}
                 {{Form::text('nome', $user->nome,['id' => 'nome', 'readonly' => 'true' ])}}
@@ -86,7 +84,6 @@ $(function(){
                 <button type="button" id = "annulla" class ="event_button" hidden>Annulla</button>
                 </div>
                 {{Form::close()}}
-    @endisset
     <div>
        <button type="button" id = "modify" class ="event_button">Modifica</button>
        <a href="{{ route('Storico') }}"><button type="button" class ="event_button">storico</button></a>
