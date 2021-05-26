@@ -6,15 +6,18 @@
 <script type="text/javascript" src="{{asset('jqueryshadow.js')}}"></script>
 <script type="text/javascript">
 $(function() {
-                $('table tr:nth-child(even)').css('background-color','#f9f9f9');
-
-
-                $('#clienti').on('click',function(){
+    
                     var clienti = $('.gest-clienti');
                     var organizzazione = $('.gest-organizzazioni');
                     var childright = $('.float-child-right');
                     var childleft = $('.float-child-left');
                     var wrap = $('.wrap');
+                    var button = $('#table_org div ');
+                
+                $('table tr:nth-child(even)').css('background-color','#f9f9f9');
+
+
+                childleft.on('click',function(){
                     if(!childleft.hasClass('active')){
                         childleft.addClass('active');
                         childright.removeClass('active');
@@ -37,12 +40,7 @@ $(function() {
                               
                 })
                 
-                $('#org').on('click',function(){
-                    var clienti = $('.gest-clienti');
-                    var organizzazione = $('.gest-organizzazioni');
-                    var childright = $('.float-child-right');
-                    var childleft = $('.float-child-left');
-                    var wrap = $('.wrap');
+                childright.on('click',function(){
                     if(!childright.hasClass('active')){
                         childright.addClass('active');
                         childleft.removeClass('active');
@@ -69,6 +67,21 @@ $(function() {
                             '<tr><td><input type="text" placeholder="nome"></td><td><input type="text" placeholder="cognome"></td><td><input type="text" placeholder="email"></td><td><input type="text" placeholder="username"></td><td><input type="text" placeholder="data di nascita"></td><td><input type="text" placeholder="telefono"></td><td><input type="text" placeholder="sito web"></td></tr>');
                  
                 })
+                $('.button_id').on('click',function(){
+                  if($(this).hasClass('fa fa-send')){
+                     $(this).submit();
+                      
+                  }
+                  else{
+                  $(this).closest('tr').children('td').children('input').prop('readonly',false);
+                  $(this).closest('tr').css('color','blue');
+                  $(this).removeClass('fa fa-lock');
+                  $(this).addClass('fa fa-send');
+                  button.not($(this)).css('display','none');
+                   $(this).attr('id');
+                  $(this).css('display','normal');
+              }
+              })
             });
 </script>
 <style type="text/css">
@@ -154,16 +167,23 @@ table{
     margin:10px 10px 10px 10px ;
     clear:both;
 }
+
+.button_id{
+    cursor:pointer;
+}
+form{
+    
+}
   
 </style>
 </head>
 
 <div class="float-container">
 
-  <div class="float-child-left active" id="clienti">
+  <div class="float-child-left active">
           <h2>gestione clienti</h2>
   </div>
-  <div class="float-child-right" id="org">
+  <div class="float-child-right"">
     <h2>gestione organizzazioni</h2>
   </div>
 </div>
@@ -176,16 +196,13 @@ table{
         @foreach($users as $user)
         @if($user->role == ('user'))
         <tr>
-            <td>{{$user->nome}}</td><td>{{$user->cognome}}</td><td>{{$user->email}}</td><td>{{$user->username}}</td><td>{{$user->data_nascita}}</td><td>{{$user->telefono}}</td><td>{{$user->sito}}</td><td><input type="checkbox"></td>
+            <td>{{$user->nome}}</td><td>{{$user->cognome}}</td><td>{{$user->email}}</td><td>{{$user->username}}</td><td>{{$user->data_nascita}}</td><td>{{$user->telefono}}</td><td>{{$user->sito}}</td><td><a class="fa fa-trash" href="{{route('deleteUser',[$user->id])}}"></a></td>
         </tr>
         @endif
         @endforeach
         
     </table>
 
-    <div class="buttons">
-    <button id="rimuovi" value="rimuovi" class="fa fa-remove"></button>
-    </div>
     </div>
 <div class="gest-organizzazioni hide">
     <table id="table_org">
@@ -194,9 +211,13 @@ table{
         </tr>
         @foreach($users as $user)
         @if($user->role == ('company'))
+       
         <tr>
-            <td><input type = "text" value='{{$user->nome}}'></td><td>{{$user->cognome}}</td><td>{{$user->email}}</td><td>{{$user->username}}</td><td>{{$user->data_nascita}}</td><td>{{$user->telefono}}</td><td>{{$user->sito}}</td><td><button id="sblocca" class="fa fa-lock"></button></td>
+             {{Form::open(['route' => 'modifica','id' => $user->id])}}
+            <td>{{Form::text('nome',$user->nome,['readonly' => true])}}</td><td>{{Form::text('cognome',$user->cognome,['readonly' => true])}}</td><td>{{Form::text('email',$user->email,['readonly' => true])}}</td><td>{{Form::text('username',$user->username,['readonly' => true])}}</td><td>{{Form::text('data',$user->data_nascita,['readonly' => true])}}</td><td>{{Form::text('telefono',$user->telefono,['readonly' => true])}}</td><td>{{Form::text('sito',$user->sito,['readonly' => true])}}</td><td><div id="{{$user->id}}" class="fa fa-lock button_id"></div>
+             {{Form::close()}}   
         </tr>
+        
         @endif
         @endforeach
         
