@@ -40,6 +40,8 @@ class application_user {
         $user->cognome = $credentials['cognome'];
         $user->data_nascita = $credentials['data_nascita'];
         $user->telefono = $credentials['telefono'];
+        $user->email = $credentials['email'];
+        $user->username = $credentials['username'];
         $user->save();
         return $user;
     }

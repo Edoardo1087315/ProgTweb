@@ -28,7 +28,7 @@ class UserController extends Controller{
         $User = $this->_userModel->getUser();
         $modifiedCredentials = array('nome' => $request->nome,'cognome' => $request->cognome,
                                      'data_nascita' => $request->data_nascita, 'telefono' => $request->telefono,
-                                     'email' => $request->email);
+                                     'email' => $request->email, 'username' => $request->username);
         $newUser = $this->_userModel->modifyCredentials($User->id,$modifiedCredentials);
         return view('Area_Utente')->with('user',$newUser);
     }

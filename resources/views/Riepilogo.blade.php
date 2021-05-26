@@ -25,7 +25,7 @@
         </div>
         <div class="riep_buttons">
             <a href="{{Route('Pagina_Evento',[$event->eventid]) }}"><button class ="event_button">Info Evento</button></a>
-            <a href="{{Route('Storico')}}"><button class ="event_button">Vedi Storico</button></a>
+            <a href="{{Route('Storico',[$user])}}"><button class ="event_button">Vedi Storico</button></a>
         </div>
 </div>
 @endsection

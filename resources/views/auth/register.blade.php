@@ -44,7 +44,7 @@
                 @endif
                 {{Form::label ('email', 'Email') }}
                 {{Form::email('email', '',['id' => 'email' , 'placeholder' => 'yourname@example.it' ])}}
-                 @if ($errors->first('name'))
+                 @if ($errors->first('email'))
                 <ul class="errors">
                     @foreach ($errors->get('email') as $message)
                     <li>{{ $message }}</li>

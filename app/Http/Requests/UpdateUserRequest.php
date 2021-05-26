@@ -37,7 +37,8 @@ class UpdateUserRequest extends FormRequest  {
             'cognome' => 'required|string|max:20',
             'data_nascita' => 'required|date',
             'telefono' => 'required|string|max:10|min:10|regex:^[0-9]{10}^',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => ['required','string','email','max:255',Rule::unique('users')->ignore($this->user)],
+            'username' => ['required', 'string', 'min:8', 'max:20', Rule::unique('users')->ignore($this->user)]
         ];
     }
 }
