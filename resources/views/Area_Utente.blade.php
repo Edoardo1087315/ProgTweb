@@ -4,7 +4,7 @@
 <script type="text/javascript">
 $(function(){
     var values = [];
-    $('#DatiUtente input').each(function(i){
+    $('#DatiUtente input[type != submit]').each(function(i){
         values.push(this.value);
     });
     $('#modify').on("click",function(){
@@ -14,12 +14,11 @@ $(function(){
        $('#annulla').show();
     });
     $('#annulla').on("click",function(){
-       $('#DatiUtente input[id != "username"]').each(function(i){
+       $('#DatiUtente input[type != submit]').each(function(i){
            this.value = values[i];
            this.innerHTML = values[i];
        });
-       $('#DatiUtente input').attr('readonly','true');
-       values = [];
+       $('#DatiUtente input[type != submit]').attr('readonly','true');
        $('#modify').show();
        $('#confirm').hide();
        $('#annulla').hide();
