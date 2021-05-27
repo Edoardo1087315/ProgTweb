@@ -83,7 +83,7 @@ $(function() {
                   $(this).addClass('fa fa-send');
                   button.not($(this)).hide();
                   $('.buttons').hide();
-                  $('#aannulla').showw();
+                  $('#aannulla').show();
                   
                   }
               })
