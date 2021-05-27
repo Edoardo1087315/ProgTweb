@@ -2,8 +2,9 @@
 @section('title', 'Area Amministratore')
 @section('content')
 
-<script type="text/javascript" src="{{asset('jquery.js')}}"></script>
-<script type="text/javascript" src="{{asset('jqueryshadow.js')}}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+        </script>
+<script src="https://bitstorm.org/jquery/shadow-animation/jquery.animate-shadow-min.js"></script>
 <script type="text/javascript">
 $(function() {
     
@@ -63,25 +64,42 @@ $(function() {
                 })
                 
                 $('#aggiungi').on('click',function(){
-                   $('#table_org').append(
-                            '<tr><td><input type="text" placeholder="nome"></td><td><input type="text" placeholder="cognome"></td><td><input type="text" placeholder="email"></td><td><input type="text" placeholder="username"></td><td><input type="text" placeholder="data di nascita"></td><td><input type="text" placeholder="telefono"></td><td><input type="text" placeholder="sito web"></td></tr>');
+                   $('#aggiungiorg').show();
+                   $(this).hide();
+                   $('#aannulla').show();
+                   button.hide();
+                   
                  
                 })
+                
                 $('.button_id').on('click',function(){
                   if($(this).hasClass('fa fa-send')){
-                     $(this).submit();
+                     $(this).closest('form').submit();
                       
                   }
                   else{
                   $(this).closest('tr').children('td').children('input').prop('readonly',false);
-                  $(this).closest('tr').css('color','blue');
                   $(this).removeClass('fa fa-lock');
                   $(this).addClass('fa fa-send');
-                  button.not($(this)).css('display','none');
-                   $(this).attr('id');
-                  $(this).css('display','normal');
-              }
+                  button.not($(this)).hide();
+                  $('.buttons').hide();
+                  $('#aannulla').show();
+                  
+                  }
               })
+              
+                $('#aannulla').on('click',function(){
+                  button.removeClass('fa fa-send');
+                  button.addClass('fa fa-lock');
+                  button.show();
+                  $('.buttons').show();
+                  $(':input').prop('readonly',true);
+                  $(this).hide();
+                  $('#aggiungiorg').hide();
+                  $('#aggiungi').show();
+                })
+                
+              
             });
 </script>
 <style type="text/css">
@@ -104,6 +122,7 @@ $(function() {
     border-bottom: none;
     box-shadow: 13px -10px 5px 5px;
     background-color: #EEEEEE;
+    z-index: 1;
     
 }
 
@@ -118,6 +137,7 @@ $(function() {
     border: 2px solid black;
     background-color: white;
     box-shadow: 2px -2px 1px 1px;
+    z-index: 1;
     
 }
 
@@ -130,6 +150,11 @@ $(function() {
 th,td{
   text-align: left;
   padding: 8px;
+}
+
+th{
+    background-color: #4CAF50;
+    color: white;
 }
 .active{
     
@@ -171,9 +196,7 @@ table{
 .button_id{
     cursor:pointer;
 }
-form{
-    
-}
+
   
 </style>
 </head>
@@ -221,12 +244,20 @@ form{
         @endif
         @endforeach
         
+        <tr id="aggiungiorg" style="display:none">
+            {{Form::open([])}}
+            <td>{{Form::text('nome','',['placeholder'=>'nome...'])}}</td><td>{{Form::text('cognome','',['placeholder'=>'cognome...'])}}</td><td>{{Form::text('email','',['placeholder'=>'email...'])}}</td><td>{{Form::text('username','',['placeholder'=>'username...'])}}</td><td>{{Form::text('data','',['placeholder'=>'data nascita...'])}}</td><td>{{Form::text('telefono','',['placeholder'=>'telefono...'])}}</td><td>{{Form::text('sito','',['placeholder'=>'sito...'])}}</td><td><p id="{{$user->id}}" class="fa fa-send button_id"></p></td>
+            {{Form::close()}}
+        </tr>
+        
     </table>
 
     <div class="buttons">
     <button id="aggiungi" class="fa fa-plus"></button>
-    <button id="submit" class="fa fa-check"></button>
 </div>
+    <button class="buttons" id="aannulla" style="display : none">
+        annulla
+    </button>
 </div>
 </div>
 @endsection
