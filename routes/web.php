@@ -74,11 +74,20 @@ Route::get('/AreaOrganizzazione/getEventToUpdate/{id}', 'CompanyController@getEv
 Route::get('/AreaAmministratore', 'AdminController@showAreaAdmin')
         ->name('Area_Admin');
 
-Route::get('/deleteUser/{userid}','AdminController@deleteUser')
-        ->name('deleteUser');
+Route::get('/delete_user/{userid}','AdminController@deleteUser')
+        ->name('delete_user');
 
-Route::post('/modifica','AdminController@modificaCompany')
-        ->name('modifica');
+Route::post('/update_company','AdminController@updateCompanyRequest')
+        ->name('update_company');
+
+Route::post('/new_company','AdminController@newCompanyRequest')
+        ->name('new_company');
+
+Route::get('/delete_company/{companyid}','AdminController@getCompanyToDelete')
+        ->name('company_to_delete');
+
+Route::get('/update_company/{companyid}','AdminController@getCompanyToUpdate')
+        ->name('company_to_update');
 
 
 

@@ -44,4 +44,8 @@ class User extends Authenticatable
     public function getUsers(){
         return User::all();
     }
+    
+    public function getUserById($userid){
+        return User::where('id',$userid)->first();
+    }
 }

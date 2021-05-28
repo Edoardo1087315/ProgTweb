@@ -16,7 +16,7 @@ class Users extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome',20);
-            $table->string('cognome',20);
+            $table->string('cognome',20)->nullable();
             $table->string('email')->unique();
             $table->string('username',20)->unique();;
             $table->timestamp('email_verified_at')->nullable();
@@ -25,7 +25,7 @@ class Users extends Migration
             $table->string('telefono',10);
             $table->string('sitoweb')->nullable();
             $table->string('role')->default('user');
-             $table->rememberToken();
+            $table->rememberToken();
             $table->timestamps();   
         });
     }
