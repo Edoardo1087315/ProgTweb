@@ -995,6 +995,11 @@ input[type=submit]:hover {
 
 
 /*Area Organizzazione*/
+.btn_Tab{display:flex;}
+.btn_Tab img{
+    width:25px;
+    height:25px;
+}
 .tab-container{
     overflow-x: auto;
 }

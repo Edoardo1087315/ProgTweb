@@ -36,9 +36,10 @@
                 <td>{{($event->bigl_acquis)/$event->bigl_tot*100}}%</td>
                 <td>{{$event->prezzo}}</td>
                 <td>{{$event->prezzo*$event->bigl_acquis}}</td>
-                <td><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
-                    <img src="{{ asset('images/Edit.png')}}" width=20" height="20">
-                    </a> <a href="{{Route('deleteEvent',[$event->eventid]) }}"><img src="{{ asset('images/Btn.png')}}" width=20" height="20"></a></td>
+                <td>
+                    <div class="btn_Tab"><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
+                            <img src="{{ asset('images/Edit.png')}}" >
+                        </a> <a href="{{Route('deleteEvent',[$event->eventid]) }}"><img src="{{ asset('images/Btn.png')}}" ></a> </div></td>
             </tr>        
             <p hidden>{{$s+=$event->prezzo*$event->bigl_acquis}}</p>
             @endforeach
