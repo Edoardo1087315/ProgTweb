@@ -402,7 +402,7 @@ legend {
     margin-left:2em;
 }
 
-input[type=text], input[type=email], #data_nascita, input[type=password],select, textarea {
+input[type=text], input[type=date], input[type=file],input[type=time],input[type=email], #data_nascita, input[type=password],select, textarea {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
