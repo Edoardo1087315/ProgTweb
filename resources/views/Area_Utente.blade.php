@@ -77,7 +77,7 @@ $(function(){
                 </ul>
                 @endif
 		{{Form::label ('username', 'Username') }}
-                {{Form::text('username', $user->username,['id' => 'username','readonly' => 'true'])}}
+                {{Form::text('username', $user->username,['id' => 'username','disabled' => 'true'])}}
                  @if ($errors->first('username'))
                 <ul class="errors">
                     @foreach ($errors->get('username') as $message)

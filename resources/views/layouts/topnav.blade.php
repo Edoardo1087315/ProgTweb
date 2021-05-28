@@ -2,7 +2,7 @@
 <a href="{{ route('frontpage') }}"  id="home" class="{{ (Route::currentRouteName() == 'frontpage') ? 'active' : '' }}">Home</a>
 <a href="{{ route('catalog') }}" id="catalogo" class="{{ (Route::currentRouteName() == 'catalog' || Route::currentRouteName() == 'Ricerca') ? 'active' : '' }}">Catalogo</a>
 @can('isUser')
-<a href="{{ route('Area_Utente',[Auth::user()]) }}"  id="AreaUtente" class="{{ (Route::currentRouteName() == 'Area_Utente' || Route::currentRouteName() == 'Modifica_Utente') ? 'active' : '' }}">Area Utente</a>
+<a href="{{ route('Area_Utente',[Auth::user()]) }}"  id="AreaUtente" class="{{ Route::currentRouteName() == 'Area_Utente' ? 'active' : '' }}">Area Utente</a>
 @endcan
 @can('isCompany')
 <a href="{{ route('Area_Organizzazione') }}"  id="AreaOrganizzazione" class="{{ (Route::currentRouteName() == 'Area_Organizzazione') ? 'active' : '' }}">Area Organizzazione</a>

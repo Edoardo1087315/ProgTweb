@@ -26,11 +26,8 @@ class UserController extends Controller{
     }
     public function updateUser(UpdateUserRequest $request){
         $User = $this->_userModel->getUser();
-        $modifiedCredentials = array('nome' => $request->nome,'cognome' => $request->cognome,
-                                     'data_nascita' => $request->data_nascita, 'telefono' => $request->telefono,
-                                     'email' => $request->email, 'username' => $request->username);
-        $newUser = $this->_userModel->modifyCredentials($User->id,$modifiedCredentials);
-        return view('Area_Utente')->with('user',$newUser);
+        $this->_userModel->modifyCredentials($User->id,$request->validated());
+        return redirect("AreaRiservata/{$User->id}");
     }
     
     public function showStorico(){

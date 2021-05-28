@@ -36,12 +36,7 @@ class application_user {
     }
     public function modifyCredentials($userid,$credentials){
         $user = User::find($userid);
-        $user->nome = $credentials['nome'];
-        $user->cognome = $credentials['cognome'];
-        $user->data_nascita = $credentials['data_nascita'];
-        $user->telefono = $credentials['telefono'];
-        $user->email = $credentials['email'];
-        $user->username = $credentials['username'];
+        $user->fill($credentials);
         $user->save();
         return $user;
     }
