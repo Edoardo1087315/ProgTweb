@@ -995,7 +995,9 @@ input[type=submit]:hover {
 
 
 /*Area Organizzazione*/
-
+.tab-container{
+    overflow-x: auto;
+}
 .events_Tab {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;

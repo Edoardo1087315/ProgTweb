@@ -9,38 +9,41 @@
     <br>
     <h1>Area Organizzatore: {{ Auth::user()->nome }}</h1>
     <hr>
+    <div class="tab-container">
+        <table class="events_Tab">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Luogo</th>
+                <th>Società</th>
+                <th>Biglietti totali</th>
+                <th>Biglietti Venduti</th>
+                <th>Biglietti Venduti(%)</th>
+                <th>Prezzo</th>
+                <th>Incasso totale</th>
+                <th></th>
 
-    <table class="events_Tab">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Luogo</th>
-            <th>Società</th>
-            <th>Biglietti totali</th>
-            <th>Biglietti Venduti</th>
-            <th>Biglietti Venduti(%)</th>
-            <th>Prezzo</th>
-            <th>Incasso totale</th>
-            <th></th>
+            </tr>
+            @foreach($events as $event)
 
-        </tr>
-        @foreach($events as $event)
-
-        <tr>
-            <td>{{$event->eventid}}</td>
-            <td><strong> <a href="{{Route('Pagina_Evento',[$event->eventid]) }}">{{$event->nome}} </a></strong></td>
-            <td>{{$event->luogo}}</td>
-            <td>{{$event->societa}}</td>
-            <td>{{$event->bigl_tot}}</td>
-            <td>{{$event->bigl_acquis}}</td>
-            <td>{{($event->bigl_acquis)/$event->bigl_tot*100}}%</td>
-            <td>{{$event->prezzo}}</td>
-            <td>{{$event->prezzo*$event->bigl_acquis}}</td>
-            <td><a href="{{Route('getEventToUpdate',[$event->eventid]) }}">Update</a> <a href="{{Route('deleteEvent',[$event->eventid]) }}">Delete</a></td>
-        </tr>
-        <p hidden>{{$s+=$event->prezzo*$event->bigl_acquis}}</p>
-        @endforeach
-    </table>
+            <tr>
+                <td>{{$event->eventid}}</td>
+                <td><strong> <a href="{{Route('Pagina_Evento',[$event->eventid]) }}">{{$event->nome}} </a></strong></td>
+                <td>{{$event->luogo}}</td>
+                <td>{{$event->societa}}</td>
+                <td>{{$event->bigl_tot}}</td>
+                <td>{{$event->bigl_acquis}}</td>
+                <td>{{($event->bigl_acquis)/$event->bigl_tot*100}}%</td>
+                <td>{{$event->prezzo}}</td>
+                <td>{{$event->prezzo*$event->bigl_acquis}}</td>
+                <td><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
+                    <img src="{{ asset('images/Edit.png')}}" width=20" height="20">
+                    </a> <a href="{{Route('deleteEvent',[$event->eventid]) }}"><img src="{{ asset('images/Btn.png')}}" width=20" height="20"></a></td>
+            </tr>        
+            <p hidden>{{$s+=$event->prezzo*$event->bigl_acquis}}</p>
+            @endforeach
+        </table>
+    </div>
     <hr>
     <h3>Guadagno Totale Eventi: {{$s}}€</h3>
 
@@ -79,7 +82,7 @@
         </ul>
         @endif
         {{ Form::label('luogo', 'Luogo') }}
-       
+
         {{ Form::select('luogo',  array_unique([$selected_event->luogo => $selected_event->luogo ,'Marche' => 'Marche','Lazio'=>'Lazio',
                         'Piemonte'=>'Piemonte','Lombardia'=>'Lombardia','Veneto'=>'Veneto',
                         'Trentino-Alto Adige'=>'Trentino-Alto Adige','Friuli-Venezia Giulia'=>'Friuli-Venezia Giulia',
