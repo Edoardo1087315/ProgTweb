@@ -4,7 +4,7 @@
 
 
 @isset($events)
-{{$s=0}}
+<p hidden>{{$s=0}}</p>
 <div class="wrapper">
     <br>
     <h1>Area Organizzatore: {{ Auth::user()->nome }}</h1>
