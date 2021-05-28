@@ -39,7 +39,7 @@ class CompanyController extends Controller {
         $event->save();
 
         if (!is_null($imageName)) {
-            $destinationPath = public_path() . '/images/products';
+            $destinationPath = storage_path() . '/app/EventImages';
             $image->move($destinationPath, $imageName);
         };
 
@@ -55,7 +55,6 @@ class CompanyController extends Controller {
         } else {
             $imageName = $request->image_path;
         }
-         echo '<script>console.log("ENTRAAAA")</script>';
         $event = $this->_catalogModel->getEventById($request->eventid);
         $event->nome = $request->nome;
         $event->societa = $request->societa;
@@ -68,6 +67,7 @@ class CompanyController extends Controller {
         $event->Ycord = $request->Ycord;
         $event->Xcord = $request->Xcord;
         $event->descrizione = $request->descrizione;
+        $event->programma = $request->programma;
         $event->data = $request->data;
         $event->orario = $request->orario;
 
@@ -75,7 +75,7 @@ class CompanyController extends Controller {
         $event->save();
 
         if ($request->hasFile('image')) {
-            $destinationPath = public_path() . '/images/products';
+            $destinationPath = storage_path() . '/app/EventImages';
             $image->move($destinationPath, $imageName);
         };
 

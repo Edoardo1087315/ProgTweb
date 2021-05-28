@@ -80,13 +80,13 @@
         @endif
         {{ Form::label('luogo', 'Luogo') }}
        
-        {{ Form::select('luogo',  array_unique([$selected_event->luogo,'Marche','Lazio',
-                        'Piemonte','Lombardia','Veneto',
-                        'Trentino-Alto Adige','Friuli-Venezia Giulia',
-                        'Liguria','Emilia Romagna','Abruzzo',
-                        'Molise','Umbria','Calabria','Sardegna',
-                        'Puglia', 'Sicilia','Valle d&#39;Aosta','Basilicata',
-                        'Toscana','Campania'])
+        {{ Form::select('luogo',  array_unique([$selected_event->luogo => $selected_event->luogo ,'Marche' => 'Marche','Lazio'=>'Lazio',
+                        'Piemonte'=>'Piemonte','Lombardia'=>'Lombardia','Veneto'=>'Veneto',
+                        'Trentino-Alto Adige'=>'Trentino-Alto Adige','Friuli-Venezia Giulia'=>'Friuli-Venezia Giulia',
+                        'Liguria'=>'Liguria','Emilia Romagna'=>'Emilia Romagna','Abruzzo'=>'Abruzzo',
+                        'Molise'=>'Molise','Umbria'=>'Umbria','Calabria'=>'Calabria','Sardegna'=>'Sardegna',
+                        'Puglia'=>'Puglia', 'Sicilia'=>'Sicilia','Valle d&#39;Aosta'=>'Valle d&#39;Aosta','Basilicata'=>'Basilicata',
+                        'Toscana'=>'Toscana','Campania'=>'Campania'])
             , [ 'id' => 'luogo']) }}
         @if ($errors->first('luogo'))
         <ul class="errors">
@@ -204,13 +204,13 @@
             </ul>
             @endif
             {{ Form::label('luogo', 'Luogo') }}
-            {{ Form::select('luogo', ['Marche','Lazio',
-                        'Piemonte','Lombardia','Veneto',
-                        'Trentino-Alto Adige','Friuli-Venezia Giulia',
-                        'Liguria','Emilia Romagna','Abruzzo',
-                        'Molise','Umbria','Calabria','Sardegna',
-                        'Puglia', 'Sicilia','Valle d&#39;Aosta','Basilicata',
-                        'Toscana','Campania']
+            {{ Form::select('luogo', ['Marche' => 'Marche','Lazio'=>'Lazio',
+                        'Piemonte'=>'Piemonte','Lombardia'=>'Lombardia','Veneto'=>'Veneto',
+                        'Trentino-Alto Adige'=>'Trentino-Alto Adige','Friuli-Venezia Giulia'=>'Friuli-Venezia Giulia',
+                        'Liguria'=>'Liguria','Emilia Romagna'=>'Emilia Romagna','Abruzzo'=>'Abruzzo',
+                        'Molise'=>'Molise','Umbria'=>'Umbria','Calabria'=>'Calabria','Sardegna'=>'Sardegna',
+                        'Puglia'=>'Puglia', 'Sicilia'=>'Sicilia','Valle d&#39;Aosta'=>'Valle d&#39;Aosta','Basilicata'=>'Basilicata',
+                        'Toscana'=>'Toscana','Campania'=>'Campania']
             , [ 'id' => 'luogo']) }}
             @if ($errors->first('luogo'))
             <ul class="errors">
