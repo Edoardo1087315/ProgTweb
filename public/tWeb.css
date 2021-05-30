@@ -1096,7 +1096,7 @@ input[type=submit]:hover {
         border: 2px solid black;
         border-bottom: none;
         box-shadow: 13px -10px 5px 5px;
-        background-color: #EEEEEE;
+        background-color: #FFFFFF;
         z-index: 1;
 
     }
@@ -1110,15 +1110,14 @@ input[type=submit]:hover {
         border-top-left-radius: 15px;
         border-top-right-radius: 15px;
         border: 2px solid black;
-        background-color: white;
+        background-color: #EEEEEE;
         box-shadow: 2px -2px 1px 1px;
         z-index: 1;
 
     }
 
     .hide{
-        width:0%;
-        height:0%;
+        display:none;
 
     }
 
@@ -1127,20 +1126,22 @@ input[type=submit]:hover {
     }
     .gest-clienti{
         overflow-x:auto;
-        float: left;  
         margin-top: 20px;
+        margin-bottom:20px;
     }
 
     .gest-organizzazioni{
-        overflow-x:auto;
         opacity:0%;
-        float: left;
+        width: 100%;
+        
+    }
+    
+    .gest-organizzazioni-form{
         margin-top: 20px;
     }
 
     .wrap_admin{
-        background-color: #EEEEEE;
-        overflow-x:auto;
+        background-color: #FFFFFF;
         width:100%;
         height:100%;
         box-shadow: 13px -10px 5px 5px;
@@ -1148,6 +1149,11 @@ input[type=submit]:hover {
         flex-direction: row;
         justify-content: center;
         padding-top:20px;
+    }
+    
+    .table-gest-organizzazioni{
+        overflow-x:auto;
+        margin-top:20px;
     }
 
 
@@ -1172,4 +1178,63 @@ input[type=submit]:hover {
         background-color: #4CAF50;
         color: white;
     }
+    
+    .table_area_admin tr:nth-child(even){background-color: #f2f2f2;}
+    
+    .table_area_admin tr:hover {background-color: #ddd;}
+    
+    .admin_button{
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #4CAF50;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 16px;
+        padding: 20px;
+        width: 250px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .admin_button span{
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .admin_button span:after{
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .admin_button:hover span{
+       padding-right: 25px; 
+    }
+    
+    .admin_button:hover span:after{
+        opacity: 1;
+        right: 0;
+    }
+    
+    .form_area_admin{
+        display:flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-right:3em;
+        padding-left:3em;
+    }
+    
+    .gest-organizzazioni-form{
+        display:flex;
+        flex-direction: column;
+        align-items:stretch;
 
+        padding:1.5em;
+    }

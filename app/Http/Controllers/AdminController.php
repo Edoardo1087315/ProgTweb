@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Models\catalog;
 use App\Models\Resources\Ticket;
 use App\Http\Requests\NewCompanyRequest;
 use Illuminate\Support\Facades\Hash;
@@ -10,10 +11,12 @@ use Illuminate\Support\Facades\Hash;
 Class AdminController extends Controller{
 
         protected $_userModel;
+        protected $_catalogModel;
     
         public function __construct() {
         $this->middleware('can:isAdmin');
         $this->_userModel =new User;
+        $this->_catalogModel = new catalog;
         }
          
         public function showAreaAdmin(){
@@ -34,7 +37,7 @@ Class AdminController extends Controller{
             $user->role = 'company';
             $user->password = Hash::make($request->password);
             $user->save();
-            return redirect('AreaAmministratore');
+            return response()->json(['redirect' => route('Area_Admin')]);
         }
         
         public function updateCompanyRequest(NewCompanyRequest $request){
@@ -48,7 +51,7 @@ Class AdminController extends Controller{
                  $user->telefono = $request->telefono;
                  
                  $user->save();
-            return redirect('AreaAmministratore');
+            return response()->json(['redirect' => route('Area_Admin')]);
         }
         
         public function getCompanyToDelete($id) {
@@ -59,6 +62,7 @@ Class AdminController extends Controller{
     public function getCompanyToUpdate($id) {
         $selected_company = $this->_userModel->getUserById($id);
         $users = $this->_userModel->getUsers();
+        $events = $this->_catalogModel->getNotPaginateEvents();
         return view('Area_Admin')->with('selected_company', $selected_company)->with('users', $users);
     }
 
