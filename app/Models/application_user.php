@@ -48,4 +48,11 @@ class application_user {
         return $tickets;
     }
     
+    public function addPartecipero($userid,$eventid){
+        $partecipero = new Partecipero;
+        $partecipero->user_id = $userid;
+        $partecipero->event_id = $eventid;
+        $partecipero -> save();
+    }
+    
 }

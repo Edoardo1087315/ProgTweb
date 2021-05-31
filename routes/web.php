@@ -49,6 +49,11 @@ Route::post('/AreaRiservata/{user}','UserController@updateUser')
 Route::get('/AreaRiservata/{user}/Storico', 'UserController@showStorico')
         ->name('Storico');
 
+Route::post('/PagEvento/Partecipero', 'UserController@partecipero')
+        ->name('Partecipero');
+
+Route::post('/PagEvento/AnnullaPartecipazione', 'UserController@annullaPartecipazione')
+        ->name('Annulla_Partecipazione');
 
 /*ROTTE DELL'UTENTE DI LIVELLO 3*/
 

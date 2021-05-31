@@ -2,7 +2,7 @@
 @section('title', 'Evento')
 @section('content')
 
-
+@isset($event)
 <div class="page_container">
 				<div class="event_wrapper">
                                     
@@ -10,9 +10,21 @@
 						@include('helpers/EventsImages', ['img' => $event->image])
 					</div>
 					<div class="cont_container">
-						<h1>{{$event->nome}}</h1>
-						<h4>{{$event->data}} alle {{$event->orario}}</h4>
-						<h5>{{$event->luogo}}</h5>
+                                                <div class="cont_container_header">
+                                                    <div>
+                                                        <h1>{{$event->nome}}</h1>
+                                                        <h4>{{$event->data}} alle {{$event->orario}}</h4>
+                                                        <h5>{{$event->luogo}}</h5>
+                                                    </div>
+                                                    @can('isUser')
+                                                    <div>
+                                                        {{ Form::open(['route'=>'Parteciperemo','id' => 'partecipero', 'files' => false,'class' => 'form-partecipero']) }}
+                                                        {{ Form::hidden('eventid', $event->eventid , [ 'id' => 'eventid']) }}
+                                                        {{ Form::submit('Partecipero', ['class' => 'partecipero_button']) }}
+                                                        {{ Form::close() }}
+                                                    </div>
+                                                    @endcan
+                                                    </div>
 						<div class="accordion_container">	
 							<button class="accordion_event">DESCRIZIONE EVENTO</button>
 							<div class="panel_event">
@@ -65,4 +77,5 @@
 				  });
 				}
 			</script>
+@endisset
 @endsection

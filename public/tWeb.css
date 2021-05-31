@@ -457,6 +457,19 @@ input[type=submit]:hover {
     width:50%;
 }
 
+.cont_container_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.partecipero_button{
+    margin-right:10em;
+    width: 150px;
+    height: 40px;
+    border-radius: 9px;
+}
+
 .event_button{
     width:150px;
     height:40px;

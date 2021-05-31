@@ -52,4 +52,10 @@ class UserController extends Controller{
                                  ->with('card',$Card);
     }
     
+    public function partecipero($request) {
+        $User = $this->_userModel->getUser();
+        $this->_userModel->addPartecipero($User->id,$request->eventId);
+        return redirect("PagEvento/{$request->eventId}");
+    }
+    
 }
