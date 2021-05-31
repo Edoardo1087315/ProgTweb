@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Resources\Event;
 use App\Models\Resources\Ticket;
 use App\User;
+use App\Models\Resources\Partecipation;
 
 /**
  * Description of user
@@ -49,10 +50,19 @@ class application_user {
     }
     
     public function addPartecipero($userid,$eventid){
-        $partecipero = new Partecipero;
+        $partecipero = new Partecipation;
         $partecipero->user_id = $userid;
-        $partecipero->event_id = $eventid;
+        $partecipero->eventid = $eventid;
         $partecipero -> save();
     }
     
-}
+    public function getPartecipero($userid,$eventid){
+        return Partecipation::where([['user_id', $userid],
+                ['eventid', $eventid]])->first();
+    }
+    
+    public function deletePartecipero($userid,$eventid){
+        Partecipation::where([['user_id', $userid],
+                ['eventid', $eventid]])->first()->delete();
+    }
+}   

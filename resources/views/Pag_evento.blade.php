@@ -16,15 +16,33 @@
                                                         <h4>{{$event->data}} alle {{$event->orario}}</h4>
                                                         <h5>{{$event->luogo}}</h5>
                                                     </div>
-                                                    @can('isUser')
-                                                    <div>
-                                                        {{ Form::open(['route'=>'Parteciperemo','id' => 'partecipero', 'files' => false,'class' => 'form-partecipero']) }}
-                                                        {{ Form::hidden('eventid', $event->eventid , [ 'id' => 'eventid']) }}
-                                                        {{ Form::submit('Partecipero', ['class' => 'partecipero_button']) }}
-                                                        {{ Form::close() }}
+                                                    <div class="cont_container_header_right">
+                                                        @can('isUser')
+                                                        <div>
+                                                            @can('hasNoPartecipation', [$event->eventid])
+                                                            <div>
+                                                                {{ Form::open(['route'=>'Partecipero','id' => 'partecipero', 'files' => false,'class' => 'form-partecipero']) }}
+                                                                {{ Form::hidden('eventid', $event->eventid , [ 'id' => 'eventid']) }}
+                                                                {{ Form::button('Partecipero', ['class' => 'partecipero_button', 'type' => 'submit']) }}
+                                                                {{ Form::close() }}
+                                                            </div>
+                                                            @else
+                                                            <div>
+                                                                {{ Form::open(['route'=>'Annulla_Partecipazione','id' => 'annulla_Partecipazione', 'files' => false,'class' => 'form_annulla_partecipazione']) }}
+                                                                {{ Form::hidden('eventid', $event->eventid , [ 'id' => 'eventid']) }}
+                                                                {{ Form::button('Annulla Partecipazione', ['class' => 'annulla_partecipazione_button', 'type' => 'submit']) }}
+                                                                {{ Form::close() }}
+                                                            </div>
+                                                            @endcan
+                                                        </div>
+                                                        @endcan
+                                                        
+                                                        @isset($nPartecipero)
+                                                        <h5>Numero di partecipanti: {{$nPartecipero}} </h5>
+                                                        @endisset
                                                     </div>
-                                                    @endcan
-                                                    </div>
+                                                    
+                                                </div>
 						<div class="accordion_container">	
 							<button class="accordion_event">DESCRIZIONE EVENTO</button>
 							<div class="panel_event">

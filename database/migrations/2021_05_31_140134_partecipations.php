@@ -13,7 +13,7 @@ class Partecipations extends Migration
      */
     public function up()
     {
-        Schema::create('partecipation', function (Blueprint $table) {
+        Schema::create('partecipations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('eventid')->unsigned();

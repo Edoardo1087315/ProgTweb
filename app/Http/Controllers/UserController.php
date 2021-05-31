@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\BuyTicketRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\ParteciperoRequest;
 use App\Models\catalog;
 use App\Models\application_user;
 
@@ -52,10 +53,15 @@ class UserController extends Controller{
                                  ->with('card',$Card);
     }
     
-    public function partecipero($request) {
+    public function partecipero(ParteciperoRequest $request) {
         $User = $this->_userModel->getUser();
-        $this->_userModel->addPartecipero($User->id,$request->eventId);
-        return redirect("PagEvento/{$request->eventId}");
+        $this->_userModel->addPartecipero($User->id,$request->eventid);
+        return redirect("PagEvento/{$request->eventid}");
     }
     
+    public function annullaPartecipazione(ParteciperoRequest $request) {
+        $User = $this->_userModel->getUser();
+        $this->_userModel->deletePartecipero($User->id,$request->eventid);
+        return redirect("PagEvento/{$request->eventid}");
+    }
 }

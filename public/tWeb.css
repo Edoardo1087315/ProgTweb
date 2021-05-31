@@ -463,11 +463,28 @@ input[type=submit]:hover {
     align-items: center;
 }
 
+.cont_container_header_right{
+    display: flex;
+    flex-direction:column;
+}
+
+.cont_container_header_right h5{
+    margin-right:6em;
+}
+
 .partecipero_button{
     margin-right:10em;
-    width: 150px;
+    width: 180px;
     height: 40px;
     border-radius: 9px;
+}
+
+.annulla_partecipazione_button{
+    margin-right:10em;
+    width: 180px;
+    height: 40px;
+    border-radius: 9px;
+    background-color: red;
 }
 
 .event_button{

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Resources\Event;
+use App\Models\Resources\Partecipation;
 use Illuminate\Support\Facades\Auth;
 class Catalog {
 
@@ -31,8 +32,14 @@ class Catalog {
                 ['data', 'Like',$request['data']],
                 ['societa', 'Like', $request['organizzazione']]])->paginate(10);
     }
-     public function getPopularEvents(){
+    
+    public function getPopularEvents(){
         return $events = Event::orderBy('bigl_acquis','desc')->take(5)->get();
+    }
+    
+    public function getNumPartecipero($eventid){
+        $partecipero = Partecipation::where('eventid',$eventid)->get();
+        return count($partecipero);
     }
     
 }

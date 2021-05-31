@@ -50,7 +50,8 @@ class PublicController extends Controller  {
     }
     public function showEvent($eventid) {
         $Event = $this->_catalogModel->getEventById($eventid);
-        return view('Pag_evento')->with('event',$Event);
+        $numPartecipero = $this->_catalogModel->getNumPartecipero($eventid);
+        return view('Pag_evento')->with('event',$Event)->with('nPartecipero',$numPartecipero);
     }
     public function showAccedi() {
 

@@ -10,9 +10,9 @@ namespace App\Models\Resources;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partecipero extends Model {
+class Partecipation extends Model {
     
-    protected $table = 'partecipero';
+    protected $table = 'partecipations';
     protected $primaryKey = 'id';
     public $timestamps = false;
     protected $guarded = ['id']; //id non modificabile

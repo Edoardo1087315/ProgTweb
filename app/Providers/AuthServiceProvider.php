@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Catalog;
+use App\Models\application_user;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -34,10 +35,15 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('isCompany', function ($user) {
             return $user->hasRole('company');
         });
-         Gate::define('isSoldout', function ($user,$id) {
+        Gate::define('isSoldout', function ($user,$id) {
             $_catalog =new Catalog;
             $event = $_catalog->getEventById($id);
             return ($event->bigl_tot > $event->bigl_acquis);
+        });
+        Gate::define('hasNoPartecipation', function ($user,$id) {
+            $_userModel = new application_user;
+            $partecipation = $_userModel->getPartecipero($user->id,$id);
+            return !$partecipation;
         });
     }
 }
