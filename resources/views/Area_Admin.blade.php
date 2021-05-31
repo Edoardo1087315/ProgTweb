@@ -7,56 +7,72 @@
 <script src="{{ asset('js/functions.js') }}" ></script>
 
 <script type="text/javascript">
-$(function () {
+    $(function () {
+        
+        //insererimento nuova compagnia con ajax
     
-    var new_company_Url = "{{ route('new_company') }}";
-    var new_company_formId = 'addCompany';
-    var update_compant_Url ="{{route('update_company')}}";
-    var update_company_formId ='updateCompany';
-    $("form#addCompany :input").on('blur', function (event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, new_company_Url, new_company_formId);
-    });
-    $("form#updateCompany :input").on('blur', function (event) {
-        var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, update_compant_Url, update_company_formId);
-    });
-    $("#addCompany").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(new_company_Url, new_company_formId);
-    });
+        var new_company_Url = "{{ route('new_company') }}";
+        var new_company_formId = 'addCompany';
+        
+        $("#addCompany").on('submit', function (event) {
+            event.preventDefault();
+            doFormValidation(new_company_Url, new_company_formId);
+        });
+        
+        $("form#addCompany :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, new_company_Url, new_company_formId);
+        });
+        
+
+        
+         //update compagnia con ajax
+        
+        var update_compant_Url ="{{route('update_company')}}";
+        var update_company_formId ='updateCompany';
+        
+
+        
         $("#updateCompany").on('submit', function (event) {
-        event.preventDefault();
-        doFormValidation(update_compant_Url, update_company_formId);
-    });
+            event.preventDefault();
+            doFormValidation(update_compant_Url, update_company_formId);
+        });
+        
+        $("form#updateCompany :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, update_compant_Url, update_company_formId);
+        });
 
-var clienti = $('.gest-clienti');
-var organizzazione = $('.gest-organizzazioni');
-var childright = $('.float-child-right');
-var childleft = $('.float-child-left');
-var wrap = $('.wrap_admin');
-var button = $('#table_org div ');
-childleft.on('click', function () {
-if (!childleft.hasClass('active_admin')) {
-childleft.addClass('active_admin');
-childright.removeClass('active_admin');
-childright.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300});
-wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300,queue: false});
-organizzazione.animate({opacity: '0%'}, {duration: 300});
-childleft.css('border-bottom', 'none');
-childright.css('border-bottom', '2px solid black');
-organizzazione.addClass('hide');
-clienti.removeClass('hide');
-childleft.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300});
-wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300, queue: false});
-childleft.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
-wrap.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
-childright.css({'background-color': '#EEEEEE'}, {duration: 300, queue: false});
-clienti.animate({opacity: '100%'}, "slow");
-$('#aggiungiorg').hide();
-}
+        //animazione finestre, ombre ecc...
 
-});
+        var clienti = $('.gest-clienti');
+        var organizzazione = $('.gest-organizzazioni');
+        var childright = $('.float-child-right');
+        var childleft = $('.float-child-left');
+        var wrap = $('.wrap_admin');
+        var button = $('#table_org div ');
+
+        childleft.on('click', function () {
+        if (!childleft.hasClass('active_admin')) {
+        childleft.addClass('active_admin');
+        childright.removeClass('active_admin');
+        childright.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300});
+        wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300,queue: false});
+        organizzazione.animate({opacity: '0%'}, {duration: 300});
+        childleft.css('border-bottom', 'none');
+        childright.css('border-bottom', '2px solid black');
+        organizzazione.addClass('hide');
+        clienti.removeClass('hide');
+        childleft.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300});
+        wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300, queue: false});
+        childleft.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
+        wrap.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
+        childright.css({'background-color': '#EEEEEE'}, {duration: 300, queue: false});
+        clienti.animate({opacity: '100%'}, "slow");
+        $('#aggiungiorg').hide();
+        }
+
+        });
 
         childright.on('click', function child() {
         if (!childright.hasClass('active_admin')) {

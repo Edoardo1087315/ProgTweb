@@ -7,16 +7,21 @@ use App\Models\catalog;
 use App\Models\Resources\Ticket;
 use App\Http\Requests\NewCompanyRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Models\faq;
+use App\Models\Resources\Faqs;
+use App\Http\Requests\NewFaqRequest;
 
 Class AdminController extends Controller{
 
         protected $_userModel;
         protected $_catalogModel;
+        protected $_FaqModel;
     
         public function __construct() {
         $this->middleware('can:isAdmin');
         $this->_userModel =new User;
         $this->_catalogModel = new catalog;
+        $this->_FaqModel = new faq;
         }
          
         public function showAreaAdmin(){
@@ -65,5 +70,28 @@ Class AdminController extends Controller{
         $events = $this->_catalogModel->getNotPaginateEvents();
         return view('Area_Admin')->with('selected_company', $selected_company)->with('users', $users);
     }
-
+    
+    public function getFaqToDelete($id){
+        Faqs::where('faqId',$id)->delete();
+        return redirect('Faq');
+    }
+    
+    public function getFaqToUpdate(NewFaqRequest $request){
+      $faq = $this->_FaqModel->getFaqById($request->faqId);
+           $faq->Domanda = $request->Domanda;
+           $faq->Risposta = $request->Risposta;
+      
+      $faq->save();
+           
+            return response()->json(['redirect' => route('Faq')]);
+    }
+    
+    public function newFaqRequest(NewFaqRequest $request) {
+            $faq = new faq;
+            $faq->fill($request->validated());
+            $faq->save();
+            
+            return response()->json(['redirect' => route('Faq')]);
+        }
+    
 }

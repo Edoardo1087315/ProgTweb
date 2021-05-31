@@ -10,7 +10,6 @@
             faq[i].addEventListener("click", function () {
                 /*this è riferito all'elemento i-esimo di faq.La proprietà classList è una proprietà solo leggibile                                   che ritorna un elemento di tipo DOMTokenList che è una collection che raccoglie tutti gli attributi                                 class che indicano le classi di stile applicate all'elemento. Il metodo toggle aggiunge a questa                                    collection la classe di stile che gli passo come parametro se tale classe non è già dentro la                                       collection e rimuove invece la classe di stile se essa è già presente*/
                 this.classList.toggle("activefaq");
-
                 /* La proprietà nextElementSibling ritorna un riferimento all'oggetto nel DOM associato all'elemento                                 immediatamente successivo(cioè la tag) a quello su cui chiamo la proprietà */
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
@@ -22,7 +21,6 @@
             });
         }
     };
-
 </script>
 
 

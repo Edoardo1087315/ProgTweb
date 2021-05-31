@@ -89,6 +89,15 @@ Route::get('/delete_company/{companyid}','AdminController@getCompanyToDelete')
 Route::get('/update_company/{companyid}','AdminController@getCompanyToUpdate')
         ->name('company_to_update');
 
+Route::post('/modificaFaq','AdminController@getFaqToUpdate')
+        ->name('modificaFaq');
+
+Route::get('/deleteFaq/{faqId}', 'AdminController@getFaqToDelete')
+        ->name('FaqToDelete');
+
+Route::post('/new_faq','AdminController@newFaqRequest')
+        ->name('newFaq');
+
 
 
 /*ROTTE PER L'AUTENTICAZIONE*/
