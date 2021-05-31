@@ -40,18 +40,18 @@ childleft.on('click', function () {
 if (!childleft.hasClass('active_admin')) {
 childleft.addClass('active_admin');
 childright.removeClass('active_admin');
-childright.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 200});
-wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 200, queue: false});
-organizzazione.animate({opacity: '0%'}, {duration: 200});
+childright.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300});
+wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300,queue: false});
+organizzazione.animate({opacity: '0%'}, {duration: 300});
 childleft.css('border-bottom', 'none');
 childright.css('border-bottom', '2px solid black');
 organizzazione.addClass('hide');
 clienti.removeClass('hide');
-childleft.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 200});
-wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 200, queue: false});
-childleft.css({'background-color': '#FFFFFF'}, {duration: 200, queue: false});
-wrap.css({'background-color': '#FFFFFF'}, {duration: 200, queue: false});
-childright.css({'background-color': '#EEEEEE'}, {duration: 200, queue: false});
+childleft.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300});
+wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300, queue: false});
+childleft.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
+wrap.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
+childright.css({'background-color': '#EEEEEE'}, {duration: 300, queue: false});
 clienti.animate({opacity: '100%'}, "slow");
 $('#aggiungiorg').hide();
 }
@@ -62,18 +62,18 @@ $('#aggiungiorg').hide();
         if (!childright.hasClass('active_admin')) {
         childright.addClass('active_admin');
         childleft.removeClass('active_admin');
-        childleft.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 200});
-        wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 200, queue: false});
-        clienti.animate({opacity: '0%'}, {duration: 200});
+        childleft.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300});
+        wrap.animate({boxShadow: '2px -2px 1px 1px'}, {duration: 300, queue: false});
+        clienti.animate({opacity: '0%'}, {duration: 300});
         childright.css('border-bottom', 'none');
         childleft.css('border-bottom', '2px solid black');
         clienti.addClass('hide');
         organizzazione.removeClass('hide');
-        childright.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 200});
-        wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 200, queue: false});
-        childleft.css({'background-color': '#EEEEEE'}, {duration: 200, queue: false});
-        wrap.css({'background-color': '#FFFFFF'}, {duration: 200, queue: false});
-        childright.css({'background-color': '#FFFFFF'}, {duration: 200, queue: false});
+        childright.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300});
+        wrap.animate({boxShadow: '13px -10px 5px 5px'}, {duration: 300, queue: false});
+        childleft.css({'background-color': '#EEEEEE'}, {duration: 300, queue: false});
+        wrap.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
+        childright.css({'background-color': '#FFFFFF'}, {duration: 300, queue: false});
         organizzazione.animate({opacity: '100%'}, "slow");
         }
         });
