@@ -15,6 +15,7 @@ class Faqs extends Model {
     protected $table = 'faqs';
     protected $primaryKey = 'faqId';
     public $timestamps = false;
+    protected $fillable = ['Domanda','Risposta'];
     
     
 }

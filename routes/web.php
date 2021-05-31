@@ -79,6 +79,9 @@ Route::get('/AreaOrganizzazione/getEventToUpdate/{id}', 'CompanyController@getEv
 Route::get('/AreaAmministratore', 'AdminController@showAreaAdmin')
         ->name('Area_Admin');
 
+Route::get('/FaqAdmin','AdminController@showAdminFaq')
+        ->name('Faq_Admin');
+
 Route::get('/delete_user/{userid}','AdminController@deleteUser')
         ->name('delete_user');
 
@@ -97,7 +100,7 @@ Route::get('/update_company/{companyid}','AdminController@getCompanyToUpdate')
 Route::post('/modificaFaq','AdminController@getFaqToUpdate')
         ->name('modificaFaq');
 
-Route::get('/deleteFaq/{faqId}', 'AdminController@getFaqToDelete')
+Route::post('/deleteFaq', 'AdminController@getFaqToDelete')
         ->name('FaqToDelete');
 
 Route::post('/new_faq','AdminController@newFaqRequest')

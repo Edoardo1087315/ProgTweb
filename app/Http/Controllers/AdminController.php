@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\faq;
 use App\Models\Resources\Faqs;
 use App\Http\Requests\NewFaqRequest;
+use App\Http\Requests\DeleteFaqRequest;
 
 Class AdminController extends Controller{
 
@@ -71,8 +72,8 @@ Class AdminController extends Controller{
         return view('Area_Admin')->with('selected_company', $selected_company)->with('users', $users);
     }
     
-    public function getFaqToDelete($id){
-        Faqs::where('faqId',$id)->delete();
+    public function getFaqToDelete(DeleteFaqRequest $request){
+        Faqs::where('faqId',$request->faqId)->delete();
         return redirect('Faq');
     }
     
@@ -87,11 +88,14 @@ Class AdminController extends Controller{
     }
     
     public function newFaqRequest(NewFaqRequest $request) {
-            $faq = new faq;
+            $faq = new Faqs;
             $faq->fill($request->validated());
             $faq->save();
-            
             return response()->json(['redirect' => route('Faq')]);
         }
+    public function showAdminFaq(){
+        $Faq = Faqs::all();
+        return view('Faq_Admin')->with('_faq',$Faq);
+    }
     
 }
