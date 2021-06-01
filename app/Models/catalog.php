@@ -18,11 +18,13 @@ class Catalog {
         return Event::where('eventid',$eventId)->first();
     }
     public function getExpiringEvents(){
-        return $events = Event::where('data', '>=', date('Y-m-d'))
-            ->orderBy('data')
-            ->take(5)->get();
+        return $events = Event::orderBy('data')->take(5)->get();
     }
-
+    
+    public function getCompanyEvents() {
+        $societa = Auth::user()->nome;
+        return $events = Event::where('societa',$societa)->get();
+    }
 
     public function getEventsBySearch($request){
         return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],

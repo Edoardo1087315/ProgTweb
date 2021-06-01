@@ -4,7 +4,7 @@
 
 
 @isset($events)
-
+<p hidden>{{$s=0}}</p>
 <div class="wrapper">
     <br>
     <h1>Area Organizzatore: {{ Auth::user()->nome }}</h1>
@@ -15,12 +15,11 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Luogo</th>
+                <th>Società</th>
                 <th>Biglietti totali</th>
                 <th>Biglietti Venduti</th>
                 <th>Biglietti Venduti(%)</th>
                 <th>Prezzo</th>
-                <th>Prezzo Pieno</th>
-                <th>Sconto(%)</th>
                 <th>Incasso totale</th>
                 <th></th>
 
@@ -31,28 +30,23 @@
                 <td>{{$event->eventid}}</td>
                 <td><strong> <a href="{{Route('Pagina_Evento',[$event->eventid]) }}">{{$event->nome}} </a></strong></td>
                 <td>{{$event->luogo}}</td>
+                <td>{{$event->societa}}</td>
                 <td>{{$event->bigl_tot}}</td>
                 <td>{{$event->bigl_acquis}}</td>
-                <td>{{ number_format($event->getVendutiPerc(), 2, ',', '.') }}%</td>
-                <td>{{$event->getPrice($event->sconto)}}€</td>
-                <td>{{$event->prezzo}}€</td>
-                @if($event->sconto)
-                <td>{{$event->scontoPerc}}%</td>
-                @else
-                <td>Assente</td>
-                @endif
-                <td>{{$event->incassoTotale}}€</td>
+                <td>{{($event->bigl_acquis)/$event->bigl_tot*100}}%</td>
+                <td>{{$event->prezzo}}</td>
+                <td>{{$event->prezzo*$event->bigl_acquis}}</td>
                 <td>
                     <div class="btn_Tab"><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
                             <img src="{{ asset('images/Edit.png')}}" >
                         </a> <a href="{{Route('deleteEvent',[$event->eventid]) }}"><img src="{{ asset('images/Btn.png')}}" ></a> </div></td>
             </tr>        
-
+            <p hidden>{{$s+=$event->prezzo*$event->bigl_acquis}}</p>
             @endforeach
         </table>
     </div>
     <hr>
-    <h3>Guadagno Totale Eventi: {{$guadagno}}€</h3>
+    <h3>Guadagno Totale Eventi: {{$s}}€</h3>
 
     @if(@isset($selected_event))
     <div class="panel_modificaEvento">
@@ -78,35 +72,6 @@
             <li>{{ $message }}</li>
             @endforeach
         </ul>
-        @endif
-        {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-        {{ Form::text('scontoPerc', $selected_event->scontoPerc, ['class' => 'input', 'id' => 'scontoPerc']) }}
-        @if ($errors->first('scontoPerc'))
-        <ul class="errors">
-            @foreach ($errors->get('scontoPerc') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
-        @endif
-
-        {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
-        {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], $selected_event->sconto, ['class' => 'input','id' => 'sconto']) }}
-        @if ($errors->first('sconto'))
-        <ul class="errors">
-            @foreach ($errors->get('sconto') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
-        @endif
-
-        {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
-        {{ Form::text('nGiorniAttSconto', $selected_event->nGiorniAttSconto, ['class' => 'input', 'id' => 'scontoPerc']) }}
-        @if ($errors->first('nGiorniAttSconto'))
-        <ul class="errors">
-            @foreach ($errors->get('nGiorniAttSconto') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
         @endif
         {{ Form::label('societa', 'Società') }}
         {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
@@ -154,21 +119,20 @@
             @endforeach
         </ul>
         @endif
-
-        {{ Form::label('Xcord', 'Xcord') }}
-        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord']) }}
-        @if ($errors->first('Xcord'))
-        <ul class="errors">
-            @foreach ($errors->get('Xcord') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
         {{ Form::label('Ycord', 'Ycord') }}
         {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord']) }}
         @if ($errors->first('Ycord'))
         <ul class="errors">
             @foreach ($errors->get('Ycord') as $message)
+            <li>{{ $message }}</li>
+            @endforeach
+        </ul>
+        @endif
+        {{ Form::label('Xcord', 'Xcord') }}
+        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord']) }}
+        @if ($errors->first('Xcord'))
+        <ul class="errors">
+            @foreach ($errors->get('Xcord') as $message)
             <li>{{ $message }}</li>
             @endforeach
         </ul>
@@ -232,37 +196,7 @@
                 @foreach ($errors->get('prezzo') as $message)
                 <li>{{ $message }}</li>
                 @endforeach
-            </ul>  
-            @endif
-
-            {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-            {{ Form::text('scontoPerc', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
-            @if ($errors->first('scontoPerc'))
-            <ul class="errors">
-                @foreach ($errors->get('scontoPerc') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
-
-            {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
-            {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'sconto']) }}
-            @if ($errors->first('sconto'))
-            <ul class="errors">
-                @foreach ($errors->get('sconto') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
-
-            {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
-            {{ Form::text('nGiorniAttSconto', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
-            @if ($errors->first('nGiorniAttSconto'))
-            <ul class="errors">
-                @foreach ($errors->get('nGiorniAttSconto') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
+            </ul>
             @endif
             {{ Form::label('societa', 'Società') }}
             {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
@@ -309,21 +243,20 @@
                 @endforeach
             </ul>
             @endif
-
-            {{ Form::label('Xcord', 'Xcord') }}
-            {{ Form::text('Xcord', '', [ 'id' => 'Xcord']) }}
-            @if ($errors->first('Xcord'))
-            <ul class="errors">
-                @foreach ($errors->get('Xcord') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
             {{ Form::label('Ycord', 'Ycord') }}
             {{ Form::text('Ycord', '', [ 'id' => 'Ycord']) }}
             @if ($errors->first('Ycord'))
             <ul class="errors">
                 @foreach ($errors->get('Ycord') as $message)
+                <li>{{ $message }}</li>
+                @endforeach
+            </ul>
+            @endif
+            {{ Form::label('Xcord', 'Xcord') }}
+            {{ Form::text('Xcord', '', [ 'id' => 'Xcord']) }}
+            @if ($errors->first('Xcord'))
+            <ul class="errors">
+                @foreach ($errors->get('Xcord') as $message)
                 <li>{{ $message }}</li>
                 @endforeach
             </ul>
