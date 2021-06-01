@@ -32,6 +32,9 @@ class NewEventRequest extends FormRequest {
         return [
             'nome' => 'required|max:25',
             'prezzo' => 'required|numeric|min:0',
+            'sconto' => 'required',
+            'scontoPerc' => 'required|numeric|min:0|max:100',
+            'nGiorniAttSconto' => 'required|numeric|min:0',
             'societa' => 'required|max:30',
             'luogo' => 'required|max:30',
              'bigl_tot' => 'required|numeric|min:0',
@@ -44,7 +47,6 @@ class NewEventRequest extends FormRequest {
             'data' => 'required|date',
             'orario' => 'required|date_format:H:i',
             'image' => 'file|mimes:jpeg,png|max:1024',
-            
         ];
     }
 

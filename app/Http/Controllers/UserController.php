@@ -44,6 +44,9 @@ class UserController extends Controller{
          $Event = $this->_catalogModel->getEventById($request->eventId);
          $User = $this->_userModel->getUser();
          $this->_userModel->modifyTicketNumberById($request->eventId,$request->numbiglietti);
+         //Aggiorna incasso di un evento relativo alla compagnia
+         $this->_userModel->modifyTicketIncassoById($request->eventId,$request->numbiglietti);
+         
          $Ticket = $this->_userModel->insertTicket($request->eventId,$User->id,$request->numbiglietti,$request->priceBox);
          $Card = array('nome' => $request->cardname,'numero' => $request->cardnumber,
                        'data' => "$request->year/$request->month",'cvv' => $request->cvv);

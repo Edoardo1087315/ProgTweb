@@ -2,26 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\catalog;
+use App\Models\application_company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Resources\Event;
 use App\Http\Requests\NewEventRequest;
-use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller {
 
-    protected $_catalogModel;
+    protected $_companyModel;
 
     public function __construct() {
         $this->middleware('can:isCompany');
-        $this->_catalogModel = new catalog;
+        $this->_companyModel = new application_company;
     }
 
     public function showAreaOrg() {
 
-        $TotalEvents = $this->_catalogModel->getCompanyEvents();
-        return view('Area_Organizzazione')->with('events', $TotalEvents);
+        $TotalEvents = $this->_companyModel->getCompanyEvents();
+        $GuadagnoTot = 0;
+        foreach ($TotalEvents as $event) {
+            $GuadagnoTot += $event->incassoTotale;
+        }
+        return view('Area_Organizzazione')->with('events', $TotalEvents)->with('guadagno', $GuadagnoTot);
     }
 
     public function storeEvent(NewEventRequest $request) {
@@ -55,24 +58,8 @@ class CompanyController extends Controller {
         } else {
             $imageName = $request->image_path;
         }
-        $event = $this->_catalogModel->getEventById($request->eventid);
-        $event->nome = $request->nome;
-        $event->societa = $request->societa;
-        $event->luogo = $request->luogo;
-        $event->prezzo = $request->prezzo;
-        $event->luogo = $request->luogo;
-        $event->bigl_tot = $request->bigl_tot;
-        $event->bigl_acquis = $request->bigl_acquis;
-        $event->categoria = $request->categoria;
-        $event->Ycord = $request->Ycord;
-        $event->Xcord = $request->Xcord;
-        $event->descrizione = $request->descrizione;
-        $event->programma = $request->programma;
-        $event->data = $request->data;
-        $event->orario = $request->orario;
-
-        $event->image = $imageName;
-        $event->save();
+        $event = $this->_companyModel->updateEventById($request->eventid, $request,$imageName);
+        
 
         if ($request->hasFile('image')) {
             $destinationPath = storage_path() . '/app/EventImages';
@@ -83,14 +70,19 @@ class CompanyController extends Controller {
     }
 
     public function deleteEvent($id) {
-        $this->_catalogModel->getEventById($id)->delete();
+        $this->_companyModel->getEventById($id)->delete();
         return redirect('AreaOrganizzazione');
     }
 
     public function getEventToUpdate($id) {
-        $selected_event = $this->_catalogModel->getEventById($id);
-        $TotalEvents = $this->_catalogModel->getCompanyEvents();
-        return view('Area_Organizzazione')->with('selected_event', $selected_event)->with('events', $TotalEvents);
+        $selected_event = $this->_companyModel->getEventById($id);
+        $TotalEvents = $this->_companyModel->getCompanyEvents();
+
+        $GuadagnoTot = 0;
+        foreach ($TotalEvents as $event) {
+            $GuadagnoTot += $event->incassoTotale;
+        } 
+        return view('Area_Organizzazione')->with('selected_event', $selected_event)->with('events', $TotalEvents)->with('guadagno', $GuadagnoTot);
     }
 
     //
