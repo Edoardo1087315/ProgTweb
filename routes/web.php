@@ -66,7 +66,7 @@ Route::post('/AreaOrganizzazione/modifica', 'CompanyController@updateEvent')
 Route::post('/AreaOrganizzazione/add', 'CompanyController@storeEvent')
         ->name('store_event');
 
-Route::get('/AreaOrganizzazione/deleteEvent/{id}', 'CompanyController@deleteEvent')
+Route::post('/AreaOrganizzazione/deleteEvent', 'CompanyController@deleteEvent')
         ->name('deleteEvent');
 
 Route::get('/AreaOrganizzazione/getEventToUpdate/{id}', 'CompanyController@getEventToUpdate')
@@ -79,25 +79,25 @@ Route::get('/AreaOrganizzazione/getEventToUpdate/{id}', 'CompanyController@getEv
 Route::get('/AreaAmministratore', 'AdminController@showAreaAdmin')
         ->name('Area_Admin');
 
-Route::get('/FaqAdmin','AdminController@showAdminFaq')
+Route::get('/AreaAmministratore/FaqAdmin','AdminController@showAdminFaq')
         ->name('Faq_Admin');
 
-Route::get('/delete_user/{userid}','AdminController@deleteUser')
+Route::post('/AreaAmministratore/delete_user','AdminController@deleteUser')
         ->name('delete_user');
 
-Route::post('/update_company','AdminController@updateCompanyRequest')
+Route::post('/AreaAmministratore/update_company','AdminController@updateCompanyRequest')
         ->name('update_company');
 
-Route::post('/new_company','AdminController@newCompanyRequest')
+Route::post('/AreaAmministratore/new_company','AdminController@newCompanyRequest')
         ->name('new_company');
 
-Route::get('/delete_company/{companyid}','AdminController@getCompanyToDelete')
-        ->name('company_to_delete');
+Route::post('/AreaAmministratore/delete_company','AdminController@getCompanyToDelete')
+        ->name('delete_company');
 
-Route::get('/update_company/{companyid}','AdminController@getCompanyToUpdate')
+Route::get('/AreaAmministratore/update_company/{companyid}','AdminController@getCompanyToUpdate')
         ->name('company_to_update');
 
-Route::post('/modificaFaq','AdminController@getFaqToUpdate')
+Route::post('/AreaAmministratore/modificaFaq','AdminController@getFaqToUpdate')
         ->name('modificaFaq');
 
 Route::post('/deleteFaq', 'AdminController@getFaqToDelete')

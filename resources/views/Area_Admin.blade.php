@@ -24,14 +24,12 @@
             doElemValidation(formElementId, new_company_Url, new_company_formId);
         });
         
-
         
          //update compagnia con ajax
         
         var update_compant_Url ="{{route('update_company')}}";
         var update_company_formId ='updateCompany';
         
-
         
         $("#updateCompany").on('submit', function (event) {
             event.preventDefault();
@@ -42,16 +40,13 @@
             var formElementId = $(this).attr('id');
             doElemValidation(formElementId, update_compant_Url, update_company_formId);
         });
-
         //animazione finestre, ombre ecc...
-
         var clienti = $('.gest-clienti');
         var organizzazione = $('.gest-organizzazioni');
         var childright = $('.float-child-right');
         var childleft = $('.float-child-left');
         var wrap = $('.wrap_admin');
         var button = $('#table_org div ');
-
         childleft.on('click', function () {
         if (!childleft.hasClass('active_admin')) {
         childleft.addClass('active_admin');
@@ -71,9 +66,7 @@
         clienti.animate({opacity: '100%'}, "slow");
         $('#aggiungiorg').hide();
         }
-
         });
-
         childright.on('click', function child() {
         if (!childright.hasClass('active_admin')) {
         childright.addClass('active_admin');
@@ -109,7 +102,6 @@
         if(($('#companyid').val() !== undefined)){
           childright.click();            
         };
-
 });
 </script>
 </head>
@@ -124,7 +116,6 @@
         <h2>gestione organizzazioni</h2>
     </div>
 </div>
-
 <div class="wrap_admin">
     <div class="gest-clienti">
         <table class="table_area_admin">
@@ -148,13 +139,14 @@
                 <td>{{$user->data_nascita}}</td>
                 <td>{{$user->telefono}}</td>
                 <td>{{$user->sito}}</td>
-                <td><a href="{{route('delete_user',[$user->id])}}">Delete</a></td>
+                <td>{{Form::open(array('route' => 'delete_user','class' => 'form_area_admin','id' => 'delete_user'))}}
+                    {{Form::hidden('userid', $user->id, )}}
+                    {{ Form::submit('elimina', ['class' => 'delete_button']) }}
+                    {{Form::Close()}}</td>
             </tr>
             @endif
             @endforeach
-
         </table>
-
     </div>
     <div class="gest-organizzazioni hide">
         <div class="table-gest-organizzazioni">
@@ -172,7 +164,6 @@
             </tr>
             @foreach($users as $user)
             @if($user->role == ('company'))
-
             <tr>
                 <td id="nome{{$user->id}}">{{$user->nome}}</td>
 
@@ -186,8 +177,11 @@
 
                 <td>{{$user->sitoweb}}</td>
 
-                <td> <a href="{{Route('company_to_delete',[$user->id]) }}">Delete</a></td>
-
+                <td>{{Form::open(array('route' => 'delete_company','class' => 'form_area_admin','id' => 'delete_company'))}}
+                    {{Form::hidden('userid', $user->id, )}}
+                    {{ Form::submit('elimina', ['class' => 'delete_button']) }}
+                    {{Form::Close()}}</td>
+                
                 <td><a href="{{Route('company_to_update',[$user->id])}}">Update</a></td>
                 
                 <td><a class="dettagli_company" at="{{$user->id}}">Dettagli</a></td>

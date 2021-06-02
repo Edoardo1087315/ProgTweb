@@ -38,8 +38,12 @@
                 <td>{{$event->prezzo*$event->bigl_acquis}}</td>
                 <td>
                     <div class="btn_Tab"><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
-                            <img src="{{ asset('images/Edit.png')}}" >
-                        </a> <a href="{{Route('deleteEvent',[$event->eventid]) }}"><img src="{{ asset('images/Btn.png')}}" ></a> </div></td>
+                            <img src="{{ asset('images/Edit.png')}}" ></a>
+                            {{Form::open(array('route' => 'deleteEvent','id' => 'deleteEvent'))}}
+                    {{Form::hidden('eventid', $event->eventid, )}}
+                    {{Form::image('image', 'elimina', ['type'=> 'submit', 'class' => 'delete_button', 'src' => asset('images/Btn.png')]) }}
+                    {{Form::Close()}}
+                        </div></td>
             </tr>        
             <p hidden>{{$s+=$event->prezzo*$event->bigl_acquis}}</p>
             @endforeach

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Resources\Event;
 use App\Http\Requests\NewEventRequest;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\DeleteEventRequest;
 
 class CompanyController extends Controller {
 
@@ -82,8 +83,8 @@ class CompanyController extends Controller {
         return redirect('AreaOrganizzazione');
     }
 
-    public function deleteEvent($id) {
-        $this->_catalogModel->getEventById($id)->delete();
+    public function deleteEvent(DeleteEventRequest $request) {
+        $this->_catalogModel->getEventById($request->eventid)->delete();
         return redirect('AreaOrganizzazione');
     }
 

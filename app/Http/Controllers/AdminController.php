@@ -6,6 +6,7 @@ use App\User;
 use App\Models\catalog;
 use App\Models\Resources\Ticket;
 use App\Http\Requests\NewCompanyRequest;
+use App\Http\Requests\DeleteUserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Models\faq;
 use App\Models\Resources\Faqs;
@@ -30,11 +31,10 @@ Class AdminController extends Controller{
         return view('Area_admin')->with('users',$users);
     }
     
-        public function deleteUser($userid){
-            Ticket::where('user_id',$userid)->delete();
-            User::where('id',$userid)->delete();
-            $users = $this->_userModel->getUsers();
-            return view('Area_admin')->with('users',$users);
+        public function deleteUser(DeleteUserRequest $request){
+        Ticket::where('user_id',$request->userid)->delete();
+        User::where('id',$request->userid)->delete();
+        return redirect('AreaAmministratore');
         }
         
         public function newCompanyRequest(NewCompanyRequest $request) {
@@ -60,8 +60,8 @@ Class AdminController extends Controller{
             return response()->json(['redirect' => route('Area_Admin')]);
         }
         
-        public function getCompanyToDelete($id) {
-        $this->_userModel->getUserById($id)->delete();
+        public function getCompanyToDelete(DeleteUserRequest $request) {
+        User::where('id',$request->userid)->delete();
         return redirect('AreaAmministratore');
     }
 
