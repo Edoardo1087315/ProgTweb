@@ -18,6 +18,7 @@
                   }
                 }
                 </script>
+    @stack('scripts')
     </head>
      <body>
 	<div class="header">

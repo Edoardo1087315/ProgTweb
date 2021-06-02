@@ -2,6 +2,7 @@
 @section('title', 'Area Amministratore')
 @section('content')
 
+@push('scripts')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://bitstorm.org/jquery/shadow-animation/jquery.animate-shadow-min.js"></script>
 <script src="{{ asset('js/functions.js') }}" ></script>
@@ -104,7 +105,7 @@
         };
 });
 </script>
-</head>
+@endpush
 
 @isset($users)
 <div class="float-container">

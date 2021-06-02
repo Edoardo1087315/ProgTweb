@@ -1,6 +1,7 @@
 @extends('layouts/public')
 
 @section('content')
+@push('scripts')
        <script>
                 function price(){
                     var numBiglietti = parseInt(document.getElementById("numeroBiglietti").value);
@@ -10,6 +11,7 @@
                     document.getElementById("priceBox").value = prezzoTotale;
                 }
                     </script>
+@endpush
 <div class = "wrapper">
             {{Form::open(['route' => 'Compra','class' => 'form-biglietto'])}}
                 <fieldset id="DatiEvento">

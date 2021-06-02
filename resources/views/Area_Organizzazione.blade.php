@@ -310,7 +310,7 @@
 
 
 
-
+@push('scripts')
 <script>
     //accordion
     var acc = document.getElementsByClassName("accordion_areaOrg");
@@ -328,4 +328,5 @@
         });
     }
 </script>
+@endpush
 @endsection

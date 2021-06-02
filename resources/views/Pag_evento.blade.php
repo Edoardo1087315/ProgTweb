@@ -78,6 +78,7 @@
 					</div>				
 				</div>
 			</div>
+@push('scripts')
 			<script>
 				//accordion
 				var acc = document.getElementsByClassName("accordion_event");
@@ -95,5 +96,6 @@
 				  });
 				}
 			</script>
+@endpush
 @endisset
 @endsection
