@@ -136,10 +136,15 @@
                 <td>{{$user->data_nascita}}</td>
                 <td>{{$user->telefono}}</td>
                 <td>{{$user->sito}}</td>
-                <td>{{Form::open(array('route' => 'delete_user','class' => 'form_area_admin','id' => 'delete_user'))}}
-                    {{Form::hidden('userid', $user->id, )}}
-                    {{ Form::submit('elimina', ['class' => 'delete_button']) }}
-                    {{Form::Close()}}</td>
+                <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_user'))}}
+                        {{Form::hidden('userid', $user->id, )}}
+                        {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
+                        {{Form::Close()}}</div></td>
+                
+                
+                
+                
+                
             </tr>
             @endif
             @endforeach
@@ -174,12 +179,18 @@
 
                 <td>{{$user->sitoweb}}</td>
 
-                <td>{{Form::open(array('route' => 'delete_company','class' => 'form_area_admin','id' => 'delete_company'))}}
-                    {{Form::hidden('userid', $user->id, )}}
-                    {{ Form::submit('elimina', ['class' => 'delete_button']) }}
-                    {{Form::Close()}}</td>
+                <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_company'))}}
+                        {{Form::hidden('userid', $user->id, )}}
+                        {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
+                        {{Form::Close()}}</div></td>
                 
-                <td><a href="{{Route('company_to_update',[$user->id])}}">Update</a></td>
+                
+                
+                
+                <td><div class="btn_Tab"><a href="{{Route('company_to_update',[$user->id]) }}" >
+                            <img src="{{ asset('images/Edit.png')}}" class="btn_img" ></a></td>
+                
+                
                 
                 <td><a class="dettagli_company" at="{{$user->id}}">Dettagli</a></td>
 

@@ -91,9 +91,6 @@ Route::post('/AreaAmministratore/update_company','AdminController@updateCompanyR
 Route::post('/AreaAmministratore/new_company','AdminController@newCompanyRequest')
         ->name('new_company');
 
-Route::post('/AreaAmministratore/delete_company','AdminController@getCompanyToDelete')
-        ->name('delete_company');
-
 Route::get('/AreaAmministratore/update_company/{companyid}','AdminController@getCompanyToUpdate')
         ->name('company_to_update');
 

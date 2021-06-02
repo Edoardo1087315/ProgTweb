@@ -64,13 +64,6 @@ Class AdminController extends Controller{
         User::where('id',$request->userid)->delete();
         return redirect('AreaAmministratore');
     }
-
-    public function getCompanyToUpdate($id) {
-        $selected_company = $this->_userModel->getUserById($id);
-        $users = $this->_userModel->getUsers();
-        $events = $this->_catalogModel->getNotPaginateEvents();
-        return view('Area_Admin')->with('selected_company', $selected_company)->with('users', $users);
-    }
     
     public function getFaqToDelete(DeleteFaqRequest $request){
         Faqs::where('faqId',$request->faqId)->delete();
