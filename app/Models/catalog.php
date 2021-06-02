@@ -17,13 +17,11 @@ class Catalog {
     public function getEventById($eventId){
         return Event::where('eventid',$eventId)->first();
     }
+       
     public function getExpiringEvents(){
-        return $events = Event::orderBy('data')->take(5)->get();
-    }
-    
-    public function getCompanyEvents() {
-        $societa = Auth::user()->nome;
-        return $events = Event::where('societa',$societa)->get();
+        return $events = Event::where('data', '>=', date('Y-m-d'))
+            ->orderBy('data')
+            ->take(5)->get();
     }
 
     public function getEventsBySearch($request){

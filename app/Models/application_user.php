@@ -25,6 +25,12 @@ class application_user {
         $Event->bigl_acquis = $Event->bigl_acquis + $numbiglietti;
         $Event->save();
     }
+    //Funzione aggiunta per aggiornare incasso compagnie su singolo eventp
+    public function modifyTicketIncassoById($eventId, $numbiglietti) {
+        $Event = Event::find($eventId);
+        $Event->incassoTotale += $numbiglietti*$Event->getPrice($Event->sconto);
+        $Event->save();
+    }
     public function insertTicket($eventId,$userId,$nBiglietti,$price){
         $data = array('user_id' => $userId,'eventid' => $eventId, 'quantita' => $nBiglietti, 'prezzo' => $price ,'data_acquisto' => date("Y/m/d"));
         $ticket = new Ticket();

@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-
 // Aggiunti per response JSON
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
@@ -32,10 +31,13 @@ class NewEventRequest extends FormRequest {
         return [
             'nome' => 'required|max:25',
             'prezzo' => 'required|numeric|min:0',
+            'sconto' => 'required',
+            'scontoPerc' => 'required|numeric|min:0|max:100',
+            'nGiorniAttSconto' => 'required|numeric|min:0',
             'societa' => 'required|max:30',
             'luogo' => 'required|max:30',
-             'bigl_tot' => 'required|numeric|min:0',
-             'bigl_acquis' => 'required|min:0',
+            'bigl_tot' => 'required|numeric|min:0',
+            'bigl_acquis' => 'required|min:0',
             'categoria' => 'required|max:30',
             'Ycord' => 'required|numeric',
             'Xcord' => 'required|numeric',
@@ -44,10 +46,7 @@ class NewEventRequest extends FormRequest {
             'data' => 'required|date',
             'orario' => 'required|date_format:H:i',
             'image' => 'file|mimes:jpeg,png|max:1024',
-            
         ];
     }
-
-  
 
 }
