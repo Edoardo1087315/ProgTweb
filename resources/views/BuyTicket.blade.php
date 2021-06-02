@@ -3,13 +3,15 @@
 @section('content')
 @push('scripts')
 <script>
-    function price() {
-        var numBiglietti = parseInt(document.getElementById("numeroBiglietti").value);
-        var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
-        var prezzoTotale = numBiglietti * prezzo;
-        console.log(prezzoTotale, numBiglietti, prezzo);
-        document.getElementById("priceBox").value = prezzoTotale;
-    }
+    window.onload = function(){
+        function price() {
+            var numBiglietti = parseInt(document.getElementById("numeroBiglietti").value);
+            var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
+            var prezzoTotale = numBiglietti * prezzo;
+            console.log(prezzoTotale, numBiglietti, prezzo);
+            document.getElementById("priceBox").value = prezzoTotale;
+        }
+    };
 </script>
 @endpush
 <div class = "wrapper">

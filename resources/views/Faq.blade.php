@@ -8,10 +8,10 @@
         /*Meccanismo accordion*/
         $(".accordion").on("click", function (){
             $(this).toggleClass("activefaq");
-            /*La proprietà nextElementSibling ritorna un riferimento all'oggetto nel DOM associato all'elemento                                 immediatamente successivo(cioè la tag) a quello su cui chiamo la proprietà */
+            /*La proprietà nextElementSibling ritorna un riferimento all'oggetto nel DOM associato all'elemento immediatamente successivo(cioè la tag) a quello su cui chiamo la proprietà */
             var panel = this.nextElementSibling;
              if (panel.style.maxHeight) {
-                    /*La proprietà maxHeight è la proprietà che indica l'altezza msssima di un elemento. Se messa a                                       null l'elemento scompare ed è come se non venisse visualizzato*/
+                    /*La proprietà maxHeight è la proprietà che indica l'altezza msssima di un elemento. Se messa a null l'elemento scompare ed è come se non venisse visualizzato*/
                     panel.style.maxHeight = null;
                 } else {
                     panel.style.maxHeight = panel.scrollHeight + "px";

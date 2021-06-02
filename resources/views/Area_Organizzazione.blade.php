@@ -379,21 +379,20 @@
 
 @push('scripts')
 <script>
-    //accordion
-    var acc = document.getElementsByClassName("accordion_areaOrg");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active_areaOrg");
+        //accordion
+    $(function () {
+        $(".accordion_areaOrg").on("click", function (){
+            $(this).toggleClass("active_areaOrg");
+            /*La proprietà nextElementSibling ritorna un riferimento all'oggetto nel DOM associato all'elemento immediatamente successivo(cioè la tag) a quello su cui chiamo la proprietà */
             var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-            }
+             if (panel.style.maxHeight) {
+                    /*La proprietà maxHeight è la proprietà che indica l'altezza msssima di un elemento. Se messa a null l'elemento scompare ed è come se non venisse visualizzato*/
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
         });
-    }
+    });
 </script>
 @endpush
 @endsection
