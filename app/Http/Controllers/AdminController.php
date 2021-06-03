@@ -51,6 +51,7 @@ Class AdminController extends Controller{
             $user = $this->_userModel->getUserById($request->companyid);
             
                  $user->nome = $request->nome;
+                 $user->username = $request->username;
                  $user->cognome = $request->cognome;
                  $user->data_nascita = $request->data_nascita;
                  $user->sitoweb = $request->sitoweb;
