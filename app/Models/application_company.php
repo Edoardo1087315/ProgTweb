@@ -17,7 +17,16 @@ class application_company {
         $societa = Auth::user()->nome;
         return $events = Event::where('societa', $societa)->get();
     }
-
+    
+    public function addEvent($Event, $imageName) {
+        
+        $event = new Event;
+        $event->fill($Event->validated());
+        $event->image = $imageName;
+        $event->save();
+        
+    }
+    
     public function updateEventById($id, $request,$imageName) {
         $event =  Event::find($id);
         $event->nome = $request->nome;

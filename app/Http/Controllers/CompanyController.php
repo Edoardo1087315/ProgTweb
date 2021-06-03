@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\application_company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Resources\Event;
 use App\Http\Requests\NewEventRequest;
 use App\Http\Requests\DeleteEventRequest;
 
@@ -36,12 +35,7 @@ class CompanyController extends Controller {
         } else {
             $imageName = NULL;
         }
-
-        $event = new Event;
-        $event->fill($request->validated());
-        $event->image = $imageName;
-        $event->save();
-
+        $this->_companyModel->addEvent($request,$imageName);
         if (!is_null($imageName)) {
             $destinationPath = storage_path() . '/app/EventImages';
             $image->move($destinationPath, $imageName);
@@ -50,7 +44,7 @@ class CompanyController extends Controller {
          return response()->json(['redirect' => route('Area_Organizzazione')]);
     }
 
-    public function updateEvent(NewEventRequest $request) {
+    public function updateEvent(UpdateEventRequest $request) {
 
 
         if ($request->hasFile('image')) {

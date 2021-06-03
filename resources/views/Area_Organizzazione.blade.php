@@ -6,24 +6,25 @@
 $(function(){
     
     var action_url = "{{ route('updateEvent') }}";
-    var formId = 'updateevent';
+    var updateFormId = 'updateevent';
 
     $("#updateevent").on('submit', function (event) {
         event.preventDefault();
-        doFormValidation(action_url, formId);
+        doFormValidation(action_url, updateFormId);
     });
 
     $("form#updateevent :input").on('blur', function (event) {
         var formElementId = $(this).attr('id');
+        console.log(formId)
         doElemValidation(formElementId, action_url, formId);
     });
     
     var action_url = "{{ route('store_event') }}";
-    var formId = 'addevent';
+    var addFormId = 'addevent';
 
     $("#addevent").on('submit', function (event) {
         event.preventDefault();
-        doFormValidation(action_url, formId);
+        doFormValidation(action_url, addFormId);
     });
 
     $("form#addevent :input").on('blur', function (event) {
