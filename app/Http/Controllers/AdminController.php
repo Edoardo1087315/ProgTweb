@@ -2,100 +2,68 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Models\catalog;
-use App\Models\Resources\Ticket;
+use App\Models\application_public;
+use App\Models\application_admin;
 use App\Http\Requests\NewCompanyRequest;
 use App\Http\Requests\DeleteUserRequest;
-use Illuminate\Support\Facades\Hash;
-use App\Models\faq;
-use App\Models\Resources\Faqs;
 use App\Http\Requests\NewFaqRequest;
-use App\Http\Requests\DeleteFaqRequest;
 use App\Http\Requests\UpdateFaqRequest;
+use App\Http\Requests\DeleteFaqRequest;
 
 Class AdminController extends Controller{
 
-        protected $_userModel;
-        protected $_catalogModel;
-        protected $_FaqModel;
+    protected $_applicationPublic;
+    protected $_applicationAdmin;
     
-        public function __construct() {
+    public function __construct() {
         $this->middleware('can:isAdmin');
-        $this->_userModel =new User;
-        $this->_catalogModel = new catalog;
-        $this->_FaqModel = new faq;
-        }
+        $this->_applicationPublic = new application_public;
+        $this->_applicationAdmin = new application_admin;
+    }
          
-        public function showAreaAdmin(){
-        $users = $this->_userModel->getUsers();
+    public function showAreaAdmin(){
+       $users = $this->_applicationAdmin->getUsers();
         return view('Area_admin')->with('users',$users);
     }
     
         public function deleteUser(DeleteUserRequest $request){
-        Ticket::where('user_id',$request->userid)->delete();
-        User::where('id',$request->userid)->delete();
+          $this->_applicationAdmin->deleteUserById($request->userid);
+        $this->_applicationAdmin->deleteTicketsById($request->userid);
         return redirect('AreaAmministratore');
         }
         
         public function newCompanyRequest(NewCompanyRequest $request) {
-            $user = new User;
-            $user->fill($request->validated());
-            $user->role = 'company';
-            $user->password = Hash::make($request->password);
-            $user->save();
+        $this->_applicationAdmin->addCompany($request);
             return response()->json(['redirect' => route('Area_Admin')]);
         }
         
         public function updateCompanyRequest(NewCompanyRequest $request){
-            $user = $this->_userModel->getUserById($request->companyid);
-            
-                 $user->nome = $request->nome;
-                 $user->username = $request->username;
-                 $user->cognome = $request->cognome;
-                 $user->data_nascita = $request->data_nascita;
-                 $user->sitoweb = $request->sitoweb;
-                 $user->email = $request->email;
-                 $user->telefono = $request->telefono;
-                 
-                 $user->save();
+             $this->_applicationAdmin->updateCompany($request);
             return response()->json(['redirect' => route('Area_Admin')]);
         }
-        
-        public function getCompanyToDelete(DeleteUserRequest $request) {
-        User::where('id',$request->userid)->delete();
-        return redirect('AreaAmministratore');
-    }
-    
+            
         public function getCompanyToUpdate($id) {
-        $selected_company = $this->_userModel->getUserById($id);
-        $users = $this->_userModel->getUsers();
+            $selected_company = $this->_applicationAdmin->getUserById($id);
+            $users = $this->_applicationAdmin->getUsers();
         return view('Area_Admin')->with('selected_company', $selected_company)->with('users', $users);
         }
     
     public function getFaqToDelete(DeleteFaqRequest $request){
-        Faqs::where('faqId',$request->faqId)->delete();
+        $this->_applicationAdmin->deleteFaqById($request->faqId);
         return redirect('Faq');
     }
     
     public function getFaqToUpdate(UpdateFaqRequest $request){
-      $faq = $this->_FaqModel->getFaqById($request->faqId);
-           $faq->Domanda = $request->Domanda;
-           $faq->Risposta = $request->Risposta;
-      
-      $faq->save();
-           
-            return response()->json(['redirect' => route('Faq')]);
+        $this->_applicationAdmin->updateFaq($request);
+        return response()->json(['redirect' => route('Faq')]);
     }
     
     public function newFaqRequest(NewFaqRequest $request) {
-            $faq = new Faqs;
-            $faq->fill($request->validated());
-            $faq->save();
+             $this->_applicationAdmin->addFaq($request);
             return response()->json(['redirect' => route('Faq')]);
         }
     public function showAdminFaq(){
-        $Faq = Faqs::all();
+        $Faq = $this->_applicationPublic->getFaq();
         return view('Faq_Admin')->with('_faq',$Faq);
     }
     

@@ -46,6 +46,7 @@
         $(".faq_button").each(function (){
                 $(this).on("click",function(){
                     $("#fieldsetNew").hide();
+                    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
                     $("#fieldsetUpdate :input[name=Domanda]").attr("id","Domanda");
                     $("#fieldsetUpdate :input[name=Risposta]").attr("id","Risposta");
                     $("#fieldsetUpdate").show(); 
@@ -62,6 +63,7 @@
         });
         $(".nuovaFaq_button").on("click", function(){          
            $("#fieldsetUpdate").hide();
+           $("html, body").animate({ scrollTop: $(document).height() }, 1000);
            $("#fieldsetUpdate :input[type=text]").attr("id","id_hide");
            $("#fieldsetNew").show(); 
         });

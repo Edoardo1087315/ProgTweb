@@ -40,12 +40,4 @@ class User extends Authenticatable
         $role = (array)$role;
         return in_array($this->role, $role);
     }
-    
-    public function getUsers(){
-        return User::all();
-    }
-    
-    public function getUserById($userid){
-        return User::where('id',$userid)->first();
-    }
 }

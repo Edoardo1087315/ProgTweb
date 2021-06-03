@@ -2,35 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\catalog;
-use App\Models\faq;
-use App\User;
+use App\Models\application_public;
 use App\Http\Requests\SearchRequest;
 
 class PublicController extends Controller  {
 
-    protected $_catalogModel;
-    protected $_faqsModel;
-    protected $_userModel;
+    protected $_applicationPublic;
+  
 
 
     public function __construct() {
-        $this->_catalogModel = new catalog;
-        $this->_faqsModel = new faq;
-        $this->_userModel = new user;
+        $this->_applicationPublic = new application_public;
     }
 
     public function showHome() {
-        $ExpiringEvents = $this->_catalogModel->getExpiringEvents();
-        $PopularEvents = $this->_catalogModel->getPopularEvents();
+        $ExpiringEvents = $this->_applicationPublic->getExpiringEvents();
+        $PopularEvents = $this->_applicationPublic->getPopularEvents();
         return view('frontpage')->with('expiringEvents',$ExpiringEvents)
                                 ->with('popularEvents', $PopularEvents );
     }
     
     public function showCatalog() {
         
-        $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
-        $Events = $this->_catalogModel->getEvents();
+        $TotalEvents = $this->_applicationPublic->getNotPaginateEvents();
+        $Events = $this->_applicationPublic->getEvents();
         return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);
     }
     
@@ -45,12 +40,12 @@ class PublicController extends Controller  {
     }
     
     public function showFaq() {
-        $Faq = $this->_faqsModel->getFaq();
+        $Faq = $this->_applicationPublic->getFaq();
         return view('Faq')->with('faq',$Faq); //aggiunta faq.php, Faq.php
     }
     public function showEvent($eventid) {
-        $Event = $this->_catalogModel->getEventById($eventid);
-        $numPartecipero = $this->_catalogModel->getNumPartecipero($eventid);
+        $Event = $this->_applicationPublic->getEventById($eventid);
+        $numPartecipero = $this->_applicationPublic->getNumPartecipero($eventid);
         return view('Pag_evento')->with('event',$Event)->with('nPartecipero',$numPartecipero);
     }
     public function showAccedi() {
@@ -63,11 +58,11 @@ class PublicController extends Controller  {
     }
     public function search(SearchRequest $request) {
         $filters = array('descrizione' => $request->descrizione,'luogo' =>$request->luogo,'data' =>$request->data, 'organizzazione' => $request->organizzazione);
-        $Events = $this->_catalogModel->getEventsBySearch($filters);
-        $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
+        $Events = $this->_applicationPublic->getEventsBySearch($filters);
+        $TotalEvents = $this->_applicationPublic->getNotPaginateEvents();
         
         /*return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);*/
         return response()->json(['redirect' => route('catalog')]);     
     }
-    
+   
 }

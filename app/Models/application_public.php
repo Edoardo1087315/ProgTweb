@@ -4,8 +4,10 @@ namespace App\Models;
 
 use App\Models\Resources\Event;
 use App\Models\Resources\Partecipation;
+use App\Models\Resources\Faqs;
 use Illuminate\Support\Facades\Auth;
-class Catalog {
+
+class application_public {
 
     public function getEvents() {
        return Event::paginate(10);
@@ -38,6 +40,9 @@ class Catalog {
     public function getNumPartecipero($eventid){
         $partecipero = Partecipation::where('eventid',$eventid)->get();
         return count($partecipero);
+    }
+    public function getFaq() {
+       return Faqs::all();
     }
     
 }
