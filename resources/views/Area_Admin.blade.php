@@ -24,7 +24,7 @@
         
          //update compagnia con ajax
         
-        var update_compant_Url ="{{route('update_company')}}";
+        var update_compant_Url ="{{route('update_company',[$selected_company])}}";
         var update_company_formId ='updateCompany';
         
         
@@ -206,7 +206,7 @@
         @if(@isset($selected_company))
         <div id="modificaorg" class="">
             <hr>
-            {{Form::open(array('route' => 'update_company','class' => 'form_area_admin','id' => 'updateCompany'))}}
+            {{Form::open(array('route' => array('update_company',$selected_company),'class' => 'form_area_admin','id' => 'updateCompany'))}}
             {{ Form::hidden('companyid', $selected_company->id , [ 'id' => 'companyid']) }}
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('nome', 'nome Società:')}}
