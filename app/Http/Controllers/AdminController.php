@@ -12,6 +12,7 @@ use App\Models\faq;
 use App\Models\Resources\Faqs;
 use App\Http\Requests\NewFaqRequest;
 use App\Http\Requests\DeleteFaqRequest;
+use App\Http\Requests\UpdateFaqRequest;
 
 Class AdminController extends Controller{
 
@@ -70,7 +71,7 @@ Class AdminController extends Controller{
         return redirect('Faq');
     }
     
-    public function getFaqToUpdate(NewFaqRequest $request){
+    public function getFaqToUpdate(UpdateFaqRequest $request){
       $faq = $this->_FaqModel->getFaqById($request->faqId);
            $faq->Domanda = $request->Domanda;
            $faq->Risposta = $request->Risposta;

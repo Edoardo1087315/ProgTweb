@@ -66,7 +66,8 @@ class PublicController extends Controller  {
         $Events = $this->_catalogModel->getEventsBySearch($filters);
         $TotalEvents = $this->_catalogModel->getNotPaginateEvents();
         
-        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);        
+        /*return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);*/
+        return response()->json(['redirect' => route('catalog')]);     
     }
     
 }

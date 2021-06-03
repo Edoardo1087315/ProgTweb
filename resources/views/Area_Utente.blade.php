@@ -3,6 +3,20 @@
 
 <script type="text/javascript">
 $(function(){
+    
+    var action_url = "{{ route('Modifica_Utente',[$user->id]) }}";
+    var formId = 'DatiUtente';
+
+    $("#DatiUtente").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(action_url, formId);
+    });
+
+    $("form#DatiUtente :input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, action_url, formId);
+    });
+    
     var values = [];
     $('#DatiUtente input[type != submit]').each(function(i){
         values.push(this.value);
@@ -32,60 +46,30 @@ $(function(){
 <div class="wrapper">
     <h2>Dati Personali</h2>
     {{Form::open(array('route'  => array('Modifica_Utente',$user), 'id' => 'DatiUtente','class' => 'formUtente')) }}
+                <div>
                 {{Form::label ('nome', 'Nome') }}
                 {{Form::text('nome', $user->nome,['id' => 'nome', 'readonly' => 'true' ])}}
-                 @if ($errors->first('nome'))
-                <ul class="errors">
-                    @foreach ($errors->get('nome') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
+                <div>
                 {{Form::label ('cognome', 'Cognome') }}
                 {{Form::text('cognome', $user->cognome,['id' => 'cognome', 'readonly' => 'true' ])}}
-                 @if ($errors->first('cognome'))
-                <ul class="errors">
-                    @foreach ($errors->get('cognome') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
+                <div>
                 {{Form::label ('data_nascita', 'Data di nascita') }}
                 {{Form::date('data_nascita', $user->data_nascita,['id' => 'data_nascita','readonly' => 'true'])}}
-                 @if ($errors->first('data_nascita'))
-                <ul class="errors">
-                    @foreach ($errors->get('data_nascita') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
+                <div>
                 {{Form::label ('telefono', 'Numero di Telefono') }}
                 {{Form::text('telefono', $user->telefono,['id' => 'telefono','readonly' => 'true'])}}
-                 @if ($errors->first('telefono'))
-                <ul class="errors">
-                    @foreach ($errors->get('telefono') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
+                <div>
                 {{Form::label ('email', 'Email') }}
                 {{Form::email('email', $user->email,['id' => 'email' , 'readonly' => 'true' ])}}
-                 @if ($errors->first('email'))
-                <ul class="errors">
-                    @foreach ($errors->get('email') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
+                <div>
 		{{Form::label ('username', 'Username') }}
                 {{Form::text('username', $user->username,['id' => 'username','disabled' => 'true'])}}
-                 @if ($errors->first('username'))
-                <ul class="errors">
-                    @foreach ($errors->get('username') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+                </div>
                 <div class="formUtenteBottoni">
 		{{Form::submit('Conferma',['id' => 'confirm', 'hidden' => 'true']) }}
                 <button type="button" id = "annulla" class ="event_button" hidden>Annulla</button>

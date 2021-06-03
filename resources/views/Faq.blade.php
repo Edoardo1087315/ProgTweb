@@ -24,6 +24,12 @@
             event.preventDefault();
             doFormValidation(update_Faq_url, update_Faq_formId);
         });
+        
+        $("form#updateForm :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, update_Faq_url, update_Faq_formId);
+        });
+        
         var new_Faq_url= "{{ route('newFaq') }}";
         var new_Faq_formId = "newFaqForm";
         
@@ -31,27 +37,32 @@
             event.preventDefault();
             doFormValidation(new_Faq_url, new_Faq_formId);
         });
-
-        $("#updateForm").on('submit', function (event) {
-            event.preventDefault();
-            doFormValidation(update_Faq_url, update_Faq_formIds);
+        
+        $("form#newFaqForm :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, new_Faq_url, new_Faq_formId);
         });
+
         $(".faq_button").each(function (){
                 $(this).on("click",function(){
+                    $("#fieldsetNew").hide();
+                    $("#fieldsetUpdate :input[name=Domanda]").attr("id","Domanda");
+                    $("#fieldsetUpdate :input[name=Risposta]").attr("id","Risposta");
                     $("#fieldsetUpdate").show(); 
                     var risposta = $(this).prev().text();
                     var domanda = $(this).parent().prev(".accordion").text();
                     var faqId = $(this).attr("id");
-                    $("#domanda").val(domanda);
-                    $("#risposta").val(risposta);
+                    $("#Domanda").val(domanda);
+                    $("#Risposta").val(risposta);
                     $("#faqId").val(faqId);
             });
         });
         $("#annulla").on("click",function(){
            $("#fieldsetUpdate").hide(); 
         });
-        $(".nuovaFaq_button").on("click", function(){
+        $(".nuovaFaq_button").on("click", function(){          
            $("#fieldsetUpdate").hide();
+           $("#fieldsetUpdate :input[type=text]").attr("id","id_hide");
            $("#fieldsetNew").show(); 
         });
         $("#annullaNew").on("click",function(){
@@ -97,15 +108,21 @@
     </div>
     @endforeach
     @endisset
+    @can('isAdmin')
     <button class ="nuovaFaq_button">Nuova FAQ</button>
+    @endcan
    <fieldset id = "fieldsetUpdate" hidden>
         <legend>FAQ </legend>
     {{Form::open(array('route' => 'modificaFaq', 'id' => 'updateForm', 'class' => 'form-biglietto'))}}
     {{Form::hidden('faqId','',['id' => 'faqId'])}}
+    <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Domanda','Domanda:',[])}}
-    {{Form::text('Domanda','',['id' => 'domanda'])}}
+    {{Form::text('Domanda','',['id' => 'Domanda'])}}
+    </div>
+    <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Risposta','Risposta:',[])}}
-    {{Form::text('Risposta','',['id' => 'risposta'])}}
+    {{Form::text('Risposta','',['id' => 'Risposta'])}}
+    </div>
     <div class="formUtenteBottoni">
     {{Form::submit('Modifica',['id' => 'confirm'])}}
      <button type="button" id = "annulla">Annulla</button>
@@ -115,13 +132,17 @@
     <fieldset id = "fieldsetNew" hidden>
         <legend>FAQ </legend>
     {{Form::open(array('route' => 'newFaq', 'id' => 'newFaqForm', 'class' => 'form-biglietto'))}}
+    <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Domanda','Domanda:',[])}}
-    {{Form::text('Domanda','',['id' => 'domanda'])}}
+    {{Form::text('Domanda','',['id' => 'Domanda'])}}
+    </div>
+    <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Risposta','Risposta:',[])}}
-    {{Form::text('Risposta','',['id' => 'risposta'])}}
+    {{Form::text('Risposta','',['id' => 'Risposta'])}}
+    </div>
     <div class="formUtenteBottoni">
-    {{Form::submit('Aggiungi',['id' => 'confirmNew'])}}
-     <button type="button" id = "annullaNew">Annulla</button>
+    {{Form::submit('Aggiungi',['id' => 'confirm'])}}
+     <button type="button" id = "annulla">Annulla</button>
     {{Form::close()}}
     </div>
     </fieldset>

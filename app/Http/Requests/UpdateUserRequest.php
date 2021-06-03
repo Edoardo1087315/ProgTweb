@@ -9,6 +9,11 @@
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
 /**
  * Description of UpdateUserRequest
  *
@@ -39,5 +44,10 @@ class UpdateUserRequest extends FormRequest  {
             'telefono' => 'required|string|max:10|min:10|regex:^[0-9]{10}^',
             'email' => ['required','string','email','max:255',Rule::unique('users')->ignore($this->user)],
         ];
+    }
+    
+ protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

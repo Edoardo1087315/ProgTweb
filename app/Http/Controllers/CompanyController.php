@@ -47,7 +47,7 @@ class CompanyController extends Controller {
             $image->move($destinationPath, $imageName);
         };
 
-        return redirect('AreaOrganizzazione');
+         return response()->json(['redirect' => route('Area_Organizzazione')]);
     }
 
     public function updateEvent(NewEventRequest $request) {
@@ -67,7 +67,7 @@ class CompanyController extends Controller {
             $image->move($destinationPath, $imageName);
         };
 
-        return redirect('AreaOrganizzazione');
+        return response()->json(['redirect' => route('Area_Organizzazione')]);
     }
 
     public function deleteEvent(DeleteEventRequest $request) {

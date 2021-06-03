@@ -2,6 +2,23 @@
 @section('title', 'Catalogo')
 @section('content')
 
+@push('scripts')
+<script type="text/javascript">
+    $(function () {
+        var actionUrl = "{{ route('Ricerca') }}";
+        var formId = 'ricerca';
+        $("form#ricerca :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, actionUrl, formId);
+        });
+        $("#ricerca").on('submit', function (event) {
+            event.preventDefault();
+            doFormValidation(actionUrl, formId);
+        });    
+    });
+</script>
+@endpush
+
 @include('layouts.ricerca')
 <!--
 <div id="ordina_button">

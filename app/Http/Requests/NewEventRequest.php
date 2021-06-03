@@ -48,5 +48,10 @@ class NewEventRequest extends FormRequest {
             'image' => 'file|mimes:jpeg,png|max:1024',
         ];
     }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
+    }
 
 }

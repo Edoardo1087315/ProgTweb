@@ -1,4 +1,39 @@
 @extends('layouts.public')
+
+@push('scripts')
+
+<script type="text/javascript">
+$(function(){
+    
+    var action_url = "{{ route('updateEvent') }}";
+    var formId = 'updateevent';
+
+    $("#updateevent").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(action_url, formId);
+    });
+
+    $("form#updateevent :input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, action_url, formId);
+    });
+    
+    var action_url = "{{ route('store_event') }}";
+    var formId = 'addevent';
+
+    $("#addevent").on('submit', function (event) {
+        event.preventDefault();
+        doFormValidation(action_url, formId);
+    });
+
+    $("form#addevent :input").on('blur', function (event) {
+        var formElementId = $(this).attr('id');
+        doElemValidation(formElementId, action_url, formId);
+    });
+});
+</script>
+@endpush
+
 @section('title', 'Area organizzatore')
 @section('content')
 
@@ -60,69 +95,34 @@
 
     @if(@isset($selected_event))
     <div class="panel_modificaEvento">
-        {{ Form::open(array('route'=>'updateEvent','id' => 'addevent', 'files' => true,'class' => 'form-biglietto')) }}
+        {{ Form::open(array('route'=>'updateEvent','id' => 'updateevent', 'files' => true,'class' => 'form-biglietto')) }}
         {{ Form::hidden('eventid', $selected_event->eventid , [ 'id' => 'eventid']) }}
-
+        <div>
         {{ Form::label('nome', 'Nome Evento', ['class' => 'label-input']) }}
         {{ Form::text('nome', $selected_event->nome, ['class' => 'input', 'id' => 'nome']) }}
-        @if ($errors->first('nome'))
-        <ul class="errors">
-            @foreach ($errors->get('nome') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
-
-
+        </div>
+        <div>
         {{ Form::label('prezzo', 'Prezzo') }}
         {{ Form::text('prezzo', $selected_event->prezzo, [ 'id' => 'prezzo']) }}
-        @if ($errors->first('prezzo'))
-        <ul class="errors">
-            @foreach ($errors->get('prezzo') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
         {{ Form::text('scontoPerc', $selected_event->scontoPerc, ['class' => 'input', 'id' => 'scontoPerc']) }}
-        @if ($errors->first('scontoPerc'))
-        <ul class="errors">
-            @foreach ($errors->get('scontoPerc') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
-        @endif
-
+        </div>
+        <div>
         {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
         {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], $selected_event->sconto, ['class' => 'input','id' => 'sconto']) }}
-        @if ($errors->first('sconto'))
-        <ul class="errors">
-            @foreach ($errors->get('sconto') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
-        @endif
-
+        </div>
+        <div>
         {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
         {{ Form::text('nGiorniAttSconto', $selected_event->nGiorniAttSconto, ['class' => 'input', 'id' => 'scontoPerc']) }}
-        @if ($errors->first('nGiorniAttSconto'))
-        <ul class="errors">
-            @foreach ($errors->get('nGiorniAttSconto') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>  
-        @endif
+        </div>
+        <div>
         {{ Form::label('societa', 'Società') }}
         {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
-        @if ($errors->first('societa'))
-        <ul class="errors">
-            @foreach ($errors->get('societa') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('luogo', 'Luogo') }}
-
         {{ Form::select('luogo',  array_unique([$selected_event->luogo => $selected_event->luogo ,'Marche' => 'Marche','Lazio'=>'Lazio',
                         'Piemonte'=>'Piemonte','Lombardia'=>'Lombardia','Veneto'=>'Veneto',
                         'Trentino-Alto Adige'=>'Trentino-Alto Adige','Friuli-Venezia Giulia'=>'Friuli-Venezia Giulia',
@@ -131,76 +131,47 @@
                         'Puglia'=>'Puglia', 'Sicilia'=>'Sicilia','Valle d&#39;Aosta'=>'Valle d&#39;Aosta','Basilicata'=>'Basilicata',
                         'Toscana'=>'Toscana','Campania'=>'Campania'])
             , [ 'id' => 'luogo']) }}
-        @if ($errors->first('luogo'))
-        <ul class="errors">
-            @foreach ($errors->get('luogo') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('bigl_tot', 'Biglietti totali') }}
         {{ Form::text('bigl_tot', $selected_event->bigl_tot, [ 'id' => 'bigl_tot']) }}
-        @if ($errors->first('bigl_tot'))
-        <ul class="errors">
-            @foreach ($errors->get('bigl_tot') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('bigl_acquis', 'Biglietti acquistati') }}
         {{ Form::text('bigl_acquis', $selected_event->bigl_acquis, [ 'id' => 'bigl_acquis','readonly' => 'true']) }}
+        </div>
+        <div>
         {{ Form::label('categoria', 'Categoria') }}
         {{ Form::text('categoria', $selected_event->categoria, [ 'id' => 'categoria']) }}
-        @if ($errors->first('categoria'))
-        <ul class="errors">
-            @foreach ($errors->get('categoria') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
-
+        </div>
+        <div>
         {{ Form::label('Xcord', 'Xcord') }}
         {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord']) }}
-        @if ($errors->first('Xcord'))
-        <ul class="errors">
-            @foreach ($errors->get('Xcord') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('Ycord', 'Ycord') }}
         {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord']) }}
-        @if ($errors->first('Ycord'))
-        <ul class="errors">
-            @foreach ($errors->get('Ycord') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('descrizione', 'Descrizione') }}
         {{ Form::text('descrizione', $selected_event->descrizione, ['id' => 'descrizione']) }}
-        @if ($errors->first('descrizione'))
-        <ul class="errors">
-            @foreach ($errors->get('descrizione') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('programma', 'Programma') }}
         {{ Form::text('programma', $selected_event->programma, [ 'id' => 'programma', 'rows'=>4]) }}
-        @if ($errors->first('programma'))
-        <ul class="errors">
-            @foreach ($errors->get('programma') as $message)
-            <li>{{ $message }}</li>
-            @endforeach
-        </ul>
-        @endif
+        </div>
+        <div>
         {{ Form::label('data', 'Data') }}
         {{ Form::date('data',$selected_event->data, ['id' => 'data']) }}
+        </div>
+        <div>
         {{ Form::label('orario', 'Orario') }}
         {{ Form::time('orario',\Carbon\Carbon::createFromFormat('H:i:s',$selected_event->orario)->format('h:i'), ['id' => 'data']) }}
+        </div>
+        <div>
         {{ Form::label('image', 'Immagine') }}
         {{ Form::file('image', [ 'id' => 'image']) }}
+        </div>
         {{ Form::hidden('image_path', $selected_event->image , [ 'id' => 'image']) }}
 
         <div class="formUtenteBottoni">
@@ -217,66 +188,32 @@
         <button class="accordion_areaOrg">Aggiungi Evento</button>
         <div class="panel_areaOrg">
             {{ Form::open(array('route'=>'store_event','id' => 'addevent', 'files' => true,'class' => 'form-biglietto')) }}
-
+            
+            <div>
             {{ Form::label('nome', 'Nome Evento', ['class' => 'label-input']) }}
             {{ Form::text('nome', '', ['class' => 'input', 'id' => 'nome']) }}
-            @if ($errors->first('nome'))
-            <ul class="errors">
-                @foreach ($errors->get('nome') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
-
-
+            </div>
+            <div>
             {{ Form::label('prezzo', 'Prezzo') }}
             {{ Form::text('prezzo', '', [ 'id' => 'prezzo']) }}
-            @if ($errors->first('prezzo'))
-            <ul class="errors">
-                @foreach ($errors->get('prezzo') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
-
+            </div>
+            <div>
             {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
             {{ Form::text('scontoPerc', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
-            @if ($errors->first('scontoPerc'))
-            <ul class="errors">
-                @foreach ($errors->get('scontoPerc') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
-
+            </div>
+            <div>
             {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
             {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'sconto']) }}
-            @if ($errors->first('sconto'))
-            <ul class="errors">
-                @foreach ($errors->get('sconto') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
-
+            </div>
+            <div>
             {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
             {{ Form::text('nGiorniAttSconto', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
-            @if ($errors->first('nGiorniAttSconto'))
-            <ul class="errors">
-                @foreach ($errors->get('nGiorniAttSconto') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>  
-            @endif
+            </div>
+            <div>
             {{ Form::label('societa', 'Società') }}
             {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
-            @if ($errors->first('societa'))
-            <ul class="errors">
-                @foreach ($errors->get('societa') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('luogo', 'Luogo') }}
             {{ Form::select('luogo', ['Marche' => 'Marche','Lazio'=>'Lazio',
                         'Piemonte'=>'Piemonte','Lombardia'=>'Lombardia','Veneto'=>'Veneto',
@@ -286,76 +223,46 @@
                         'Puglia'=>'Puglia', 'Sicilia'=>'Sicilia','Valle d&#39;Aosta'=>'Valle d&#39;Aosta','Basilicata'=>'Basilicata',
                         'Toscana'=>'Toscana','Campania'=>'Campania']
             , [ 'id' => 'luogo']) }}
-            @if ($errors->first('luogo'))
-            <ul class="errors">
-                @foreach ($errors->get('luogo') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('bigl_tot', 'Biglietti totali') }}
             {{ Form::text('bigl_tot', '', [ 'id' => 'bigl_tot']) }}
-            @if ($errors->first('bigl_tot'))
-            <ul class="errors">
-                @foreach ($errors->get('bigl_tot') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
-
+            </div>
+            <div>
             {{ Form::hidden('bigl_acquis', 0, [ 'id' => 'bigl_acquis']) }}
+            </div>
+            <div>
             {{ Form::label('categoria', 'Categoria') }}
             {{ Form::text('categoria', '', [ 'id' => 'categoria']) }}
-            @if ($errors->first('categoria'))
-            <ul class="errors">
-                @foreach ($errors->get('categoria') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
-
+            </div>
+            <div>
             {{ Form::label('Xcord', 'Xcord') }}
             {{ Form::text('Xcord', '', [ 'id' => 'Xcord']) }}
-            @if ($errors->first('Xcord'))
-            <ul class="errors">
-                @foreach ($errors->get('Xcord') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('Ycord', 'Ycord') }}
             {{ Form::text('Ycord', '', [ 'id' => 'Ycord']) }}
-            @if ($errors->first('Ycord'))
-            <ul class="errors">
-                @foreach ($errors->get('Ycord') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('descrizione', 'Descrizione') }}
             {{ Form::text('descrizione', '', ['id' => 'descrizione']) }}
-            @if ($errors->first('descrizione'))
-            <ul class="errors">
-                @foreach ($errors->get('descrizione') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('programma', 'Programma') }}
             {{ Form::text('programma', '', [ 'id' => 'programma', 'rows'=>4]) }}
-            @if ($errors->first('programma'))
-            <ul class="errors">
-                @foreach ($errors->get('programma') as $message)
-                <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-            @endif
+            </div>
+            <div>
             {{ Form::label('data', 'Data') }}
             {{ Form::date('data',\Carbon\Carbon::now(), ['id' => 'data']) }}
+            </div>
+            <div>
             {{ Form::label('orario', 'Orario') }}
             {{ Form::time('orario',\Carbon\Carbon::now()->format('h:i') , ['id' => 'data']) }}
+            </div>
+            <div>
             {{ Form::label('image', 'Immagine') }}
             {{ Form::file('image', [ 'id' => 'image']) }}
+            </div>
 
 
             <div class="container-form-btn">

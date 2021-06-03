@@ -28,7 +28,8 @@ class UserController extends Controller{
     public function updateUser(UpdateUserRequest $request){
         $User = $this->_userModel->getUser();
         $this->_userModel->modifyCredentials($User->id,$request->validated());
-        return redirect("AreaRiservata/{$User->id}");
+        /*return redirect("AreaRiservata/{$User->id}");*/
+        return response()->json(['redirect' => route('Area_Utente',[$User->id])]);
     }
     
     public function showStorico(){
