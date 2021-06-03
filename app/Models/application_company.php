@@ -14,8 +14,9 @@ class application_company {
 
 
     public function getCompanyEvents() {
-        $societa = Auth::user()->nome;
-        return $events = Event::where('societa', $societa)->get();
+        $societa = Auth::user()->id;
+        return $events = Event::where('societaid', $societa)->join('users','event.societaid','=','users.id')->
+                get(['event.*','users.nome as societa']);
     }
     
     public function addEvent($Event, $imageName) {
@@ -27,12 +28,12 @@ class application_company {
         
     }
     
-    public function updateEventById($id, $request,$imageName) {
+    public function updateEventById($id,$request,$imageName) {
         $event =  Event::find($id);
         $event->nome = $request->nome;
-        $event->societa = $request->societa;
         $event->luogo = $request->luogo;
         $event->prezzo = $request->prezzo;
+        $event->societaid = Auth::user()->id;
         $event->luogo = $request->luogo;
         $event->bigl_tot = $request->bigl_tot;
         $event->bigl_acquis = $request->bigl_acquis;

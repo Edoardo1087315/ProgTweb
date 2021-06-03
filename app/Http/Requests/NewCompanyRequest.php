@@ -30,7 +30,7 @@ class NewCompanyRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'nome' => 'required|string|max:25',
+            'nome' => 'required|string|max:20',
             'email' => ['required','string','email','max:255',Rule::unique('users')->ignore($this->companyid)],
             'username' => ['required', 'string', 'min:8', 'max:20', Rule::unique('users')->ignore($this->companyid)],
             'password' => 'min:8',

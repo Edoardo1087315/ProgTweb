@@ -43,9 +43,9 @@ class PublicController extends Controller  {
         $Faq = $this->_applicationPublic->getFaq();
         return view('Faq')->with('faq',$Faq); //aggiunta faq.php, Faq.php
     }
-    public function showEvent($eventid) {
-        $Event = $this->_applicationPublic->getEventById($eventid);
-        $numPartecipero = $this->_applicationPublic->getNumPartecipero($eventid);
+    public function showEvent($idevent) {
+        $Event = $this->_applicationPublic->getEventById($idevent);
+        $numPartecipero = $this->_applicationPublic->getNumPartecipero($idevent);
         return view('Pag_evento')->with('event',$Event)->with('nPartecipero',$numPartecipero);
     }
     public function showAccedi() {
@@ -61,8 +61,8 @@ class PublicController extends Controller  {
         $Events = $this->_applicationPublic->getEventsBySearch($filters);
         $TotalEvents = $this->_applicationPublic->getNotPaginateEvents();
         
-        /*return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);*/
-        return response()->json(['redirect' => route('catalog')]);     
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);
+        /*return response()->json(['redirect' => route('catalog')]);*/     
     }
    
 }

@@ -53,7 +53,7 @@ class CompanyController extends Controller {
         } else {
             $imageName = $request->image_path;
         }
-        $event = $this->_companyModel->updateEventById($request->eventid, $request, $imageName);
+        $this->_companyModel->updateEventById($request->eventid, $request, $imageName);
 
 
         if ($request->hasFile('image')) {

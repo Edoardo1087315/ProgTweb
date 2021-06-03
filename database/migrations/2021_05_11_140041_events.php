@@ -16,7 +16,7 @@ class Events extends Migration {
             $table->bigIncrements('eventid')->unsigned()->index();
             $table->string('descrizione');
             $table->string('programma');
-            $table->string('societa');
+            $table->bigInteger('societaid')->unsigned();
             $table->string('luogo');
             $table->string('categoria');
             $table->date('data');
@@ -32,6 +32,7 @@ class Events extends Migration {
             $table->float('Ycord');
             $table->float('prezzo');
             $table->string('image')->nullable();
+            $table->foreign('societaid')->references('id')->on('users');
         });
     }
 

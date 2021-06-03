@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Resources\Event;
 use App\Models\Resources\Partecipation;
 use App\Models\Resources\Faqs;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class application_public {
@@ -13,11 +14,14 @@ class application_public {
        return Event::paginate(10);
     }
     public function getNotPaginateEvents() {
-       return Event::all();
+       return Event::join('users','event.societaid','=','users.id')->
+                get(['event.*','users.nome as societa']);
     }
     
-    public function getEventById($eventId){
-        return Event::where('eventid',$eventId)->first();
+    public function getEventById($eventid){
+         $event = Event::where('eventid',$eventid)->join('users','event.societaid','=','users.id')->
+                get(['event.*','users.nome as societa'])->first();
+         return $event;
     }
        
     public function getExpiringEvents(){
@@ -27,10 +31,11 @@ class application_public {
     }
 
     public function getEventsBySearch($request){
+        $organizationid = User::where('nome','Like',$request['organizzazione'])->first();
         return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
                 ['luogo', 'Like' ,$request['luogo']],
                 ['data', 'Like',$request['data']],
-                ['societa', 'Like', $request['organizzazione']]])->paginate(10);
+                ['societaid', '=',$organizationid]])->paginate(10);
     }
     
     public function getPopularEvents(){

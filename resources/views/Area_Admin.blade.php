@@ -24,7 +24,7 @@
         
          //update compagnia con ajax
         
-        var update_compant_Url ="{{route('update_company',[$selected_company])}}";
+        var update_compant_Url ="{{route('update_company')}}";
         var update_company_formId ='updateCompany';
         
         

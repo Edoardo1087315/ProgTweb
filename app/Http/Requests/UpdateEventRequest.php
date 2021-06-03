@@ -34,7 +34,7 @@ class UpdateEventRequest extends FormRequest
             'sconto' => 'required',
             'scontoPerc' => 'required|numeric|min:0|max:100',
             'nGiorniAttSconto' => 'required|numeric|min:0',
-            'societa' => 'required|max:30',
+            'societaid' => 'required',
             'luogo' => 'required|max:30',
             'bigl_tot' => 'required|numeric|min:0',
             'bigl_acquis' => 'required|min:0',

@@ -9,6 +9,7 @@
 namespace App\Models;
 use App\Models\Resources\Ticket;
 use App\User;
+use App\Models\Resources\Event;
 use App\Models\Resources\Faqs;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,6 +30,7 @@ class application_admin {
     }
     
     public function deleteUserById($userid){
+        Event::where('societaid',$userid)->delete();
         User::where('id',$userid)->delete();
     }
     
@@ -45,7 +47,7 @@ class application_admin {
     }
     
     public function updateCompany($companyAttrs){
-        $user = User::find($companyAttrs->companyid)();
+        $user = User::find($companyAttrs->companyid);
         $user->nome = $companyAttrs->nome;
         $user->cognome = $companyAttrs->cognome;
         $user->data_nascita = $companyAttrs->data_nascita;

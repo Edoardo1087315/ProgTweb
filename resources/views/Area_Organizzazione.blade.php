@@ -118,10 +118,7 @@ $(function(){
         {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
         {{ Form::text('nGiorniAttSconto', $selected_event->nGiorniAttSconto, ['class' => 'input', 'id' => 'scontoPerc']) }}
         </div>
-        <div>
-        {{ Form::label('societa', 'Società') }}
-        {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
-        </div>
+        {{ Form::hidden('societaid',Auth::user()->id, ['id' => 'societaid', 'readonly'] ) }}
         <div>
         {{ Form::label('luogo', 'Luogo') }}
         {{ Form::select('luogo',  array_unique([$selected_event->luogo => $selected_event->luogo ,'Marche' => 'Marche','Lazio'=>'Lazio',
@@ -210,10 +207,7 @@ $(function(){
             {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
             {{ Form::text('nGiorniAttSconto', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
             </div>
-            <div>
-            {{ Form::label('societa', 'Società') }}
-            {{ Form::text('societa',Auth::user()->nome, ['id' => 'societa', 'readonly'] ) }}
-            </div>
+           {{ Form::hidden('societaid',Auth::user()->id, ['id' => 'societaid', 'readonly'] ) }}
             <div>
             {{ Form::label('luogo', 'Luogo') }}
             {{ Form::select('luogo', ['Marche' => 'Marche','Lazio'=>'Lazio',
