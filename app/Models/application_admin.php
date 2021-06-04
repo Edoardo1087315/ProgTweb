@@ -49,7 +49,6 @@ class application_admin {
     public function updateCompany($companyAttrs){
         $user = User::find($companyAttrs->companyid);
         $user->nome = $companyAttrs->nome;
-        $user->cognome = $companyAttrs->cognome;
         $user->data_nascita = $companyAttrs->data_nascita;
         $user->sitoweb = $companyAttrs->sitoweb;
         $user->email = $companyAttrs->email;
@@ -73,3 +72,4 @@ class application_admin {
         Faqs::where('faqId',$faqID)->delete();
     }
 }
+
