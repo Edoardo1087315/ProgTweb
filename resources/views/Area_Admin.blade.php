@@ -3,7 +3,7 @@
 @section('content')
 
 @push('scripts')
-<script type="text/javascript">
+<script>
     $(function () {
         
         //insererimento nuova compagnia con ajax
@@ -93,13 +93,79 @@
         });
         
         $('#aggiungi_areaAdmin').on('click', function(){
-            $('.panel_areaAdmin').show("slow");
+                $("#updateCompany :input[name=nome]").attr("id","hidden_nome");
+                $("#updateCompany :input[name=email]").attr("id","hidden_email");
+                $("#updateCompany :input[name=username]").attr("id","hidden_username");
+                $("#updateCompany :input[name=data_nascita]").attr("id","hidden_data_nascita");
+                $("#updateCompany :input[name=telefono]").attr("id","hidden_telefono");
+                $("#updateCompany :input[name=sitoweb]").attr("id","hidden_sitoweb");
+                $("#addCompany :input[name=nome]").attr("id","nome");
+                $("#addCompany :input[name=email]").attr("id","email");
+                $("#addCompany :input[name=username]").attr("id","username");
+                $("#addCompany :input[name=data_nascita]").attr("id","data_nascita");
+                $("#addCompany :input[name=telefono]").attr("id","telefono");
+                $("#addCompany :input[name=sitoweb]").attr("id","sitoweb");
+                $("#modificaorg").hide();
+                $('.panel_areaAdmin').show("slow");
+                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                $('.errors').hide();
         });
         
-        if(($('#companyid').val() !== undefined)){
-          childright.click();            
-        };
+        $('.modifica_button').each(function() {
+            $(this).on('click', function(){
+                $("#modificaorg").hide("fast");
+                $('.container_aggiungi_areaAdmin').hide("slow");
+                $("#modificaorg").show("slow");
+                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                $('.errors').hide();
+                
+                $("#addCompany :input[name=nome]").attr("id","hidden_nome");
+                $("#addCompany :input[name=email]").attr("id","hidden_email");
+                $("#addCompany :input[name=username]").attr("id","hidden_username");
+                $("#addCompany :input[name=data_nascita]").attr("id","hidden_data_nascita");
+                $("#addCompany :input[name=telefono]").attr("id","hidden_telefono");
+                $("#addCompany :input[name=sitoweb]").attr("id","hidden_sitoweb");
+                $("#updateCompany :input[name=nome]").attr("id","nome");
+                $("#updateCompany :input[name=email]").attr("id","email");
+                $("#updateCompany :input[name=username]").attr("id","username");
+                $("#updateCompany :input[name=data_nascita]").attr("id","data_nascita");
+                $("#updateCompany :input[name=telefono]").attr("id","telefono");
+                $("#updateCompany :input[name=sitoweb]").attr("id","sitoweb");
+                var nome = $(this).closest('tr').find('td:eq(0)').text();
+                var email = $(this).closest('tr').find('td:eq(1)').text();
+                var username = $(this).closest('tr').find('td:eq(2)').text();
+                var data_nascita = $(this).closest('tr').find('td:eq(3)').text();
+                var telefono = $(this).closest('tr').find('td:eq(4)').text();
+                var sitoweb = $(this).closest('tr').find('td:eq(5)').text();
+                $('#nome').val(nome);
+                $('#email').val(email);
+                $('#username').val(username);
+                $('#data_nascita').val(data_nascita);
+                $('#telefono').val(telefono);
+                $('#sitoweb').val(sitoweb);
+            });
+        });
+        
+        $('#annulla_update').on('click', function(){
+            $("#modificaorg").hide("normal");
+            $('.container_aggiungi_areaAdmin').show();
+            $('.panel_areaAdmin').hide("slow");
+        });
+        
+        $('#annulla_add').on('click', function(){
+            $("#modificaorg").hide("normal");
+            $('.container_aggiungi_areaAdmin').show();
+            $('.panel_areaAdmin').hide("slow");
+        });
+        
+
+        
 });
+
+        window.onload = function annulla(){
+            $("#modificaorg").hide("normal");
+            $('.container_aggiungi_areaAdmin').show();
+        }
 </script>
 @endpush
 
@@ -182,7 +248,10 @@
                 <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_company'))}}
                         {{Form::hidden('userid', $user->id, )}}
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
-                        {{Form::Close()}}</div></td>
+                        {{Form::Close()}}
+                    
+                        <div class="modifica_button">ciao </div>
+                    </div></td>
                 
                 
                 
@@ -203,43 +272,41 @@
                         
         </div>
         <div class="gest-organizzazioni-form ">
-        @if(@isset($selected_company))
-        <div id="modificaorg" class="">
+        <div id="modificaorg" hidden>
             <hr>
-            {{Form::open(array('route' => array('update_company',$selected_company),'class' => 'form_area_admin','id' => 'updateCompany'))}}
-            {{ Form::hidden('companyid', $selected_company->id , [ 'id' => 'companyid']) }}
+            {{Form::open(array('route' => array('update_company',),'class' => 'form_area_admin','id' => 'updateCompany'))}}
+            {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
+                <div  class="wrap-input  rs1-wrap-input">
+                {{Form::label('username', 'Username')}}
+                {{Form::text('username','',['class'=> 'input', 'id' => 'username' ,'disabled'])}}
+                </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('nome', 'nome Società:')}}
-                {{Form::text('nome' ,$selected_company->nome,['class'=> 'input', 'id'=>'nome'])}}
+                {{Form::text('nome' ,'',['class'=> 'input', 'id'=>'nome'])}}
                 </div>
                <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('email', 'Email Società:')}}
-                {{Form::text('email',$selected_company->email,['class'=> 'input', 'id' => 'email'])}}
-                </div>
-                <div  class="wrap-input  rs1-wrap-input">
-                {{Form::label('username', 'Username')}}
-                {{Form::text('username',$selected_company->username,['class'=> 'input', 'id' => 'username'])}}
+                {{Form::text('email','',['class'=> 'input', 'id' => 'email'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('data_nascita', 'Data fondazione società')}}
-                {{Form::date('data_nascita',$selected_company->data_nascita,['class'=> 'input','id' => 'data_nascita'])}}
+                {{Form::date('data_nascita','',['class'=> 'input','id' => 'data_nascita'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('telefono', 'Telefono:')}}
-                {{Form::text('telefono',$selected_company->telefono,['class'=> 'input', 'id' => 'telefono'])}}
+                {{Form::text('telefono','',['class'=> 'input', 'id' => 'telefono'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('sitoweb', 'sito Web')}}
-                {{Form::text('sitoweb',$selected_company->sitoweb,['class'=> 'input', 'id' => 'sitoweb'])}}
+                {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'sitoweb'])}}
                 </div>
 
                 <div class="formUtenteBottoni">
                     {{ Form::button('<span>Conferma Modifiche</span>', ['id' => 'confirm', 'class' => 'admin_button', 'type' => 'submit']) }}
-                    <button onclick="location.href ='{{ route('Area_Admin') }}'" type="button" id = "annulla" class ="admin_button"><span>Annulla</span></button>
+                    <button onclick="annulla();" type='button' id = "annulla_update" class ="admin_button"><span>Annulla</span></button>
                 </div>
                 {{Form::close()}}
         </div>
-        @else
         <div class="container_aggiungi_areaAdmin">
             <button id='aggiungi_areaAdmin' class="admin_button"><span>Aggiungi Compagnia</span></button>
 
@@ -277,7 +344,7 @@
 
                 <div class="formUtenteBottoni">
                     {{ Form::button('<span> aggiungi </span>', ['id' => 'confirm', 'class'=>'admin_button','type' => 'submit']) }}
-                    <button onclick="location.href ='{{ route('Area_Admin') }}'" type="button" id = "annulla" class ="admin_button"><span>Annulla</span></button>
+                    <button  type="button" id = "annulla_add" class ="admin_button"><span>Annulla</span></button>
                 </div>
                 {{Form::close()}}
 
@@ -286,7 +353,6 @@
     </div>
     @endif
 
-    @endisset
 
 </div>
     
