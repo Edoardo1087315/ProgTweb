@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\application_public;
 use App\Models\application_admin;
 use App\Http\Requests\NewCompanyRequest;
+use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Requests\DeleteUserRequest;
 use App\Http\Requests\NewFaqRequest;
 use App\Http\Requests\UpdateFaqRequest;
@@ -37,7 +38,7 @@ Class AdminController extends Controller{
             return response()->json(['redirect' => route('Area_Admin')]);
         }
         
-        public function updateCompanyRequest(NewCompanyRequest $request){
+        public function updateCompanyRequest(UpdateCompanyRequest $request){
              $this->_applicationAdmin->updateCompany($request);
             return response()->json(['redirect' => route('Area_Admin')]);
         }
