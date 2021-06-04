@@ -17,6 +17,9 @@ Route::get('/','PublicController@showHome')
 Route::get('/catalog','PublicController@showCatalog')
         ->name('catalog');
 
+Route::get('/catalog/search','PublicController@processSearch')
+        ->name('processingSearch');
+
 Route::post('/catalog','PublicController@search')
         ->name('Ricerca');
 

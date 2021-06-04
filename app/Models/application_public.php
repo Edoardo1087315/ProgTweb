@@ -30,12 +30,19 @@ class application_public {
             ->take(5)->get();
     }
 
-    public function getEventsBySearch($request){
-        $organizationid = User::where('nome','Like',$request['organizzazione'])->first();
-        return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
-                ['luogo', 'Like' ,$request['luogo']],
-                ['data', 'Like',$request['data']],
-                ['societaid', '=',$organizationid]])->paginate(10);
+   public function getEventsBySearch($request){
+        if($request['organizzazione'] == ""){
+            return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
+                    ['luogo', 'Like' ,$request['luogo']],
+                    ['data', 'Like',$request['data']]])->paginate(10);
+        }
+        else{
+            $organizationid = User::where('nome','Like',$request['organizzazione'])->pluck('id')->first();
+            return Event::where([['descrizione', 'like', '%' . $request['descrizione'] . '%'],
+                    ['luogo', 'Like' ,$request['luogo']],
+                    ['data', 'Like',$request['data']],
+                    ['societaid', '=',$organizationid]])->paginate(10);
+        }
     }
     
     public function getPopularEvents(){
