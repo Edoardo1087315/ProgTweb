@@ -233,7 +233,7 @@
             @foreach($users as $user)
             @if($user->role == ('company'))
             <tr>
-                <td id="nome{{$user->id}}">{{$user->nome}}</td>
+                <td id="{{$user->id}}">{{$user->nome}}</td>
 
                 <td>{{$user->email}}</td>
 
@@ -250,14 +250,15 @@
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
                         {{Form::Close()}}
                     
-                        <div class="modifica_button">ciao </div>
-                    </div></td>
+
+                        </div>
+                </td>
+
                 
                 
                 
                 
-                <td><div class="btn_Tab"><a href="{{Route('company_to_update',[$user->id]) }}" >
-                            <img src="{{ asset('images/Edit.png')}}" class="btn_img" ></a></td>
+                <td><div class="btn_Tab"><img src="{{ asset('images/Edit.png')}}" class="modifica_button btn_img"></div></td>
                 
                 
                 
@@ -274,7 +275,6 @@
         <div class="gest-organizzazioni-form ">
         <div id="modificaorg" hidden>
             <hr>
-            {{Form::open(array('route' => array('update_company',),'class' => 'form_area_admin','id' => 'updateCompany'))}}
             {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('username', 'Username')}}
