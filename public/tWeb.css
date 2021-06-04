@@ -1029,6 +1029,7 @@ input[type=submit]:hover {
 .btn_Tab .btn_img{
     width:25px;
     height:25px;
+    cursor:pointer;
 }
 .tab-container{
     overflow-x: auto;
