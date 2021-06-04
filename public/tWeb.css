@@ -477,6 +477,7 @@ input[type=submit]:hover {
     width: 180px;
     height: 40px;
     border-radius: 9px;
+    cursor:pointer;
 }
 
 .annulla_partecipazione_button{
@@ -485,13 +486,12 @@ input[type=submit]:hover {
     height: 40px;
     border-radius: 9px;
     background-color: red;
+    cursor:pointer;
 }
 
 .event_button{
     width:150px;
     height:40px;
-    margin-top:3em;
-    margin-bottom:3em;
 }
 
 .img_event_container{
@@ -855,8 +855,8 @@ input[type=submit]:hover {
         width:100%;
     }
 }
-/* AREA UTENTE*/
-#annulla{
+/* AREA UTENTE(annulla new per faq)*/
+#annulla,#annullaNew{
     width:40%;
     background-color: red;
     color: white;
@@ -1294,6 +1294,7 @@ input[type=submit]:hover {
 }
 .pricebox{
     display: flex;
+    align-items: center;
 }
 
 .pricebox p {
@@ -1308,6 +1309,9 @@ input[type=submit]:hover {
     font-size: 21px;
     font-weight: bold;
     text-align: right;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    
 }
 
 .pricebox .discprice{
@@ -1317,4 +1321,19 @@ input[type=submit]:hover {
     font-size: 12px;
     font-weight: bold;
     text-align: right;
+}
+/*FAQ Admin*/
+.faq_button{
+    width:150px;
+    height:40px;
+    }
+.elimina_button{
+    width:150px;
+    height:40px;
+}
+.nuovaFaq_button{
+    width:150px;
+    height:40px;
+    margin-top:3em;
+    margin-bottom:3em;
 }

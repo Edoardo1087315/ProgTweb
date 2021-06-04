@@ -47,6 +47,8 @@
                 $(this).on("click",function(){
                     $("#fieldsetNew").hide();
                     $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                    $("#fieldsetNew :input[name=Domanda]").attr("id","hidden_Domanda");
+                    $("#fieldsetNew :input[name=Risposta]").attr("id","hidden_Risposta");
                     $("#fieldsetUpdate :input[name=Domanda]").attr("id","Domanda");
                     $("#fieldsetUpdate :input[name=Risposta]").attr("id","Risposta");
                     $("#fieldsetUpdate").show(); 
@@ -64,7 +66,10 @@
         $(".nuovaFaq_button").on("click", function(){          
            $("#fieldsetUpdate").hide();
            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-           $("#fieldsetUpdate :input[type=text]").attr("id","id_hide");
+           $("#fieldsetUpdate :input[name=Domanda]").attr("id","hidden_Domanda");
+           $("#fieldsetUpdate :input[name=Risposta]").attr("id","hidden_Risposta");
+           $("#fieldsetNew :input[name=Domanda]").attr("id","Domanda");
+           $("#fieldsetNew :input[name=Risposta]").attr("id","Risposta");
            $("#fieldsetNew").show(); 
         });
         $("#annullaNew").on("click",function(){
@@ -119,11 +124,11 @@
     {{Form::hidden('faqId','',['id' => 'faqId'])}}
     <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Domanda','Domanda:',[])}}
-    {{Form::text('Domanda','',['id' => 'Domanda'])}}
+    {{Form::text('Domanda','',['id' => 'hidden_Domanda'])}}
     </div>
     <div class="wrap-input  rs1-wrap-input">
     {{Form::label('Risposta','Risposta:',[])}}
-    {{Form::text('Risposta','',['id' => 'Risposta'])}}
+    {{Form::text('Risposta','',['id' => 'hidden_Risposta'])}}
     </div>
     <div class="formUtenteBottoni">
     {{Form::submit('Modifica',['id' => 'confirm'])}}
@@ -144,7 +149,7 @@
     </div>
     <div class="formUtenteBottoni">
     {{Form::submit('Aggiungi',['id' => 'confirm'])}}
-     <button type="button" id = "annulla">Annulla</button>
+     <button type="button" id = "annullaNew">Annulla</button>
     {{Form::close()}}
     </div>
     </fieldset>
