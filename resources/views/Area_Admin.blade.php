@@ -131,12 +131,14 @@
                 $("#updateCompany :input[name=data_nascita]").attr("id","data_nascita");
                 $("#updateCompany :input[name=telefono]").attr("id","telefono");
                 $("#updateCompany :input[name=sitoweb]").attr("id","sitoweb");
+                var companyid = $(this).closest('tr').find('td:eq(0)').attr('id');
                 var nome = $(this).closest('tr').find('td:eq(0)').text();
                 var email = $(this).closest('tr').find('td:eq(1)').text();
                 var username = $(this).closest('tr').find('td:eq(2)').text();
                 var data_nascita = $(this).closest('tr').find('td:eq(3)').text();
                 var telefono = $(this).closest('tr').find('td:eq(4)').text();
                 var sitoweb = $(this).closest('tr').find('td:eq(5)').text();
+                $('#companyid').val(companyid);
                 $('#nome').val(nome);
                 $('#email').val(email);
                 $('#username').val(username);
@@ -249,14 +251,7 @@
                         {{Form::hidden('userid', $user->id, )}}
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
                         {{Form::Close()}}
-                    
-
-                        </div>
-                </td>
-
-                
-                
-                
+                        </div></td>
                 
                 <td><div class="btn_Tab"><img src="{{ asset('images/Edit.png')}}" class="modifica_button btn_img"></div></td>
                 
@@ -275,30 +270,31 @@
         <div class="gest-organizzazioni-form ">
         <div id="modificaorg" hidden>
             <hr>
+            {{Form::open(array('route' => 'update_company','class' => 'form_area_admin','id' => 'updateCompany'))}}
             {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('username', 'Username')}}
-                {{Form::text('username','',['class'=> 'input', 'id' => 'username' ,'disabled'])}}
+                {{Form::text('username','',['class'=> 'input', 'id' => 'hide_username' ,'disabled'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('nome', 'nome Società:')}}
-                {{Form::text('nome' ,'',['class'=> 'input', 'id'=>'nome'])}}
+                {{Form::text('nome' ,'',['class'=> 'input', 'id'=>'hide_nome'])}}
                 </div>
                <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('email', 'Email Società:')}}
-                {{Form::text('email','',['class'=> 'input', 'id' => 'email'])}}
+                {{Form::text('email','',['class'=> 'input', 'id' => 'hide_email'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('data_nascita', 'Data fondazione società')}}
-                {{Form::date('data_nascita','',['class'=> 'input','id' => 'data_nascita'])}}
+                {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('telefono', 'Telefono:')}}
-                {{Form::text('telefono','',['class'=> 'input', 'id' => 'telefono'])}}
+                {{Form::text('telefono','',['class'=> 'input', 'id' => 'hide_telefono'])}}
                 </div>
                 <div  class="wrap-input  rs1-wrap-input">
                 {{Form::label('sitoweb', 'sito Web')}}
-                {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'sitoweb'])}}
+                {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'hide_sitoweb'])}}
                 </div>
 
                 <div class="formUtenteBottoni">
