@@ -28,8 +28,8 @@ Class AdminController extends Controller{
     }
     
         public function deleteUser(DeleteUserRequest $request){
-          $this->_applicationAdmin->deleteUserById($request->userid);
         $this->_applicationAdmin->deleteTicketsById($request->userid);
+        $this->_applicationAdmin->deleteUserById($request->userid);
         return redirect('AreaAmministratore');
         }
         

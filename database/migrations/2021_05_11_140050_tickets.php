@@ -20,7 +20,7 @@ class Tickets extends Migration
             $table->integer('quantita');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('eventid')->unsigned();
-            $table->foreign('eventid')->references('eventid')->on('event');
+            $table->foreign('eventid')->references('eventid')->on('event')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
 
