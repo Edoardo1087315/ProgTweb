@@ -33,6 +33,15 @@ $(function(){
     });
 });
 </script>
+<style>
+    #map_canvas {
+    width: 980px;
+    height: 500px;
+}
+#current {
+    padding-top: 25px;
+}
+</style>
 @endpush
 
 @section('title', 'Area organizzatore')
@@ -230,13 +239,14 @@ $(function(){
             {{ Form::label('categoria', 'Categoria') }}
             {{ Form::text('categoria', '', [ 'id' => 'categoria']) }}
             </div>
+            <div id='map_canvas'></div>
             <div>
             {{ Form::label('Xcord', 'Xcord') }}
-            {{ Form::text('Xcord', '', [ 'id' => 'Xcord']) }}
+            {{ Form::text('Xcord', '', [ 'id' => 'Xcord', 'readonly']) }}
             </div>
             <div>
             {{ Form::label('Ycord', 'Ycord') }}
-            {{ Form::text('Ycord', '', [ 'id' => 'Ycord']) }}
+            {{ Form::text('Ycord', '', [ 'id' => 'Ycord', 'readonly']) }}
             </div>
             <div>
             {{ Form::label('descrizione', 'Descrizione') }}
@@ -265,6 +275,7 @@ $(function(){
             </div>
 
             {{ Form::close() }}
+            
 
         </div>
 
@@ -295,6 +306,28 @@ $(function(){
                 }
         });
     });
+</script>
+<script>
+window.onload = function(){
+var map = new google.maps.Map(document.getElementById('map_canvas'), {
+    zoom: 5,
+    center: new google.maps.LatLng(42.7882, 12.8193),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+var myMarker = new google.maps.Marker({
+    position: new google.maps.LatLng(42.7882, 12.8193),
+    draggable: true
+});
+
+google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+    document.getElementById('Xcord').value = evt.latLng.lat();
+    document.getElementById('Ycord').value = evt.latLng.lng();
+});
+
+map.setCenter(myMarker.position);
+myMarker.setMap(map);
+}
 </script>
 @endpush
 @endsection
