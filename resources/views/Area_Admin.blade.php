@@ -44,6 +44,7 @@
         var childleft = $('.float-child-left');
         var wrap = $('.wrap_admin');
         var button = $('#table_org div ');
+        
         childleft.on('click', function () {
         if (!childleft.hasClass('active_admin')) {
         childleft.addClass('active_admin');
@@ -62,8 +63,13 @@
         childright.css({'background-color': '#EEEEEE'}, {duration: 300, queue: false});
         clienti.animate({opacity: '100%'}, "slow");
         $('#aggiungiorg').hide();
+        $('#company_details').html("");
+        $("#modificaorg").hide("normal");
+        $('.container_aggiungi_areaAdmin').show();
+        $('.panel_areaAdmin').hide("slow");
         }
         });
+        
         childright.on('click', function child() {
         if (!childright.hasClass('active_admin')) {
         childright.addClass('active_admin');
@@ -84,10 +90,10 @@
         }
         });
         
-        $('.dettagli_company').on('click', function(){
+        $('.details_button').on('click', function(){
            trigId = $(this).attr('at');
-           var nome = $("#nome" + trigId).text();
-           $('#dettagli_company').html(nome);
+           var nome = $("#" + trigId).text();
+           $('#company_details').html(nome);
            
            
         });
@@ -111,7 +117,7 @@
                 $('.errors').hide();
         });
         
-        $('.modifica_button').each(function() {
+        $('.edit_button').each(function() {
             $(this).on('click', function(){
                 $("#modificaorg").hide("fast");
                 $('.container_aggiungi_areaAdmin').hide("slow");
@@ -150,7 +156,7 @@
         
         $('#annulla_update').on('click', function(){
             $("#modificaorg").hide("normal");
-            $('.container_aggiungi_areaAdmin').show();
+            $('.container_aggiungi_areaAdmin').show("normal");
             $('.panel_areaAdmin').hide("slow");
         });
         
@@ -163,18 +169,13 @@
 
         
 });
-
-        window.onload = function annulla(){
-            $("#modificaorg").hide("normal");
-            $('.container_aggiungi_areaAdmin').show();
-        }
 </script>
 @endpush
 
 @isset($users)
 <div class="float-container">
 
-    <div class="float-child-left active_admin">
+    <div class="float-child-left">
         <h2>gestione clienti</h2>
     </div>
     <div class="float-child-right"">
@@ -185,10 +186,10 @@
     <div class="gest-clienti">
         <table class="table_area_admin">
             <tr>
+                <th>Username</th>
                 <th>Nome</th>
                 <th>Cognome</th>
                 <th>Email</th>
-                <th>Username</th>
                 <th>Data di nascita</th>
                 <th>Telefono</th>
                 <th>Sito Web</th>
@@ -197,13 +198,14 @@
             @foreach($users as $user)
             @if($user->role == ('user'))
             <tr>
+                <td>{{$user->username}}</td>
                 <td>{{$user->nome}}</td>
                 <td>{{$user->cognome}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->username}}</td>
-                <td>{{$user->data_nascita}}</td>
-                <td>{{$user->telefono}}</td>
-                <td>{{$user->sito}}</td>
+                <td><a href="mailto: + {{$user->email}}"> {{$user->email}}</a></td>
+                
+                <td><nobr>{{$user->data_nascita}}</nobr></td>
+                <td><a href="tel: + {{$user->telefono}}">{{$user->telefono}}</a></td>
+                <td><a href="https://www.{{$user->sitoweb}}" target="_blank">{{$user->sitoweb}}</a></td>
                 <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_user'))}}
                         {{Form::hidden('userid', $user->id, )}}
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
@@ -225,7 +227,7 @@
                 <th>Nome</th>
                 <th>Email</th>
                 <th>Username</th>
-                <th>Data di nascita</th>
+                <th>Data Fondazione</th>
                 <th>Telefono</th>
                 <th>Sito Web</th>
                 <th>Elimina</th>
@@ -237,15 +239,15 @@
             <tr>
                 <td id="{{$user->id}}">{{$user->nome}}</td>
 
-                <td>{{$user->email}}</td>
+                <td><a href="mailto: + {{$user->email}}"> {{$user->email}}</a></td>
 
                 <td>{{$user->username}}</td>
 
-                <td>{{$user->data_nascita}}</td>
+                <td><nobr>{{$user->data_nascita}}</nobr></td>
 
-                <td>{{$user->telefono}}</td>
+                <td><a href="tel: + {{$user->telefono}}">{{$user->telefono}}</a></td>
 
-                <td>{{$user->sitoweb}}</td>
+                <td><a href="https://www.{{$user->sitoweb}}" target="_blank">{{$user->sitoweb}}</a></td>
 
                 <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_company'))}}
                         {{Form::hidden('userid', $user->id, )}}
@@ -253,18 +255,18 @@
                         {{Form::Close()}}
                         </div></td>
                 
-                <td><div class="btn_Tab"><img src="{{ asset('images/Edit.png')}}" class="modifica_button btn_img"></div></td>
+                <td><div class="btn_Tab"><img src="{{ asset('images/Edit.png')}}" class="edit_button btn_img"></div></td>
                 
                 
                 
-                <td><a class="dettagli_company" at="{{$user->id}}">Dettagli</a></td>
+                <td><div class="btn_Tab"><img at="{{$user->id}}" src="{{ asset('images/ticket.png')}}" class="details_button btn_img"></div></td>
 
             </tr>
             @endif
             @endforeach
         </table>
     </div>
-        <div id="dettagli_company">
+        <div id="company_details">
                         
         </div>
         <div class="gest-organizzazioni-form ">
@@ -272,34 +274,34 @@
             <hr>
             {{Form::open(array('route' => 'update_company','class' => 'form_area_admin','id' => 'updateCompany'))}}
             {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
-                <div  class="wrap-input  rs1-wrap-input">
+                <div>
                 {{Form::label('username', 'Username')}}
                 {{Form::text('username','',['class'=> 'input', 'id' => 'hide_username' ,'disabled'])}}
                 </div>
-                <div  class="wrap-input  rs1-wrap-input">
+                <div>
                 {{Form::label('nome', 'nome Società:')}}
                 {{Form::text('nome' ,'',['class'=> 'input', 'id'=>'hide_nome'])}}
                 </div>
-               <div  class="wrap-input  rs1-wrap-input">
+               <div>
                 {{Form::label('email', 'Email Società:')}}
                 {{Form::text('email','',['class'=> 'input', 'id' => 'hide_email'])}}
                 </div>
-                <div  class="wrap-input  rs1-wrap-input">
+                <div>
                 {{Form::label('data_nascita', 'Data fondazione società')}}
                 {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita'])}}
                 </div>
-                <div  class="wrap-input  rs1-wrap-input">
+                <div>
                 {{Form::label('telefono', 'Telefono:')}}
                 {{Form::text('telefono','',['class'=> 'input', 'id' => 'hide_telefono'])}}
                 </div>
-                <div  class="wrap-input  rs1-wrap-input">
+                <div>
                 {{Form::label('sitoweb', 'sito Web')}}
                 {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'hide_sitoweb'])}}
                 </div>
 
                 <div class="formUtenteBottoni">
                     {{ Form::button('<span>Conferma Modifiche</span>', ['id' => 'confirm', 'class' => 'admin_button', 'type' => 'submit']) }}
-                    <button onclick="annulla();" type='button' id = "annulla_update" class ="admin_button"><span>Annulla</span></button>
+                    <button type='button' id = "annulla_update" class ="admin_button"><span>Annulla</span></button>
                 </div>
                 {{Form::close()}}
         </div>
