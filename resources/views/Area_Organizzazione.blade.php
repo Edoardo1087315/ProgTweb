@@ -312,7 +312,7 @@ window.onload = function(){
 var map = new google.maps.Map(document.getElementById('map_canvas'), {
     zoom: 5,
     center: new google.maps.LatLng(42.7882, 12.8193),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
 });
 
 var myMarker = new google.maps.Marker({
@@ -321,8 +321,8 @@ var myMarker = new google.maps.Marker({
 });
 
 google.maps.event.addListener(myMarker, 'dragend', function (evt) {
-    document.getElementById('Xcord').value = evt.latLng.lat();
-    document.getElementById('Ycord').value = evt.latLng.lng();
+    document.getElementById('Xcord').value = evt.latLng.lat().toFixed(7);
+    document.getElementById('Ycord').value = evt.latLng.lng().toFixed(7);
 });
 
 map.setCenter(myMarker.position);

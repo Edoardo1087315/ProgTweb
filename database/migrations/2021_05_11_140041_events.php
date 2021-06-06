@@ -28,8 +28,8 @@ class Events extends Migration {
             $table->float('incassoTotale')->default('0');
             $table->integer('bigl_tot');
             $table->integer('bigl_acquis');
-            $table->float('Xcord');
-            $table->float('Ycord');
+            $table->decimal('Xcord',11,7);
+            $table->decimal('Ycord',11,7);
             $table->float('prezzo');
             $table->string('image')->nullable();
             $table->foreign('societaid')->references('id')->on('users');
