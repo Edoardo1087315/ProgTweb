@@ -10,7 +10,7 @@ $(function(){
 
     $("#updateevent").on('submit', function (event) {
         event.preventDefault();
-        doFormValidation(action_url, updateFormId);
+        doFormValidation(update_action_url, updateFormId);
     });
 
     $("form#updateevent :input").on('blur', function (event) {
@@ -24,7 +24,7 @@ $(function(){
 
     $("#addevent").on('submit', function (event) {
         event.preventDefault();
-        doFormValidation(action_url, addFormId);
+        doFormValidation(add_action_url, addFormId);
     });
 
     $("form#addevent :input").on('blur', function (event) {
