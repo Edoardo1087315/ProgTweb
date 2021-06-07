@@ -5,6 +5,11 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
+use Symfony\Component\HttpFoundation\Response;
+
+
 class BuyTicketRequest extends FormRequest  {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +29,13 @@ class BuyTicketRequest extends FormRequest  {
      */
     public function rules() {
         return [
-            'cardname' => 'required | max:40',
-            'cardnumber' => 'required | regex:^[0-9]{12}^',
-            'cvv' => 'required | regex:^[0-9]{3}^'
+            'cardname' => 'required |string | max:40',
+            'cardnumber' => 'required |string| regex:^[0-9]{12}^',
+            'cvv' => 'required |string | regex:^[0-9]{3}^'
         ];
+    }
+     protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY));
     }
 }

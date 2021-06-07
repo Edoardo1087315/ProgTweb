@@ -12,10 +12,25 @@
             document.getElementById("priceBox").value = prezzoTotale;
         }
     };
+    $(function(){
+    
+        var action_url = "{{ route('Compra') }}";
+        var formId = 'CompraBiglietto';
+
+        $("#CompraBiglietto").on('submit', function (event) {
+            event.preventDefault();
+            doFormValidation(action_url, formId);
+        });
+
+        $("#CompraBiglietto :input").on('blur', function (event) {
+            var formElementId = $(this).attr('id');
+            doElemValidation(formElementId, action_url, formId);
+        });
+    });
 </script>
 @endpush
 <div class = "wrapper">
-    {{Form::open(['route' => 'Compra','class' => 'form-biglietto'])}}
+    {{Form::open(['route' => 'Compra','class' => 'form-biglietto','id' => 'CompraBiglietto'])}}
     <fieldset id="DatiEvento">
         <legend>Dati Evento</legend>
         {{Form::label('nome','Evento:',[])}}
@@ -50,22 +65,10 @@
             <div>
                 {{Form::label('cardname','Nome sulla Carta:',[])}}
                 {{Form::text('cardname','',['id' => 'cardname', 'placeholder' => 'Il tuo Nome'])}}
-                @if ($errors->first('cardname'))
-                <ul class="errors">
-                    @foreach ($errors->get('cardname') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
+            </div>
+            <div>
                 {{Form::label('cardnumber','Numero Carta:',[])}}
                 {{Form::text('cardnumber','',['id' => 'cardnumber', 'placeholder' => '1111-2222-3333-4444'])}}
-                @if ($errors->first('cardnumber'))
-                <ul class="errors">
-                    @foreach ($errors->get('cardnumber') as $message)
-                    <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-                @endif
             </div>
             <div class = "payment">
                 <div class = "expdate">
@@ -76,13 +79,6 @@
                 <div class ="cvv">
                     {{Form::label('cvv','CVV:',["class" => "labelAcquisto"])}}
                     {{Form::text('cvv','',['id' => 'cvv'])}}
-                    @if ($errors->first('cvv'))
-                    <ul class="errors">
-                        @foreach ($errors->get('cvv') as $message)
-                        <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                    @endif
                 </div>
             </div>
         </div>

@@ -38,6 +38,9 @@ class application_user {
         $ticket->save();
         return $ticket;
     }
+    public function getTicketById($id){
+        return Ticket::find($id);
+    }
     public function getUser(){
         return Auth::user();
     }

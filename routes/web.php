@@ -40,8 +40,11 @@ Route::get('/PagEvento/{idevent}','PublicController@showEvent')
 Route::get('/PagEvento/{idevent}/compra','UserController@showBuyForm')
         ->name('Compra_Biglietto')->middleware('can:isSoldout,idevent');
 
-Route::post('/PagEvento/compra/riepilogo','UserController@buyFormProcess')
+Route::post('/PagEvento/compra/process','UserController@buyForm')
         ->name('Compra');
+
+Route::get('/PagEvento/compra/riepilogo','UserController@buyFormProcess')
+        ->name('Riepilogo');
 
 Route::get('/AreaRiservata/{user}', 'UserController@showAreaRiservata')
         ->name('Area_Utente');
