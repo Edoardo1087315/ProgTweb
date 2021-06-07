@@ -4,7 +4,32 @@
 
 <script type="text/javascript">
 $(function(){
+   
+        if($("#sconto").val()==0){
+            $("#scontoPerc").val("0");
+            $("#scontoPerc").prop("readonly", true);
+            $("#nGiorniAttSconto").val("0");
+            $("#nGiorniAttSconto").prop("readonly", true);
+        }
+        else{
+            $("#scontoPerc").prop("readonly", false);
+            $("#nGiorniAttSconto").prop("readonly", false);
+            
+        }
     
+    $("#sconto").on('change', function (event) {
+        if(this.value==0){
+            $("#scontoPerc").val("0");
+            $("#scontoPerc").prop("readonly", true);
+            $("#nGiorniAttSconto").val("0");
+            $("#nGiorniAttSconto").prop("readonly", true);
+        }
+        else{
+            $("#scontoPerc").prop("readonly", false);
+            $("#nGiorniAttSconto").prop("readonly", false);
+            
+        }
+    });
     var update_action_url = "{{ route('updateEvent') }}";
     var updateFormId = 'updateevent';
 
@@ -116,16 +141,17 @@ $(function(){
         {{ Form::text('prezzo', $selected_event->prezzo, [ 'id' => 'prezzo']) }}
         </div>
         <div>
-        {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-        {{ Form::text('scontoPerc', $selected_event->scontoPerc, ['class' => 'input', 'id' => 'scontoPerc']) }}
-        </div>
-        <div>
         {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
         {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], $selected_event->sconto, ['class' => 'input','id' => 'sconto']) }}
         </div>
         <div>
+        {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
+        {{ Form::text('scontoPerc', $selected_event->scontoPerc, ['class' => 'input', 'id' => 'scontoPerc']) }}
+        </div>
+        
+        <div>
         {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
-        {{ Form::text('nGiorniAttSconto', $selected_event->nGiorniAttSconto, ['class' => 'input', 'id' => 'scontoPerc']) }}
+        {{ Form::text('nGiorniAttSconto', $selected_event->nGiorniAttSconto, ['class' => 'input', 'id' => 'nGiorniAttSconto']) }}
         </div>
         {{ Form::hidden('societaid',Auth::user()->id, ['id' => 'societaid', 'readonly'] ) }}
         <div>
@@ -205,17 +231,18 @@ $(function(){
             {{ Form::label('prezzo', 'Prezzo') }}
             {{ Form::text('prezzo', '', [ 'id' => 'prezzo']) }}
             </div>
-            <div>
-            {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
-            {{ Form::text('scontoPerc', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
-            </div>
-            <div>
+              <div>
             {{ Form::label('sconto', 'In Sconto', ['class' => 'label-input']) }}
             {{ Form::select('sconto', ['1' => 'Si', '0' => 'No'], 1, ['class' => 'input','id' => 'sconto']) }}
             </div>
             <div>
+            {{ Form::label('scontoPerc', 'Sconto (%)', ['class' => 'label-input']) }}
+            {{ Form::text('scontoPerc', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
+            </div>
+          
+            <div>
             {{ Form::label('nGiorniAttSconto', 'Numero giorni attivazion sconto', ['class' => 'label-input']) }}
-            {{ Form::text('nGiorniAttSconto', '', ['class' => 'input', 'id' => 'scontoPerc']) }}
+            {{ Form::text('nGiorniAttSconto', '', ['class' => 'input', 'id' => 'nGiorniAttSconto']) }}
             </div>
            {{ Form::hidden('societaid',Auth::user()->id, ['id' => 'societaid', 'readonly'] ) }}
             <div>
