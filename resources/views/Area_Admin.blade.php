@@ -58,6 +58,7 @@
                 $("#modificaorg").hide("normal");
                 $('.container_aggiungi_areaAdmin').show();
                 $('.panel_areaAdmin').hide("slow");
+                $('#dettagli_company').hide();
             }
         });
         childright.on('click', function () {
@@ -88,9 +89,10 @@
         $('.details_button').on('click', function () {
             trigId = $(this).attr('at');
             var analisi = $("#analisi" + trigId).html();
-            $('#dettagli_company').slideUp('normal');
-            $('#dettagli_company').delay(200).html(analisi);
+            $('#dettagli_company').hide();
+            $('#dettagli_company').html(analisi);
             $('#dettagli_company').slideDown('slow');
+ 
 
         });
         $('#aggiungi_areaAdmin').on('click', function () {
@@ -245,15 +247,17 @@
 
                 </tr>
                 <div id="analisi{{$companyWithAnalisi['company']->id}}" style="display:none">
-                    <h3>Analisi vendita per società {{$companyWithAnalisi['company']->nome}}</h3>
-                    <p>Incasso totale:{{$companyWithAnalisi['incasso']}}€</p>
-                    <p>Numero biglietti venduti:{{$companyWithAnalisi['venduti']}}</p>
+                    <h3>Analisi vendita per società {{$companyWithAnalisi['company']->nome}} :</h3>
+                    <ul>
+                        <li>Incasso totale: {{$companyWithAnalisi['incasso']}}€</li><br>
+                    <li>Numero biglietti venduti: {{$companyWithAnalisi['venduti']}}</li>
+                    </ul>
                 </div>
                 @endforeach
             </table>
         </div>
-        <div id="dettagli_company" class="analisiVendita" >
-        </div>
+        <p id="dettagli_company" class="analisiVendita" >
+        </p>
         <div class="gest-organizzazioni-form ">
             <div id="modificaorg" hidden>
                 <hr>
