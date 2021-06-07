@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\application_company;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\NewEventRequest;
+use App\Http\Requests\UpdateEventRequest;
 use App\Http\Requests\DeleteEventRequest;
 
 class CompanyController extends Controller {

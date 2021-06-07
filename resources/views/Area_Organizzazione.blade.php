@@ -5,7 +5,7 @@
 <script type="text/javascript">
 $(function(){
     
-    var action_url = "{{ route('updateEvent') }}";
+    var update_action_url = "{{ route('updateEvent') }}";
     var updateFormId = 'updateevent';
 
     $("#updateevent").on('submit', function (event) {
@@ -15,11 +15,11 @@ $(function(){
 
     $("form#updateevent :input").on('blur', function (event) {
         var formElementId = $(this).attr('id');
-        console.log(formId)
-        doElemValidation(formElementId, action_url, formId);
+        event.preventDefault();
+        doElemValidation(formElementId, update_action_url, updateFormId);
     });
     
-    var action_url = "{{ route('store_event') }}";
+    var add_action_url = "{{ route('store_event') }}";
     var addFormId = 'addevent';
 
     $("#addevent").on('submit', function (event) {
@@ -29,7 +29,7 @@ $(function(){
 
     $("form#addevent :input").on('blur', function (event) {
         var formElementId = $(this).attr('id');
-        doElemValidation(formElementId, action_url, formId);
+        doElemValidation(formElementId, add_action_url, addFormId);
     });
 });
 </script>
@@ -151,6 +151,7 @@ $(function(){
         {{ Form::label('categoria', 'Categoria') }}
         {{ Form::text('categoria', $selected_event->categoria, [ 'id' => 'categoria']) }}
         </div>
+        <div id='map_canvas'></div>
         <div>
         {{ Form::label('Xcord', 'Xcord') }}
         {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord']) }}
