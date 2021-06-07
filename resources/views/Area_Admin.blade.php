@@ -17,18 +17,7 @@
             doElemValidation(formElementId, new_company_Url, new_company_formId);
         });
 
-//update compagnia con ajax
-        var update_compant_Url = "{{route('update_company')}}";
-        var update_company_formId = 'updateCompany';
 
-        $("#updateCompany").on('submit', function (event) {
-            event.preventDefault();
-            doFormValidation(update_compant_Url, update_company_formId);
-        });
-        $("form#updateCompany :input").on('blur', function (event) {
-            var formElementId = $(this).attr('id');
-            doElemValidation(formElementId, update_compant_Url, update_company_formId);
-        });
 //animazione finestre, ombre ecc...
         var clienti = $('.gest-clienti');
         var organizzazione = $('.gest-organizzazioni');
@@ -113,7 +102,7 @@
             $("html, body").animate({scrollTop: $(document).height()}, 1000);
             $('.errors').hide();
         });
-        $('.edit_button').each(function () {
+        /*$('.edit_button').each(function () {
             $(this).on('click', function () {
                 $("#modificaorg").hide("fast");
                 $('.container_aggiungi_areaAdmin').hide("slow");
@@ -147,12 +136,12 @@
                 $('#telefono').val(telefono);
                 $('#sitoweb').val(sitoweb);
             });
-        });
-        $('#annulla_update').on('click', function () {
+        });*/
+        /*$('#annulla_update').on('click', function () {
             $("#modificaorg").hide("normal");
             $('.container_aggiungi_areaAdmin').show("normal");
             $('.panel_areaAdmin').hide("slow");
-        });
+        });*/
         $('#annulla_add').on('click', function () {
             $("#modificaorg").hide("normal");
             $('.container_aggiungi_areaAdmin').show();
@@ -241,7 +230,7 @@
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
                         {{Form::Close()}}
                     </div></td>
-                <td><div class="btn_Tab"><img src="{{ asset('images/Edit.png')}}" class="edit_button btn_img"></div></td>
+                    <td><div class="btn_Tab"><a href="{{route('company_to_update',[$companyWithAnalisi['company']->id])}}"><img src="{{ asset('images/Edit.png')}}"  class="edit_button btn_img"></div></a></td>
 
                 <td><div class="btn_Tab"><img at="{{$companyWithAnalisi['company']->id}}" src="{{ asset('images/ticket.png')}}" class="details_button btn_img"></div></td>
 
@@ -260,39 +249,8 @@
         </p>
         <div class="gest-organizzazioni-form ">
             <div id="modificaorg" hidden>
-                <hr>
-                {{Form::open(array('route' => 'update_company','class' => 'form_area_admin','id' => 'updateCompany'))}}
-                {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
-                <div>
-                    {{Form::label('username', 'Username')}}
-                    {{Form::text('username','',['class'=> 'input', 'id' => 'hide_username' ,'disabled'])}}
-                </div>
-                <div>
-                    {{Form::label('nome', 'nome Società:')}}
-                    {{Form::text('nome' ,'',['class'=> 'input', 'id'=>'hide_nome'])}}
-                </div>
-                <div>
-                    {{Form::label('email', 'Email Società:')}}
-                    {{Form::text('email','',['class'=> 'input', 'id' => 'hide_email'])}}
-                </div>
-                <div>
-                    {{Form::label('data_nascita', 'Data fondazione società')}}
-                    {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita'])}}
-                </div>
-                <div>
-                    {{Form::label('telefono', 'Telefono:')}}
-                    {{Form::text('telefono','',['class'=> 'input', 'id' => 'hide_telefono'])}}
-                </div>
-                <div>
-                    {{Form::label('sitoweb', 'sito Web')}}
-                    {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'hide_sitoweb'])}}
-                </div>
 
-                <div class="formUtenteBottoni">
-                    {{ Form::button('<span>Conferma Modifiche</span>', ['id' => 'confirm', 'class' => 'admin_button', 'type' => 'submit']) }}
-                    <button type='button' id = "annulla_update" class ="admin_button"><span>Annulla</span></button>
-                </div>
-                {{Form::close()}}
+                
             </div>
             <div class="container_aggiungi_areaAdmin">
                 <button id='aggiungi_areaAdmin' class="admin_button"><span>Aggiungi Compagnia</span></button>
