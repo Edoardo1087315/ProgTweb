@@ -12,14 +12,17 @@ class DatabaseSeeder extends Seeder {
      */
     public function run() {
         DB::table('users')->insert([
-            ['id' => 1, 'nome' => 'andrea', 'cognome' => 'andreotti', 'email' => 'ciaociao@gmail.com', 'username' => 'andri', 'password' => Hash::make('andri'), 'data_nascita' => '1999-04-03', 'telefono' => '3387747111', 'sitoweb' => 'ciaociao.it', 'role' => 'user',],
+            ['id' => 1, 'nome' => 'andrea', 'cognome' => 'andreotti', 'email' => 'ciaociao@gmail.com', 'username' => 'andri187', 'password' => Hash::make('andri187'), 'data_nascita' => '1999-04-03', 'telefono' => '3387747111', 'sitoweb' => '', 'role' => 'user',],
             ['id' => 2, 'nome' => 'Acompany_SPA', 'cognome' => '', 'email' => 'Acompany_SPA@gmail.com', 'username' => 'Acompany_SPA', 'password' => Hash::make('Acompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747112', 'sitoweb' => 'Acompany_SPA.it', 'role' => 'company',],
-            ['id' => 3, 'nome' => 'giulio', 'cognome' => 'giulietti', 'email' => 'giuliogiulietti@gmail.com', 'username' => 'giulio', 'password' => Hash::make('giulio'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747113', 'sitoweb' => 'giulio.it', 'role' => 'user',],
+            ['id' => 3, 'nome' => 'giulio', 'cognome' => 'giulietti', 'email' => 'giuliogiulietti@gmail.com', 'username' => 'giulio26', 'password' => Hash::make('giulio26'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747113', 'sitoweb' => '', 'role' => 'user',],
             ['id' => 4, 'nome' => 'Bcompany_SPA', 'cognome' => '', 'email' => 'Bcompany_SPA@gmail.com', 'username' => 'Bcompany_SPA', 'password' => Hash::make('Bcompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747114', 'sitoweb' => 'Bcompany_SPA.it', 'role' => 'company',],
             ['id' => 5, 'nome' => 'Ccompany_SPA', 'cognome' => '', 'email' => 'Ccompany_SPA@gmail.com', 'username' => 'Ccompany_SPA', 'password' => Hash::make('Ccompany_SPA'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747115', 'sitoweb' => 'Ccompany_SPA.it', 'role' => 'company',],
-            ['id' => 6, 'nome' => 'lucio', 'cognome' => 'lucetti', 'email' => 'luciolucetti@gmail.com', 'username' => 'lucio', 'password' => Hash::make('lucio'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747116', 'sitoweb' => 'lucio.it', 'role' => 'user',],
-            ['id' => 7, 'nome' => 'riccardo', 'cognome' => 'ricchetti', 'email' => 'riccardoricchetti@gmail.com', 'username' => 'riccardo', 'password' => Hash::make('riccardo'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747117', 'sitoweb' => 'ciaociaoo.it', 'role' => 'user',],
-            ['id' => 8, 'nome' => 'admin', 'cognome' => 'admin', 'email' => 'admin@gmail.com', 'username' => 'admin', 'password' => Hash::make('adminadmin'), 'data_nascita' => '1998-05-03', 'telefono' => '3386747118', 'sitoweb' => 'adminadmin.it', 'role' => 'admin',],
+            ['id' => 6, 'nome' => 'lucio', 'cognome' => 'lucetti', 'email' => 'luciolucetti@gmail.com', 'username' => 'lucio199', 'password' => Hash::make('lucio199'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747116', 'sitoweb' => '', 'role' => 'user',],
+            ['id' => 7, 'nome' => 'riccardo', 'cognome' => 'ricchetti', 'email' => 'riccardoricchetti@gmail.com', 'username' => 'riccardo', 'password' => Hash::make('riccardo'), 'data_nascita' => '1999-05-03', 'telefono' => '3386747117', 'sitoweb' => '', 'role' => 'user',],
+            ['id' => 8, 'nome' => 'tweb4', 'cognome' => 'tweb4', 'email' => 'admin@gmail.com', 'username' => 'adminadmin', 'password' => Hash::make('vXSVvBIc'), 'data_nascita' => '1998-05-03', 'telefono' => '3386747118', 'sitoweb' => '', 'role' => 'admin',],
+            ['id' => 9, 'nome' => 'tweb2', 'cognome' => 'tweb2', 'email' => 'tweb2@gmail.com', 'username' => 'clieclie', 'password' => Hash::make('vXSVvBIc'), 'data_nascita' => '1999-04-03', 'telefono' => '3387747211', 'sitoweb' => '', 'role' => 'user',],
+            ['id' => 10, 'nome' => 'tweb3', 'cognome' => 'tweb3', 'email' => 'tweb3@gmail.com', 'username' => 'orgaorga', 'password' => Hash::make('vXSVvBIc'), 'data_nascita' => '1999-04-03', 'telefono' => '3387747211', 'sitoweb' => 'www.orgaorga.it', 'role' => 'company',]
+            
         ]);
 
  DB::table('event')->insert([
