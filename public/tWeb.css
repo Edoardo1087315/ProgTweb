@@ -1235,6 +1235,11 @@ input[type=submit]:hover {
     background-color: #ddd;
 }
 
+.analisiVendita{
+display: flex;
+flex-direction: column;
+}
+
 .admin_button{
     display: inline-block;
     border-radius: 4px;
