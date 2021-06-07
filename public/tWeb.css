@@ -1238,6 +1238,7 @@ input[type=submit]:hover {
 .analisiVendita{
 display: flex;
 flex-direction: column;
+padding:20px;
 }
 
 .admin_button{

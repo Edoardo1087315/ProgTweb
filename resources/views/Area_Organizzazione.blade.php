@@ -154,11 +154,11 @@ $(function(){
         <div id='map_canvas'></div>
         <div>
         {{ Form::label('Xcord', 'Xcord') }}
-        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord']) }}
+        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord', 'hidden'=>'true']) }}
         </div>
         <div>
         {{ Form::label('Ycord', 'Ycord') }}
-        {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord']) }}
+        {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord', 'hidden'=>'true']) }}
         </div>
         <div>
         {{ Form::label('descrizione', 'Descrizione') }}
@@ -243,11 +243,11 @@ $(function(){
             <div id='map_canvas'></div>
             <div>
             {{ Form::label('Xcord', 'Xcord') }}
-            {{ Form::text('Xcord', '', [ 'id' => 'Xcord', 'readonly']) }}
+            {{ Form::text('Xcord', '', [ 'id' => 'Xcord',  'hidden'=>'true']) }}
             </div>
             <div>
             {{ Form::label('Ycord', 'Ycord') }}
-            {{ Form::text('Ycord', '', [ 'id' => 'Ycord', 'readonly']) }}
+            {{ Form::text('Ycord', '', [ 'id' => 'Ycord', 'hidden'=>'true']) }}
             </div>
             <div>
             {{ Form::label('descrizione', 'Descrizione') }}

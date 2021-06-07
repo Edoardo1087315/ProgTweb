@@ -60,7 +60,7 @@
                 $('.panel_areaAdmin').hide("slow");
             }
         });
-        childright.on('click', function child() {
+        childright.on('click', function () {
             if (!childright.hasClass('active_admin')) {
                 childright.addClass('active_admin');
                 childleft.removeClass('active_admin');
@@ -88,7 +88,9 @@
         $('.details_button').on('click', function () {
             trigId = $(this).attr('at');
             var analisi = $("#analisi" + trigId).html();
-            $('#dettagli_company').html(analisi);
+            $('#dettagli_company').slideUp('normal');
+            $('#dettagli_company').delay(200).html(analisi);
+            $('#dettagli_company').slideDown('slow');
 
         });
         $('#aggiungi_areaAdmin').on('click', function () {
