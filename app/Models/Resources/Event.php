@@ -26,9 +26,13 @@ class Event extends Model {
 
     public function scontoIsEnable() {
         $ngiorni = $this->nGiorniAttSconto;
-        if (strtotime($this->data . ' - ' . $ngiorni . ' days') < strtotime(date('Y-m-d'))
-        )
+
+        if(strtotime($this->data)< strtotime(date('Y-m-d'))){
+            return false;
+        }    
+        if (strtotime($this->data . ' - ' . $ngiorni . ' days') < strtotime(date('Y-m-d'))){
             return true;
+        }
         return false;
     }
 

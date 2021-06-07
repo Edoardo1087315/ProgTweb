@@ -563,8 +563,8 @@ input[type=submit]:hover {
     flex-direction: column; 
     padding:1em;
 }
-#inputNomeEvento, #inputLuogoEvento{
-    width: 30%;
+#inputNomeEvento, #inputLuogoEvento,#inputDataEvento{
+    width: 25%;
 }
 #numeroBiglietti{
     width:5%; text-align:center;
@@ -650,7 +650,7 @@ input[type=submit]:hover {
         align-items: stretch;
         padding-right:1em;
     }
-    #inputNomeEvento, #inputLuogoEvento{
+    #inputNomeEvento, #inputLuogoEvento,#inputDataEvento{
         width: 100%;
     }
     #DatiEvento{
@@ -692,7 +692,7 @@ input[type=submit]:hover {
         align-items: stretch;
         padding-right:1em;
     }
-    #inputNomeEvento, #inputLuogoEvento{
+    #inputNomeEvento, #inputLuogoEvento,#inputDataEvento{
         width: 100%;
     }
     #DatiEvento{
@@ -734,7 +734,7 @@ input[type=submit]:hover {
         align-items: stretch;
         padding-right:1em;
     }
-    #inputNomeEvento, #inputLuogoEvento{
+    #inputNomeEvento, #inputLuogoEvento,#inputDataEvento{
         width: 100%;
     }
     #DatiEvento{
@@ -773,7 +773,7 @@ input[type=submit]:hover {
         align-items: stretch;
         padding-right:1em;
     }
-    #inputNomeEvento, #inputLuogoEvento{
+    #inputNomeEvento, #inputLuogoEvento,#inputDataEvento{
         width: 100%;
     }
     #DatiEvento{
@@ -1108,6 +1108,14 @@ input[type=submit]:hover {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
+#map_canvas {
+    margin-top:6px;
+    margin-bottom:6px;
+    height: 500px;
+}
+#current {
+    padding-top: 25px;
+}
 
 /* Area Admin */
 
@@ -1197,7 +1205,6 @@ input[type=submit]:hover {
 
 
 
-
 .table_area_admin{
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -1236,7 +1243,7 @@ input[type=submit]:hover {
 }
 
 .analisiVendita{
-display: flex;
+display: none;
 flex-direction: column;
 padding:20px;
 }

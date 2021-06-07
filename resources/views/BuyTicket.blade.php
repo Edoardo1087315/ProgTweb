@@ -3,17 +3,16 @@
 @section('content')
 @push('scripts')
 <script>
-    window.onload = function(){
-        function price() {
+    function price() {
             var numBiglietti = parseInt(document.getElementById("numeroBiglietti").value);
             var prezzo = parseFloat(document.getElementById("hiddenPriceBox").value);
             var prezzoTotale = numBiglietti * prezzo;
             console.log(prezzoTotale, numBiglietti, prezzo);
             document.getElementById("priceBox").value = prezzoTotale;
         }
-    };
     $(function(){
-    
+        $("#numeroBiglietti").attr("onmouseup","price();");
+        $("#numeroBiglietti").attr("onkeydown","return false");
         var action_url = "{{ route('Compra') }}";
         var formId = 'CompraBiglietto';
 
@@ -36,7 +35,7 @@
         {{Form::label('nome','Evento:',[])}}
         {{Form::text('nome',$event->nome,['id' => 'inputNomeEvento', 'readonly' => true])}}
         {{Form::label('data','Data:',[])}}
-        {{Form::date('data',$event->data,['readonly' => true])}}
+        {{Form::date('data',$event->data,['id' => 'inputDataEvento', 'readonly' => true])}}
         {{Form::label('luogo','Luogo:',[])}}
         {{Form::text('luogo',$event->nome,['id' => 'inputLuogoEvento', 'readonly' => true])}}
         {{Form::hidden('eventId',$event->eventid,['id' => 'eventId'])}}
@@ -51,7 +50,7 @@
         </div>
         {{Form::label('numbiglietti','Biglietti:',[])}}
         {{Form::number('numbiglietti','1',['id' => 'numeroBiglietti', 'min' => '1', 
-                                   'max' => $event->bigl_tot-$event->bigl_acquis, 'step'=>'1', 'onkeydown' =>'return false','onmouseup' => 'price();' ])}}
+                                   'max' => $event->bigl_tot-$event->bigl_acquis, 'step'=>'1'])}}
         {{Form::label('metodoPagamento','Metodo di Pagamento:',[])}}
         {{Form::select('metodoPagamento', 
                             collect(array('Prepagata' => 'Carta Prepagata','Credit' => 'Carta di credito')),
