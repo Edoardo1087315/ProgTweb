@@ -1190,6 +1190,7 @@ input[type=submit]:hover {
     overflow-x:auto;
     margin-top:20px;
     text-align:-webkit-center;
+    text-align: -moz-center;
 }
 
 
