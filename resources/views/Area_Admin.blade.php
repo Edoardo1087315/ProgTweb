@@ -16,9 +16,11 @@
             var formElementId = $(this).attr('id');
             doElemValidation(formElementId, new_company_Url, new_company_formId);
         });
+
 //update compagnia con ajax
         var update_compant_Url = "{{route('update_company')}}";
         var update_company_formId = 'updateCompany';
+
         $("#updateCompany").on('submit', function (event) {
             event.preventDefault();
             doFormValidation(update_compant_Url, update_company_formId);
@@ -56,7 +58,7 @@
                 $("#modificaorg").hide("normal");
                 $('.container_aggiungi_areaAdmin').show();
                 $('.panel_areaAdmin').hide("slow");
-                $('#dettagli_company').hide();
+                $('#company_details').hide();
             }
         });
         childright.on('click', function () {
@@ -86,9 +88,9 @@
         $('.details_button').on('click', function () {
             trigId = $(this).attr('at');
             var analisi = $("#analisi" + trigId).html();
-            $('#dettagli_company').hide();
-            $('#dettagli_company').html(analisi);
-            $('#dettagli_company').slideDown('slow');
+            $('#company_details').hide();
+            $('#company_details').html(analisi);
+            $('#company_details').slideDown('slow');
  
         });
         $('#aggiungi_areaAdmin').on('click', function () {
@@ -128,6 +130,8 @@
                 $("#updateCompany :input[name=data_nascita]").attr("id", "data_nascita");
                 $("#updateCompany :input[name=telefono]").attr("id", "telefono");
                 $("#updateCompany :input[name=sitoweb]").attr("id", "sitoweb");
+                $("#this_email").attr('id','');
+                $(this).closest('tr').find('td:eq(1)').attr('id','this_email');
                 var companyid = $(this).closest('tr').find('td:eq(0)').attr('id');
                 var nome = $(this).closest('tr').find('td:eq(0)').text();
                 var email = $(this).closest('tr').find('td:eq(1)').text();
@@ -187,9 +191,9 @@
                 <td>{{$user->username}}</td>
                 <td>{{$user->nome}}</td>
                 <td>{{$user->cognome}}</td>
-                <td><a href="mailto: + {{$user->email}}"> {{$user->email}}</a></td>
+                <td><a href="mailto:{{$user->email}}"> {{$user->email}}</a></td>
                 <td><nobr>{{$user->data_nascita}}</nobr></td>
-            <td><a href="tel: + {{$user->telefono}}">{{$user->telefono}}</a></td>
+            <td><a href="tel:{{$user->telefono}}">{{$user->telefono}}</a></td>
             <td><a href="https://www.{{$user->sitoweb}}" target="_blank">{{$user->sitoweb}}</a></td>
             <td><div class="btn_Tab">{{Form::open(array('route' => 'delete_user','id' => 'delete_user'))}}
                     {{Form::hidden('userid', $user->id, )}}
@@ -220,13 +224,13 @@
                 <tr>
                     <td id="{{$companyWithAnalisi['company']->id}}">{{$companyWithAnalisi['company']->nome}}</td>
 
-                    <td><a href="mailto: + {{$companyWithAnalisi['company']->email}}"> {{$companyWithAnalisi['company']->email}}</a></td>
+                    <td><a href="mailto:{{$companyWithAnalisi['company']->email}}">{{$companyWithAnalisi['company']->email}}</a></td>
 
                     <td>{{$companyWithAnalisi['company']->username}}</td>
 
                     <td><nobr>{{$companyWithAnalisi['company']->data_nascita}}</nobr></td>
 
-                <td><a href="tel: + {{$companyWithAnalisi['company']->telefono}}">{{$companyWithAnalisi['company']->telefono}}</a></td>
+                <td><a href="tel:{{$companyWithAnalisi['company']->telefono}}">{{$companyWithAnalisi['company']->telefono}}</a></td>
 
                 <td><a href="https://www.{{$companyWithAnalisi['company']->sitoweb}}" target="_blank">{{$companyWithAnalisi['company']->sitoweb}}</a></td>
 
@@ -250,7 +254,7 @@
                 @endforeach
             </table>
         </div>
-        <p id="dettagli_company" class="analisiVendita" >
+        <p id="company_details" class="analisiVendita" >
         </p>
         <div class="gest-organizzazioni-form ">
             <div id="modificaorg" hidden>

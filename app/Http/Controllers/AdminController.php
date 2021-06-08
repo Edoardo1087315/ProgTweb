@@ -55,8 +55,14 @@ return response()->json(['redirect' => route('Area_Admin')]);
 }
 
  public function getCompanyToUpdate($id) {
-     $Company = $this->_applicationAdmin->getUserById($id);
-     return view('updateCompany')->with('company',$Company);
+$selected_company = $this->_applicationAdmin->getUserById($id);
+$users = $this->_applicationAdmin->getUsers();
+$companies = $this->_applicationAdmin->getCompanies();
+$companiesWithAnalisi = [];
+foreach ($companies as $company)
+$companiesWithAnalisi[$company->id] = ["company" => $company, 'incasso' => $this->_applicationAdmin->getCompanyEventsIncasso($company->id), 'venduti' => $this->_applicationAdmin->getCompanyEventsVenduti($company->id)];
+
+ return view('Area_Admin')->with('users', $users)->with('companiesWithAnalisi', $companiesWithAnalisi);
 }
 
  public function getFaqToDelete(DeleteFaqRequest $request) {

@@ -1288,17 +1288,8 @@ padding:20px;
     right: 0;
 }
 
- #annulla_add{
+#annulla_update , #annulla_add{
     width: 40%;
-    background-color: red;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-#annulla_update{
     background-color: red;
     color: white;
     padding: 14px 20px;
