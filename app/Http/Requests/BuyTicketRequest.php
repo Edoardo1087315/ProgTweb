@@ -30,8 +30,8 @@ class BuyTicketRequest extends FormRequest  {
     public function rules() {
         return [
             'cardname' => 'required |string | max:40',
-            'cardnumber' => 'required |string| regex:^[0-9]{12}^',
-            'cvv' => 'required |string | regex:^[0-9]{3}^'
+            'cardnumber' => 'required |string| regex:^[0-9]{12}^|max:16|min:16',
+            'cvv' => 'required |string | regex:^[0-9]{3}^|max:3|min:3'
         ];
     }
      protected function failedValidation(Validator $validator)

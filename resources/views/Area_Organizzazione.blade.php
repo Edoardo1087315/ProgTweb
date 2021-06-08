@@ -58,15 +58,6 @@ $(function(){
     });
 });
 </script>
-<style>
-    #map_canvas {
-    width: 980px;
-    height: 500px;
-}
-#current {
-    padding-top: 25px;
-}
-</style>
 @endpush
 
 @section('title', 'Area organizzatore')
@@ -81,7 +72,6 @@ $(function(){
     <div class="tab-container">
         <table class="events_Tab">
             <tr>
-                <th>ID</th>
                 <th>Nome</th>
                 <th>Luogo</th>
                 <th>Biglietti totali</th>
@@ -97,7 +87,6 @@ $(function(){
             @foreach($events as $event)
 
             <tr>
-                <td>{{$event->eventid}}</td>
                 <td><strong> <a href="{{Route('Pagina_Evento',[$event->eventid]) }}">{{$event->nome}} </a></strong></td>
                 <td>{{$event->luogo}}</td>
                 <td>{{$event->bigl_tot}}</td>
@@ -105,8 +94,10 @@ $(function(){
                 <td>{{ number_format($event->getVendutiPerc(), 2, ',', '.') }}%</td>
                 <td>{{$event->getPrice($event->sconto)}}€</td>
                 <td>{{$event->prezzo}}€</td>
-                @if($event->sconto)
+                @if($event->scontoIsEnable())
                 <td>{{$event->scontoPerc}}%</td>
+                @elseif($event->sconto)
+                <td>Non ancora attivo</td>
                 @else
                 <td>Assente</td>
                 @endif
@@ -177,14 +168,15 @@ $(function(){
         {{ Form::label('categoria', 'Categoria') }}
         {{ Form::text('categoria', $selected_event->categoria, [ 'id' => 'categoria']) }}
         </div>
+        {{Form::label('posizione','Posizione')}}
         <div id='map_canvas'></div>
         <div>
         {{ Form::label('Xcord', 'Xcord') }}
-        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord', 'hidden'=>'true']) }}
+        {{ Form::text('Xcord', $selected_event->Xcord, [ 'id' => 'Xcord', 'readonly'=>'true']) }}
         </div>
         <div>
         {{ Form::label('Ycord', 'Ycord') }}
-        {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord', 'hidden'=>'true']) }}
+        {{ Form::text('Ycord', $selected_event->Ycord, [ 'id' => 'Ycord', 'readonly'=>'true']) }}
         </div>
         <div>
         {{ Form::label('descrizione', 'Descrizione') }}
@@ -267,14 +259,15 @@ $(function(){
             {{ Form::label('categoria', 'Categoria') }}
             {{ Form::text('categoria', '', [ 'id' => 'categoria']) }}
             </div>
+           {{Form::label('posizione','Posizione')}}
             <div id='map_canvas'></div>
             <div>
             {{ Form::label('Xcord', 'Xcord') }}
-            {{ Form::text('Xcord', '', [ 'id' => 'Xcord',  'hidden'=>'true']) }}
+            {{ Form::text('Xcord', '', [ 'id' => 'Xcord',  'readonly'=>'true']) }}
             </div>
             <div>
             {{ Form::label('Ycord', 'Ycord') }}
-            {{ Form::text('Ycord', '', [ 'id' => 'Ycord', 'hidden'=>'true']) }}
+            {{ Form::text('Ycord', '', [ 'id' => 'Ycord', 'readonly'=>'true']) }}
             </div>
             <div>
             {{ Form::label('descrizione', 'Descrizione') }}
