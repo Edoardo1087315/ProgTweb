@@ -262,7 +262,7 @@
                 {{Form::open(array('route' => 'update_company','class' => 'form_area_admin','id' => 'updateCompany'))}}
                 {{ Form::hidden('companyid','' , [ 'id' => 'companyid']) }}
                 <div>
-                    {{Form::label('username', 'Username')}}
+                    {{Form::label('username', 'Username:')}}
                     {{Form::text('username','',['class'=> 'input', 'id' => 'hide_username' ,'disabled'])}}
                 </div>
                 <div>
@@ -274,7 +274,7 @@
                     {{Form::text('email','',['class'=> 'input', 'id' => 'hide_email'])}}
                 </div>
                 <div>
-                    {{Form::label('data_nascita', 'Data fondazione società')}}
+                    {{Form::label('data_nascita', 'Data fondazione società:')}}
                     {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita'])}}
                 </div>
                 <div>
@@ -282,7 +282,7 @@
                     {{Form::text('telefono','',['class'=> 'input', 'id' => 'hide_telefono'])}}
                 </div>
                 <div>
-                    {{Form::label('sitoweb', 'sito Web')}}
+                    {{Form::label('sitoweb', 'sito Web:')}}
                     {{Form::text('sitoweb','',['class'=> 'input', 'id' => 'hide_sitoweb'])}}
                 </div>
 
@@ -298,32 +298,32 @@
                 <div class="panel_areaAdmin" style="display:none">
                     <hr>
                     {{Form::open(array('route' => 'new_company','class' => 'form_area_admin','id' => 'addCompany'))}}
-                    <div class="wrap-input rs1-wrap-input">
-                        {{Form::label('nome', 'nome Società')}}
+                    <div>
+                        {{Form::label('nome', 'nome Società:')}}
                         {{Form::text('nome' ,'',['class'=> 'input', 'placeholder'=>'nome...', 'id'=>'nome'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('email', 'Email Società:')}}
                         {{Form::text('email','',['class'=> 'input', 'placeholder'=>'email...', 'id' => 'email'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
-                        {{Form::label('username', 'Username')}}
+                    <div>
+                        {{Form::label('username', 'Username:')}}
                         {{Form::text('username','',['class'=> 'input', 'placeholder'=>'username...', 'id' => 'username'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
-                        {{Form::label('password', 'Password')}}
+                    <div>
+                        {{Form::label('password', 'Password:')}}
                         {{Form::text('password','',['class'=> 'input', 'placeholder'=>'password...', 'id' => 'password'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
-                        {{Form::label('data_nascita', 'Data fondazione società')}}
+                    <div>
+                        {{Form::label('data_nascita', 'Data fondazione società:')}}
                         {{Form::date('data_nascita','',['class'=> 'input', 'placeholder'=>'data nascita...', 'id' => 'data_nascita'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('telefono', 'Telefono:')}}
                         {{Form::text('telefono','',['class'=> 'input', 'placeholder'=>'telefono...', 'id' => 'telefono'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
-                        {{Form::label('sitoweb', 'sito Web')}}
+                    <div>
+                        {{Form::label('sitoweb', 'sito Web:')}}
                         {{Form::text('sitoweb','',['class'=> 'input', 'placeholder'=>'sito...', 'id' => 'sitoweb'])}}
                     </div>
 
