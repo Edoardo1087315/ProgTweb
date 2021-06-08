@@ -91,7 +91,7 @@ Route::get('/AreaAmministratore/FaqAdmin','AdminController@showAdminFaq')
 Route::post('/AreaAmministratore/delete_user','AdminController@deleteUser')
         ->name('delete_user');
 
-Route::post('/AreaAmministratore/update_company{companyid}','AdminController@updateCompanyRequest')
+Route::post('/AreaAmministratore/update_company','AdminController@updateCompanyRequest')
         ->name('update_company');
 
 Route::post('/AreaAmministratore/new_company','AdminController@newCompanyRequest')
