@@ -14,7 +14,7 @@
     </div>
     <div>
         {{ Form::label('data', 'Quando:') }}
-        {{ Form::date('data',null, ['id' => 'data']) }}   
+        {{ Form::date('data',null, ['id' => 'data','min'=>'0001-01-01', 'max'=>'9999-12-31']) }}   
     </div>
     <div>
         {{ Form::submit('Cerca') }}

@@ -25,7 +25,7 @@
                 </ul>
                 @endif
                 {{Form::label ('data_nascita', 'Data di nascita') }}
-                {{Form::date('data_nascita', '',['id' => 'data_nascita',])}}
+                {{Form::date('data_nascita', '',['id' => 'data_nascita','min'=>'0001-01-01', 'max'=>'9999-12-31'])}}
                  @if ($errors->first('data_nascita'))
                 <ul class="errors">
                     @foreach ($errors->get('data_nascita') as $message)

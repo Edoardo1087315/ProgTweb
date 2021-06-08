@@ -275,7 +275,7 @@
                 </div>
                 <div>
                     {{Form::label('data_nascita', 'Data fondazione società')}}
-                    {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita'])}}
+                    {{Form::date('data_nascita','',['class'=> 'input','id' => 'hide_data_nascita','min'=>'0001-01-01', 'max'=>'9999-12-31'])}}
                 </div>
                 <div>
                     {{Form::label('telefono', 'Telefono:')}}
@@ -316,7 +316,7 @@
                     </div>
                     <div class="wrap-input rs1-wrap-input">
                         {{Form::label('data_nascita', 'Data fondazione società')}}
-                        {{Form::date('data_nascita','',['class'=> 'input', 'placeholder'=>'data nascita...', 'id' => 'data_nascita'])}}
+                        {{Form::date('data_nascita','',['class'=> 'input', 'placeholder'=>'data nascita...', 'id' => 'data_nascita','min'=>'0001-01-01', 'max'=>'9999-12-31'])}}
                     </div>
                     <div class="wrap-input rs1-wrap-input">
                         {{Form::label('telefono', 'Telefono:')}}
