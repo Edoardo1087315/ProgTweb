@@ -191,7 +191,7 @@
                 <td>{{$user->username}}</td>
                 <td>{{$user->nome}}</td>
                 <td>{{$user->cognome}}</td>
-                <td><a href="mailto:{{$user->email}}"> {{$user->email}}</a></td>
+                <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
                 <td><nobr>{{$user->data_nascita}}</nobr></td>
             <td><a href="tel:{{$user->telefono}}">{{$user->telefono}}</a></td>
             <td><a href="https://www.{{$user->sitoweb}}" target="_blank">{{$user->sitoweb}}</a></td>
@@ -211,7 +211,7 @@
             <table class="table_area_admin">
                 <tr>
                     <th>Nome</th>
-                    <th>Email</th>
+                    <th id='this_email'>Email</th>
                     <th>Username</th>
                     <th>Data Fondazione</th>
                     <th>Telefono</th>
