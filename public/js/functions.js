@@ -10,9 +10,19 @@ function getErrorHtml(elemErrors) {
 }
 
 function doElemValidation(id, actionUrl, formId) {
-
+    
     var formElems;
-
+    var elem = $("#" + formId + " :input[name=" + id + "]");
+    var elemval = $.trim(elem.val());
+    var this_email = $.trim(document.getElementById("this_email").textContent);
+    
+    //controllo su email
+    
+    if((id === "email") && (this_email === elemval)){
+        $("#" + id).parent().find('.errors').html(' ');
+        return;
+    }
+    
     function addFormToken() {
         var tokenVal = $("#" + formId + " input[name=_token]").val();
         formElems.append('_token', tokenVal);
@@ -36,7 +46,7 @@ function doElemValidation(id, actionUrl, formId) {
         });
     }
 
-    var elem = $("#" + formId + " :input[name=" + id + "]");
+    
     if (elem.attr('type') === 'file') {
     // elemento di input type=file valorizzato
         if (elem.val() !== '') {
@@ -44,16 +54,20 @@ function doElemValidation(id, actionUrl, formId) {
         } else {
             inputVal = new File([""], "");
         }
-    } else {
+    } else  {
         // elemento di input type != file
         inputVal = elem.val();
     }
+
+    
     formElems = new FormData();
     formElems.append(id, inputVal);
     addFormToken();
     sendAjaxReq();
 
 }
+
+
 
 function doFormValidation(actionUrl, formId) {
 

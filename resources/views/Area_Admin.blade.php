@@ -115,6 +115,7 @@
         });
         $('.edit_button').each(function () {
             $(this).on('click', function () {
+
                 $("#modificaorg").hide("fast");
                 $('.container_aggiungi_areaAdmin').hide("slow");
                 $("#modificaorg").show("slow");
@@ -139,6 +140,8 @@
                 var data_nascita = $(this).closest('tr').find('td:eq(3)').text();
                 var telefono = $(this).closest('tr').find('td:eq(4)').text();
                 var sitoweb = $(this).closest('tr').find('td:eq(5)').text();
+                $("#this_email").attr('id','');
+                $(this).closest('tr').find('td:eq(1)').attr('id','this_email');
                 $('#companyid').val(companyid);
                 $('#nome').val(nome);
                 $('#email').val(email);
@@ -226,7 +229,7 @@
                 <tr>
                     <td id="{{$companyWithAnalisi['company']->id}}">{{$companyWithAnalisi['company']->nome}}</td>
 
-                    <td><a href="mailto: + {{$companyWithAnalisi['company']->email}}"> {{$companyWithAnalisi['company']->email}}</a></td>
+                    <td><a href="mailto: + {{$companyWithAnalisi['company']->email}}">{{$companyWithAnalisi['company']->email}}</a></td>
 
                     <td>{{$companyWithAnalisi['company']->username}}</td>
 
@@ -300,31 +303,31 @@
                 <div class="panel_areaAdmin" style="display:none">
                     <hr>
                     {{Form::open(array('route' => 'new_company','class' => 'form_area_admin','id' => 'addCompany'))}}
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('nome', 'nome Società')}}
                         {{Form::text('nome' ,'',['class'=> 'input', 'placeholder'=>'nome...', 'id'=>'nome'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('email', 'Email Società:')}}
                         {{Form::text('email','',['class'=> 'input', 'placeholder'=>'email...', 'id' => 'email'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('username', 'Username')}}
                         {{Form::text('username','',['class'=> 'input', 'placeholder'=>'username...', 'id' => 'username'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('password', 'Password')}}
                         {{Form::text('password','',['class'=> 'input', 'placeholder'=>'password...', 'id' => 'password'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('data_nascita', 'Data fondazione società')}}
                         {{Form::date('data_nascita','',['class'=> 'input', 'placeholder'=>'data nascita...', 'id' => 'data_nascita'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('telefono', 'Telefono:')}}
                         {{Form::text('telefono','',['class'=> 'input', 'placeholder'=>'telefono...', 'id' => 'telefono'])}}
                     </div>
-                    <div class="wrap-input rs1-wrap-input">
+                    <div>
                         {{Form::label('sitoweb', 'sito Web')}}
                         {{Form::text('sitoweb','',['class'=> 'input', 'placeholder'=>'sito...', 'id' => 'sitoweb'])}}
                     </div>
