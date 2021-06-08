@@ -56,7 +56,7 @@ $(function(){
                 </div>
                 <div>
                 {{Form::label ('data_nascita', 'Data di nascita') }}
-                {{Form::date('data_nascita', $user->data_nascita,['id' => 'data_nascita','readonly' => 'true'])}}
+                {{Form::date('data_nascita', $user->data_nascita,['id' => 'data_nascita','readonly' => 'true','min'=>'0001-01-01', 'max'=>'9999-12-31'])}}
                 </div>
                 <div>
                 {{Form::label ('telefono', 'Numero di Telefono') }}

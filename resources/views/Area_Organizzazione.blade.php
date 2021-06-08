@@ -188,7 +188,7 @@ $(function(){
         </div>
         <div>
         {{ Form::label('data', 'Data') }}
-        {{ Form::date('data',$selected_event->data, ['id' => 'data']) }}
+        {{ Form::date('data',$selected_event->data, ['id' => 'data','min'=>'0001-01-01', 'max'=>'9999-12-31']) }}
         </div>
         <div>
         {{ Form::label('orario', 'Orario') }}
@@ -279,7 +279,7 @@ $(function(){
             </div>
             <div>
             {{ Form::label('data', 'Data') }}
-            {{ Form::date('data',\Carbon\Carbon::now(), ['id' => 'data']) }}
+            {{ Form::date('data',\Carbon\Carbon::now(), ['id' => 'data','min'=>'0001-01-01', 'max'=>'9999-12-31']) }}
             </div>
             <div>
             {{ Form::label('orario', 'Orario') }}
