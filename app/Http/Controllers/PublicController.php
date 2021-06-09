@@ -71,7 +71,7 @@ class PublicController extends Controller  {
         $filters = array('descrizione' => Session::get('descrizione'), 'luogo' => Session::get('luogo'),'data' => Session::get('data'),'organizzazione' =>  Session::get('organizzazione'));
         $Events = $this->_applicationPublic->getEventsBySearch($filters);
         $TotalEvents = $this->_applicationPublic->getNotPaginateEvents();
-        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents)->with('filters',$filters);
+        return view('catalogo')->with('events',$Events)->with('totalevents',$TotalEvents);
     }
    
 }

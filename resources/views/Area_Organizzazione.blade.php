@@ -106,7 +106,7 @@ $(function(){
                     <div class="btn_Tab"><a href="{{Route('getEventToUpdate',[$event->eventid]) }}" >
                             <img src="{{ asset('images/Edit.png')}}" class="btn_img" ></a>
                         {{Form::open(array('route' => 'deleteEvent','id' => 'deleteEvent'))}}
-                        {{Form::hidden('eventid', $event->eventid, )}}
+                        {{Form::hidden('eventid', $event->eventid )}}
                         {{Form::image(asset('images/Btn.png'), 'elimina', ['type'=> 'submit', 'class' => 'btn_img']) }}
                         {{Form::Close()}}
                     </div></td>

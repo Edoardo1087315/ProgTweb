@@ -52,7 +52,7 @@ class application_user {
     }
     public function getTickets(){
         $user = Auth::user();
-        $tickets = Ticket::where('user_id',$user->id)->join('Event','Event.eventid','=','Ticket.eventid')->join('users','Event.societaid','=','users.id')->orderBy('data_acquisto','desc')->
+        $tickets = Ticket::where('user_id',$user->id)->join('event','event.eventid','=','ticket.eventid')->join('users','event.societaid','=','users.id')->orderBy('data_acquisto','desc')->
                         get(['event.*','users.nome as societa', 'ticket.TransId as TransId', 'ticket.data_acquisto as data_acquisto','ticket.prezzo as costoTot','ticket.quantita as quantita','ticket.user_id as user_id, ticket.eventid as eventid']);
                         
         return $tickets;

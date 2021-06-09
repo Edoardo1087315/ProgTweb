@@ -61,8 +61,6 @@ body {
     height: 70px;
     display:flex;
     align-items:center;
-    background-image: url("sfondoheader.jpg");
-    background-size:cover;
     justify-content: space-between;
 }
 #SignIn,#SignUp{

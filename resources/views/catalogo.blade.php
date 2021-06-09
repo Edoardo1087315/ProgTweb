@@ -20,14 +20,7 @@
 @endpush
 
 @include('layouts.ricerca')
-<!--
-<div id="ordina_button">
-    <a> Ordina per: </a>
-    <button class="btn active" onclick="">Rilevanza</button>
-    <button class="btn" onclick=""> Titolo</button>
-    <button class="btn" onclick=""> Data</button>
-</div>
--->
+
 <hr>
 
 <div class="eventi_catalogo">
@@ -50,17 +43,7 @@
         @endforelse
         </div>
         <!--Paginazione -->
-            @isset($filters)
-                @include('paginator/paginate', ['paginate' => $events, 'filters' => $filters])
-            @endisset
-            @empty($filters)
-                @include('paginator/paginate', ['paginate' => $events])
-            @endempty
-       @endisset
-       @empty($events)
-            <div style="font-size:20px; text-align: center; font-weight: bold;">
-            Nessun evento corrisponde ai criteri selezionati!
-        </div>
-       @endempty
+        @include('paginator/paginate', ['paginate' => $events])
+        @endisset
 </div>
 @endsection
