@@ -14,14 +14,16 @@ function doElemValidation(id, actionUrl, formId) {
     var formElems;
     var elem = $("#" + formId + " :input[name=" + id + "]");
     var elemval = $.trim(elem.val());
-    var this_email = $.trim(document.getElementById("this_email").textContent);
     
     //controllo su email
     
-    if((id === "email") && (this_email === elemval)){
+    if(id === "email"){
+        var this_email = $.trim(document.getElementById("this_email"));
+        if(this_email.contextContent === elemval){
         $("#" + id).parent().find('.errors').html(' ');
         return;
     }
+}
     
     function addFormToken() {
         var tokenVal = $("#" + formId + " input[name=_token]").val();
