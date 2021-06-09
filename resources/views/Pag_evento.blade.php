@@ -17,6 +17,7 @@
                     <h5>{{$event->luogo}}</h5>
                 </div>
                 <div class="cont_container_header_right">
+                    @can('isPastEvent',[$event->eventid])
                     @can('isUser')
                     <div>
                         @can('hasNoPartecipation', [$event->eventid])
@@ -35,6 +36,7 @@
                         </div>
                         @endcan
                     </div>
+                    @endcan
                     @endcan
 
                     @isset($nPartecipero)
