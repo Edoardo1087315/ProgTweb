@@ -45,5 +45,10 @@ class AuthServiceProvider extends ServiceProvider
             $partecipation = $_userModel->getPartecipero($user->id,$id);
             return !$partecipation;
         });
+        Gate::define('isPastEvent', function ($user,$id) {
+            $_applicationPublic = new application_public;
+            $event = $_applicationPublic->getEventById($id);
+            return (!($event->isPastEvent()));
+        });
     }
 }

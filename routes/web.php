@@ -38,7 +38,7 @@ Route::get('/PagEvento/{idevent}','PublicController@showEvent')
 
 /*ROTTE DELL'UTENTE DI LIVELLO 2*/
 Route::get('/PagEvento/{idevent}/compra','UserController@showBuyForm')
-        ->name('Compra_Biglietto')->middleware('can:isSoldout,idevent');
+        ->name('Compra_Biglietto')->middleware('can:isSoldout,idevent')->middleware('can:isPastEvent,idevent');
 
 Route::post('/PagEvento/compra/process','UserController@buyForm')
         ->name('Compra');
