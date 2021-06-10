@@ -66,7 +66,9 @@ class CompanyController extends Controller {
 
     public function deleteEvent(DeleteEventRequest $request) {
         $this->_companyModel->deleteTicketById($request->eventid);
+        $this->_companyModel->deletePartecipazioneByEventId($request->eventid);
         $this->_companyModel->deleteEventById($request->eventid);
+
         return redirect('AreaOrganizzazione');
     }
 

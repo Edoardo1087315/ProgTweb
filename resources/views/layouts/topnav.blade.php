@@ -1,7 +1,7 @@
 
 <a href="{{ route('frontpage') }}"  id="home" class="{{ (Route::currentRouteName() == 'frontpage') ? 'active' : '' }}">Home</a>
 <a href="{{ route('catalog') }}" id="catalogo" class="{{ (Route::currentRouteName() == 'catalog' || Route::currentRouteName() == 'Ricerca') ? 'active' : '' }}">Catalogo</a>
-<a href="{{ route('catalog') }}" id="relazione">Relazione</a>
+<a href="{{ asset('Relazione.pdf') }}" id="relazione" target = "_blank">Relazione</a>
 @can('isUser')
 <a href="{{ route('Area_Utente',[Auth::user()]) }}"  id="AreaUtente" class="{{ Route::currentRouteName() == 'Area_Utente' ? 'active' : '' }}">Area Utente</a>
 @endcan

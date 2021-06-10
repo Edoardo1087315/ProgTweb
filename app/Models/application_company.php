@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Resources\Event;
 use App\Models\Resources\Ticket;
+use App\Models\Resources\Partecipation;
 use Illuminate\Support\Facades\Auth;
 
 class application_company {
@@ -64,5 +65,12 @@ class application_company {
     }
         public function deleteEventById($id) {
             $this->getEventById($id)->delete();
+    }
+    public function deletePartecipazioneByEventId($id){
+        $partecipazione = Partecipation::where('eventid',$id);
+        if($partecipazione!=null){
+            $partecipazione->delete();
+        }
+            
     }
 }

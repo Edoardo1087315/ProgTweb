@@ -84,7 +84,7 @@
     </fieldset>
     <div class = "formbuttons">
         {{Form::submit('Acquista',['id' => 'submitPagamento'])}}
-        {{Form::reset('Cancella',['id' => 'resetPagamento'])}}
+        {{Form::reset('Pulisci',['id' => 'resetPagamento'])}}
     </div>
     {{Form::close()}}
 </div>

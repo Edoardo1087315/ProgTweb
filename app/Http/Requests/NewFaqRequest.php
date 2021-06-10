@@ -29,8 +29,8 @@ class NewFaqRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'Domanda' => 'required|string',
-            'Risposta' => 'required|string',      
+            'Domanda' => 'required|string|max:191',
+            'Risposta' => 'required|string|max:191',      
         ];
     }
     
